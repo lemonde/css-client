@@ -1,0 +1,579 @@
+/*
+---------------------------
+  header
+---------------------------
+*/
+
+.header {
+    @extend %backgroud-header;
+
+    &._transparent {
+        position: absolute;
+        z-index: 100;
+        top: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.4);
+        @include border($cardinal: bottom, $color: alpha_clair);
+    }
+
+    &-conteneur {
+        @extend .conteneur;
+        display: flex;
+        width: 100%;
+
+        > a:not(._iconemobile):hover {
+            @extend %color-negatif;
+        }
+    }
+
+    &-bloc {
+        @extend %color-negatif;
+        display: flex;
+        align-items: center;
+
+        @include border($color: alpha_clair, $cardinal: left);
+        @include border($color: alpha_clair, $cardinal: right);
+
+        + .header-bloc {
+            border-left: 0;
+        }
+
+        &._gauche {
+            flex: 1;
+            @include screen(not-large) {
+                padding-left:pas(m);
+            }
+        }
+
+        &._droite {
+            flex: initial;
+            padding: 0 pas(m);
+        }
+
+        &._iconemobile {
+            @extend %color-liens;
+            padding-right: 0;
+
+            &:hover {
+                text-decoration: none;
+            }
+
+            @include screen(from-medium) {
+                display: none;
+            }
+        }
+
+        &._hide-xs {
+            @include screen(small) {
+                display: none;
+            }
+        }
+
+        &._hide-not-large {
+            @include screen(not-large) {
+                display: none;
+            }
+        }
+
+        &._show-xs {
+            @include screen(from-medium) {
+                display: none;
+            }
+        }
+
+        &._last-xs {
+            padding-right: 0;
+        }
+    }
+
+    &-logo {
+        padding: pas(m) 0;
+    }
+
+    &-zone {
+        @include fontsize(t7);
+        margin-left: pas(s);
+        line-height: 1em;
+        transform: translateY(2px);
+        font-weight: lighter;
+    }
+}
+/*
+---------------------------
+  footer
+---------------------------
+*/
+.liensfooter {
+    padding: pas(l) 0;
+    text-align: center;
+
+    &-item {
+        @include screen(from-medium) {
+            display: inline;
+            padding: 0 pas(s);
+        }
+        @include screen(small) {
+            display: block;
+            text-align: center;
+        }
+
+        &-lien {
+            @extend %color-liens-sombres;
+            &:hover {
+                @extend %color-liens-sombres-hover;
+            }
+        }
+    }
+
+    @include screen(from-medium) {
+        &-item {
+            display: inline-block;
+            padding: 0 pas(s);
+        }
+        & &-item:not(:last-child)::after {
+            content: "|";
+            margin-left: pas(m);
+        }
+    }
+}
+
+/*
+---------------------------
+  page de formulaire
+---------------------------
+*/
+$label-width: 150px;
+$label-width-large: 220px;
+
+.form {
+
+    &-groupe {
+        @include border($cardinal: bottom);
+        padding-bottom: pas(l);
+        margin-bottom: pas(l);
+    }
+
+    &-soustitre {
+        @extend .t7;
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &-ligne ~ &-soustitre {
+        @include screen(from-medium) {
+            margin: pas(xl) 0 pas(m);
+        };
+    }
+
+    &-soustitre:first-child {
+        margin-top: pas(s);
+    }
+
+    &-option {
+        @extend .itemfleche;
+        @extend %border-double;
+        display: block;
+        padding: pas(m) 0;
+
+        @include screen(from-large) {
+            margin-bottom: pas(l);
+        }
+    }
+
+    &-ligne {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        margin: pas(s) 0;
+
+        &._petit {
+            @include screen(small) {
+                width: 100%;
+            }
+            @include screen(from-medium) {
+                width: 50%;
+            }
+        }
+
+        &._aligntop {
+            align-items:flex-start;
+        }
+
+        &._espaceur {
+            margin-bottom: pas(xl);
+
+            @include screen(small) {
+                margin-bottom: pas(l);
+            }
+        }
+
+        @include screen(from-medium) {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        @include screen(small) {
+            flex-flow: row wrap;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        &-input.date input {
+            background: url('../imgs/Calendrier.svg') no-repeat right pas(m) center ;
+            background-size: 20px 20px;
+        }
+
+        &-input {
+            flex: 2;
+            @include screen(small) {
+                flex: 1 100%;
+                margin-bottom: pas(m);
+            }
+            @include screen(from-medium) {
+                margin: 0;
+            }
+        }
+
+        &-input + &-input {
+            margin-left: pas(s);
+        }
+
+        // lignes forcées à 100%
+        // pour aceuilir des sous-options
+        &-sousligne {
+            width: 100%;
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            @include screen(small) {
+                padding-left: pas(l);
+            }
+        }
+
+        &-label {
+            width: $label-width;
+
+            &.est-requis::after {
+                @extend %color-gris;
+                content: " *";
+            }
+
+            @include screen(from-large) {
+                &:not(:first-child) {
+                    padding-left: pas(m);
+                }
+            }
+
+            @include screen(small) {
+                flex: 1 100%;
+                margin-top: pas(m);
+                margin-bottom: pas(s);
+            }
+
+            ._longlabel & {
+                @include screen(from-medium) {
+                    width: $label-width-large;
+                }
+            }
+        }
+
+        &-mention { // texte aligné avec les champs de formulaires
+            @include screen(from-medium) {
+                margin-left: $label-width;
+                flex: 1;
+
+                ._longlabel & {
+                    margin-left: $label-width-large;
+                }
+            }
+        }
+
+        &-inputgroupes {
+            > * {
+                display: inline-block;
+                vertical-align: top;
+                &:not([type="radio"],[type="checkbox"]){
+                    margin-bottom: pas(s);
+                }
+            }
+            & >[type="radio"] ~ label ,
+            & >[type="checkbox"] ~ label {
+                margin: 0 pas(m) pas(m) 0;
+            }
+        }
+        // set de la marge left à zero
+        &-input > &-inputgroupes {
+            margin-left: 0;
+        }
+
+        /* hack pour css magento */
+        div.validation-advice,
+        &-erreur {
+            @extend %color-erreur;
+            flex: 1 100%;
+            margin-top: pas(s);
+        }
+    }
+
+    &-action {
+        padding-top: pas(l);
+        text-align: center;
+
+        @include screen(from-large) {
+            padding-top: pas(xl);
+            text-align: right;
+        }
+
+        .btn:not(:last-of-type) {
+            margin-right: pas(m);
+        }
+    }
+    // utilisé pour insérer du texte
+    // sous un bouton (ex paiement sécurisé)
+    &-boitebouton {
+        display: inline-block;
+        padding: pas(l) 0;
+        text-align: center;
+    }
+}
+
+/*
+---------------------------
+  historique d'achat
+---------------------------
+*/
+
+.achats {
+    & &-ligne {
+        border-bottom: none;
+
+        &:nth-child(4n+1) {
+            @extend %background-clair;
+        }
+        &:nth-child(4n+3) {
+            @extend %background-gris;
+        }
+    }
+
+    &-detail {
+        @extend %background-gris;
+
+        & > td {
+            padding: 0;
+            margin: 0;
+
+            @include screen(small) {
+                padding: 0;
+                margin: 0;
+            }
+        }
+
+        &-conteneur {
+            padding: 0 pas(s) pas(s);
+
+            @include screen(small) {
+                padding-bottom: pas(m);
+            }
+        }
+
+        &-liste {
+            @extend %background-clair;
+            @include border();
+            @include bloc-fleche($borderColor: $gris-7, $position: 'top');
+            position: relative;
+            padding: pas(m);
+        }
+    }
+
+    & &-detail:nth-child(4n+2) {
+        @extend %background-clair;
+    }
+
+    & &-detail:nth-child(4n+4) {
+        @extend %background-gris;
+    }
+
+    &-labelmobile {
+        @include screen(from-medium) {
+            display:none;
+        }
+        @include screen(small) {
+            display: block;
+            font-weight: bold;
+            width: 100%;
+        }
+    }
+}
+
+/*
+---------------------------
+  moyens de paiements
+---------------------------
+*/
+.paiement {
+    &-liste {
+        &-item {
+            padding: pas(s) 0;
+
+            input[type="radio"] {
+                display: inline-block;
+                float: left;
+                margin-right: pas(s);
+            }
+        }
+    }
+
+    &-detail {
+        margin-top: pas(m);
+        &-titre {
+            margin-bottom: pas(s);
+        }
+    }
+}
+
+/*
+---------------------------
+  confirmation de
+  changement d'adresse
+---------------------------
+*/
+.confirmeadresse {
+    @extend %border-double;
+    margin: pas(m) 0 pas(l);
+    padding: pas(m) 0;
+
+    &-adresse {
+        flex: 1;
+        padding: pas(m);
+
+        &-titre {
+            margin: 0 0 pas(m);
+        }
+    }
+
+    &-fleche {
+        width: 60px;
+        align-self: center;
+        text-align: left;
+
+        @include screen(small) {
+            text-align: center;
+            font-size: 20px;
+            line-height: 20px;
+            &:before {
+                display: inline-block;
+                transform: rotate(90deg);
+                transform-origin: 50% 50%;
+            }
+        }
+
+        &:before {
+            font-size: 30px;
+            line-height: 30px;
+            color: $gris-7;
+        }
+    }
+}
+
+/*
+---------------------------
+  Gerer mon abonement
+---------------------------
+*/
+.gererabo {
+    margin-bottom: pas(l);
+
+    &-section {
+        @include border($cardinal: bottom);
+        padding-bottom: pas(m);
+        margin-bottom: pas(s);
+    }
+
+    &-soustitre {
+        font-weight: bold;
+
+        @include screen(small) {
+            margin-top: pas(m);
+        }
+    }
+}
+
+/*
+---------------------------
+  accordeon
+---------------------------
+*/
+.accordeon {
+    @include border($cardinal: top);
+
+    &-entete {
+        padding: pas(m) 0;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &-titre {
+        @extend .textelarge;
+        margin: 0 0 pas(s);
+        font-weight: bold;
+    }
+
+    &-contenu {
+        @extend %transition;
+        overflow: hidden;
+        max-height: 0;
+        margin-bottom: 0;
+
+        .est-ouvert & {
+            max-height: 10000px;
+            margin-bottom: pas(m);
+        }
+    }
+
+    &-bouton {
+        @extend %icon;
+        @extend .icon-Chevron-bas;
+        text-align: center;
+        max-height: 0;
+
+        &:before {
+            @extend %transition;
+            float: right;
+            margin-left: pas(s);
+        }
+
+        &:after {
+            content: "ouvrir";
+        }
+
+        .est-ouvert & {
+            max-height: none;
+            &:after {
+                content: "fermer";
+            }
+            &:before {
+                transform: rotateX(180deg);
+            }
+        }
+    }
+}
+
+
+/*
+---------------------------
+  tunnel d'achat
+---------------------------
+*/
+.tunnel {
+    padding-top: pas(xl);
+
+    &-mention {
+        text-align: right;
+        padding: 0;
+        line-height: 0;
+        transform: translateY(-1.6em);
+    }
+}
