@@ -1,0 +1,233 @@
+.input-group-addon,
+.input-group.date {
+    position: relative;
+}
+
+.bootstrap-datetimepicker-widget {
+    list-style: none;
+    @include bloc-fleche($position:top, $borderColor: $bleu-sombre, $backgroundColor: $bleu-sombre);
+    position: absolute!important;
+    top: 110% !important;
+    left: 0!important;
+    z-index: 77777!important;
+    background: $blanc;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+
+    &.dropdown-menu {
+        width: 22em;
+        padding: 0;
+    }
+
+    .list-unstyled {
+        margin: 0;
+    }
+
+    a[data-action] {
+        padding: pas(s);
+    }
+
+    a[data-action]:active {
+        box-shadow: none;
+    }
+
+    .timepicker-hour, .timepicker-minute, .timepicker-second {
+        width: 54px;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    button[data-action] {
+        padding: pas(s);
+    }
+
+    thead {
+        @extend %background-colore-sombre;
+        @extend %color-negatif;
+    }
+
+    thead, tbody, tfoot {
+        padding: pas(m);
+    }
+
+    th.prev,
+    th.next,
+    th.picker-switch {
+        @extend %color-negatif;
+    }
+
+    .picker-switch {
+        text-align: center;
+
+        td {
+            height: auto;
+            width: auto;
+            line-height: inherit;
+            padding: pas(s);
+            margin: pas(0);
+
+            span {
+                line-height: 2.5;
+                height: 2.5em;
+                width: 100%;
+            }
+        }
+    }
+
+    table {
+        width: 100%;
+        margin: 0;
+
+        & td,
+        & th {
+            padding: pas(s);
+            text-align: center;
+        }
+
+        & th {
+            height: 20px;
+            line-height: 20px;
+            width: 20px;
+            //@extend %padd-a-s;
+
+            &.picker-switch {
+                width: 145px;
+            }
+
+            &.disabled,
+            &.disabled:hover {
+                @extend %color-gris;
+            }
+
+            &.prev {
+                @extend %icon;
+                @extend .icon-Chevron-gauche;
+            }
+
+            &.next {
+                @extend %icon;
+                @extend .icon-Chevron-droite;
+            }
+        }
+
+        & thead tr:first-child th {
+            cursor: pointer;
+        }
+
+        & td {
+            @extend %cercle;
+            height: 54px;
+            line-height: 54px;
+            width: 54px;
+
+            &.cw {
+                @extend %color-active-sombre;
+                font-size: .8em;
+                height: 20px;
+                line-height: 20px;
+            }
+
+            &.day {
+                height: 28px;
+                line-height: 28px;
+                width: 38px;
+                margin: pas(s);
+            }
+
+            &.day:hover,
+            &.hour:hover,
+            &.minute:hover,
+            &.second:hover {
+                @extend %background-colore-sombre;
+                @extend %color-negatif;
+                cursor: pointer;
+            }
+
+            &.old,
+            &.new {
+                @extend %color-gris;
+            }
+
+            &.today {
+                position: relative;
+
+                &:before {
+                    content: '';
+                    display: inline-block;
+                    border: solid transparent;
+                    border-width: 0 0 7px 7px;
+                    border-bottom-color: $liens-hover;
+                    border-top-color: $liens-hover;
+                    position: absolute;
+                    bottom: 4px;
+                    right: 4px;
+                }
+            }
+
+            &.active,
+            &.active:hover {
+                @extend %background-activeDark;
+                @extend %color-active;
+            }
+
+            &.active.today:before {
+                border-bottom-color: #fff;
+            }
+
+            &.disabled,
+            &.disabled:hover {
+                @extend %color-gris;
+                background: none;
+                cursor: not-allowed;
+            }
+
+            span {
+                display: inline-block;
+                width: 54px;
+                height: 54px;
+                line-height: 54px;
+                margin: 2px 1.5px;
+                cursor: pointer;
+
+                &:hover {
+                    @extend %background-colore-sombre;
+                    @extend %color-negatif;
+                }
+
+                &.active {
+                    @extend %background-colore-sombre;
+                    @extend %color-negatif;
+                }
+
+                &.old { @extend %color-std; }
+
+                &.disabled,
+                &.disabled:hover {
+                    @extend %color-gris;
+                    background: none;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+
+    &.usetwentyfour {
+        td.hour {
+            height: 27px;
+            line-height: 27px;
+        }
+    }
+
+	&.wider {
+		width: 21em;
+	}
+
+	& .datepicker-decades .decade {
+        line-height: 1.8em !important;
+    }
+}
+
+.input-group.date {
+    & .input-group-addon {
+        cursor: pointer;
+    }
+}

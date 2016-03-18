@@ -1,0 +1,144 @@
+//
+// Modals
+// --------------------------------------------------
+
+// .modal-open      - body class for killing the scroll
+// .modal           - container to scroll within
+// .modal-dialog    - positioning shell for the actual modal
+// .modal-content   - actual modal w/ bg and corners and shit
+
+// Kill the scroll on the body
+.modal-open {
+    overflow: hidden;
+}
+
+// Container that the modal scrolls within
+.modal {
+    display: none;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999999;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+
+    // When fading in the modal, animate it to slide down
+    &.fade .modal-dialog {
+        @extend %transition;
+        transform: translate(0, -25%);
+    }
+    &.in .modal-dialog { transform: translate(0, 0);}
+}
+
+.close {
+    @extend %icon;
+    @extend .icon-Fermer;
+    float: right;
+    overflow: hidden;
+    width: 20px;
+    padding: 0;
+    margin: 0;
+    color: transparent;
+    font-size: 0;
+    background: none;
+    border: 0;
+    &:before {
+        @extend %color-std;
+        width:20px;
+    }
+}
+
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+// Shell div to position the modal with bottom padding
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 10px;
+}
+
+// Actual modal
+.modal-content {
+    @include border();
+    @extend %border-radius-std;
+    @extend %background-clair;
+    position: relative;
+    background-clip: padding-box;
+    outline: 0;
+}
+
+// Modal background
+.modal-backdrop {
+    @extend %background-gris-sombre;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999998;
+    &.fade { opacity :0 }
+    &.in { opacity: .5 }
+}
+
+// Modal header
+// Top section of the modal w/ title and dismiss
+.modal-header {
+    @include border($cardinal: bottom);
+    padding: pas(m);
+}
+// Close icon
+.modal-header .close {
+    margin-top: -2px;
+}
+
+// Title text within header
+.modal-title {
+    margin: 0;
+}
+
+// Modal body
+// Where all modal content resides (sibling of .modal-header and .modal-footer)
+.modal-body {
+    position: relative;
+    padding: pas(m);
+}
+
+// Footer (for actions)
+.modal-footer {
+    @include border($cardinal: top);
+    padding: pas(m);
+    text-align: right; // right align buttons
+
+    .btn + .btn {
+        margin-left: 5px;
+        margin-bottom: 0;
+    }
+}
+
+// Measure scrollbar width for padding body during modal show/hide
+.modal-scrollbar-measure {
+    position: absolute;
+    top: -9999px;
+    width: 50px;
+    height: 50px;
+    overflow: scroll;
+}
+
+// Scale up the modal
+@include screen(from-medium) {
+    // Automatically set modal's width for larger viewports
+    .modal-dialog {
+        width: 500px;
+        margin: 30px auto;
+    }
+    // Modal sizes
+    .modal-sm {
+        width: 400px;
+    }
+}
