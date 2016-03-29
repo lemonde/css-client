@@ -1,0 +1,164 @@
+require('shelljs/global');
+
+var gulp                = require('gulp');
+var concat              = require('gulp-concat');
+var notify              = require('gulp-notify');
+var sass                = require('gulp-sass');
+var minifyCss           = require('gulp-minify-css');
+var rename              = require('gulp-rename');
+var autoprefixer        = require('gulp-autoprefixer');
+var uglifycss           = require('gulp-uglifycss');
+var preprocess          = require('gulp-preprocess');
+var runSequence         = require('run-sequence');
+var imagemin            = require('gulp-imagemin');
+var changed             = require('gulp-changed');
+var gcmq                = require('gulp-group-css-media-queries');
+var connect             = require('gulp-connect');
+var open                = require("gulp-open");
+var clean               = require('gulp-clean');
+var minifyHTML          = require("gulp-minify-html");
+var filter              = require('gulp-filter');
+var tag_version         = require('gulp-tag-version');
+var exec                = require('gulp-exec');
+var Q                   = require('q');
+var sourcemaps          = require('gulp-sourcemaps');
+
+
+///////////////////////////////////////////////////////
+// PATHS
+///////////////////////////////////////////////////////
+
+var src_base_url = './';
+var dest_base_url = './build-css-customer';
+
+// the source paths
+var source_paths = {
+  styles:       src_base_url + '/scss/**/*',
+  scss:         src_base_url + '/scss/app.scss',
+  fonts:        src_base_url + '/fonts/**/*',
+  images:       src_base_url + '/imgs/**/*.*',
+};
+
+
+
+// the destination paths
+var dest_paths = {
+  css:          dest_base_url + '/css/',
+  fonts:        dest_base_url + '/fonts/',
+  images:       dest_base_url + '/imgs/',
+  root:         dest_base_url,
+};
+
+
+gulp.task('default', function(){
+    runSequence(
+        'compile',
+        'watch'
+    );
+});
+
+///////////////////////////////////////////////////////
+// COMPILATION TASKS
+///////////////////////////////////////////////////////
+
+function onError(err) {
+  console.log(err);
+  notify("error: "+ err);
+  this.emit('end');
+}
+
+
+gulp.task('compile-styl', function() {
+  return gulp.src(source_paths.scss)
+  	.pipe(sourcemaps.init().on('error', onError))
+    .pipe(changed(dest_paths.css).on('error', onError))
+    .pipe(sass().on('error', onError))
+    .pipe(gulp.dest(dest_paths.css))
+    .pipe(autoprefixer({browsers: ['> 1%','last 2 versions','ie > 8'],cascade:false}).on('error', onError))
+    .pipe(minifyCss({keepSpecialComments: 0}).on('error', onError))
+    .pipe(gcmq().on('error', onError))
+    .pipe(uglifycss().on('error', onError))
+    .pipe(rename({ extname: '.min.css' }).on('error', onError))
+    .pipe(sourcemaps.write('./map').on('error', onError))
+    .pipe(gulp.dest(dest_paths.css).on('error', onError))
+    .pipe(notify("style compiled/minifyed/auoprefixed : <%= file.relative %>!"))
+    .pipe(connect.reload().on('error', onError));
+});
+
+gulp.task('compile-fonts', function() {
+    gulp.src(source_paths.fonts)
+    .pipe(gulp.dest(dest_paths.fonts))
+});
+
+gulp.task('compile-images', function() {
+  return gulp.src(source_paths.images)
+    .pipe(changed(dest_paths.images).on('error', onError))
+    .pipe(imagemin({svgoPlugins: [
+            { removeViewBox: false },
+            { removeEmptyAttrs: true },
+            { removeDoctype: true },
+            { convertStyleToAttrs: true}
+        ]
+    }))
+    .pipe(gulp.dest(dest_paths.images))
+    .pipe(connect.reload());
+});
+
+gulp.task('compile-all', ['compile-styl',
+                          'compile-images',
+                          'compile-fonts',
+                          ]);
+
+// compile everything after cleaning the build
+gulp.task('compile', ['build-clean'], function(){
+  var deferred = Q.defer();
+
+  runSequence('compile-all', function(){
+    deferred.resolve();
+  });
+
+  return deferred.promise;
+});
+
+///////////////////////////////////////////////////////
+// CLEAN TASKS
+///////////////////////////////////////////////////////
+
+
+gulp.task('clean-styles', function() {
+  return gulp.src(dest_paths.css, {read: false})
+         .pipe(clean({force: true}).on('error', onError));
+});
+
+gulp.task('clean-images', function() {
+  return gulp.src(dest_paths.images, {read: false})
+       .pipe(clean({force: true}).on('error', onError));
+});
+
+gulp.task('clean-fonts', function() {
+  return gulp.src(dest_paths.fonts, {read: false})
+       .pipe(clean({force: true}).on('error', onError));
+});
+
+gulp.task('build-clean', ['clean-styles',
+                          'clean-images',
+                          'clean-fonts',
+                         ]);
+
+///////////////////////////////////////////////////////
+// WATCH TASKS
+///////////////////////////////////////////////////////
+
+gulp.task('watch-styl', function(){
+  return gulp.watch(source_paths.styles, ['compile-styl']);
+});
+
+gulp.task('watch-images', function(){
+  return gulp.watch(source_paths.images, ['compile-images']);
+});
+
+gulp.task('watch', function() {
+  runSequence([ 'watch-styl',
+                'watch-images',
+              ]);
+});
