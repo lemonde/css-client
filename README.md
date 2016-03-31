@@ -1,10 +1,10 @@
 # css-client
 
-Framework css des itégrateur du Monde.fr
+Framework css des intégrateurs du Monde.fr
 
 ## Comment travailler ?
 
-1) Clonner le projet
+1) Clôner le projet
 
 ```bash
 git clone git@github.com:lemonde/css-client.git
@@ -22,15 +22,15 @@ cd css-client && npm install
 gulp css-client:compile-all
 ```
 
-4) Développer 
+4) Développer
 
 ```bash
 gulp css-client:watch
 ```
 
-Les fichiers compiler se trouve dans le dossier /build-css-customer à la racine du projet.
+Les fichiers compiler se trouvent dans le dossier /build-css-customer à la racine du projet.
 
-Une fois le développement terminer, il vous suffit de faire une release pour l'utiliser dans un projet.
+Une fois le développement terminé, il vous suffit de faire une release pour l'utiliser dans un projet.
 
 
 ## Utiliser le projet
@@ -39,7 +39,7 @@ Une fois le développement terminer, il vous suffit de faire une release pour l'
 
 Exemple de sf-lemonde:
 
-1) Clonner le projet
+1) Clôner le projet
 
 ```bash
 git clone git@github.com:lemonde/sf-lemonde.git
@@ -63,7 +63,7 @@ npm install
 gulp css-client:compile-all
 ```
 
-5) Déplace les css compiler la ou vous souhaitez les utilsier, vous pouvez utiliser un gulp file pour le faire plus facilement
+5) Déplace les css compilés là où vous souhaitez les utilsier, vous pouvez utiliser un gulp file pour le faire plus facilement
 
 ```javascript
 var gulp = require('gulp');
@@ -140,4 +140,49 @@ Dans une autre console
 eval "$(docker-machine env dev)"
 ## CONTAINER_ID = 87070dc9a529
 docker exec CONTAINER_ID bash -c 'node_modules/gulp/bin/gulp.js watch'
+```
+
+### Utilisation dans arvato-integration
+
+1) Clôner le projet
+
+```bash
+git clone git@github.com:lemonde/arvato-integration.git
+```
+
+2) Ajouter le package dans le src/package.json
+
+```json
+"css-client": "git+ssh://git@github.com:lemonde/css-client#[VERSION]",
+```
+
+3) Installer
+
+```bash
+cd src && npm install
+```
+
+3) Installer
+
+```bash
+cd src && npm install
+```
+
+4) Link pour le développement
+
+```bash
+cd css-client && npm link
+cd arvato-integration/src && npm link css-client
+```
+
+5) Compiler
+
+```bash
+gulp css-client:compile-all
+```
+
+6) Watcher
+
+```bash
+gulp watch
 ```
