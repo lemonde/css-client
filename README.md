@@ -98,7 +98,13 @@ Exemple de sf-lemonde:
 git clone git@github.com:lemonde/sf-lemonde.git
 ```
 
-2) Installer docker (sur MAC)
+2) Mettre à jour le package json
+
+```bash
+"css-client": "git+https://GITHUB_TOKEN:x-oauth-basic@github.com/lemonde/css-client#1.0.5",
+```
+
+3) Installer docker (sur MAC)
 
 ```bash
 cd sf-lemonde
@@ -110,7 +116,7 @@ eval "$(docker-machine env dev)"
 docker-compose up
 ```
 
-3) Installer le projet
+4) Installer le projet
 
 Dans une autre console
 
@@ -126,7 +132,7 @@ Récuperer l'id du container docker, sur l'ecran vous devriez voir
 root@87070dc9a529:/var/www#
 ```
 
-4) Lancer le watcher
+5) Lancer le watcher
 
 Dans une autre console
 
