@@ -8,7 +8,7 @@
 
 body {
     @extend %sans-serif;
-    @extend %background-clair;
+    @include background(clair);
     @extend %color-std;
     @include fontsize(std);
     margin: 0;
@@ -88,12 +88,20 @@ h1, h2, h3, h4, h5, h6 {
     @extend %color-negatif;
 }
 
+.texteclair {
+    @include color(gris);
+}
+
 .textecentre {
     text-align: center;
 }
 
+.textegauche {
+    text-align: left;
+}
+
 .textedroite {
-    text-align: center;
+    text-align: right;
 }
 
 .prix {
@@ -160,23 +168,23 @@ a {
     }
 
     &._standard {
-        @extend %background-gris;
+        @include background(gris);
         @extend %color-std;
         @include border();
 
         &:hover {
-            @extend %background-gris-sombre;
+            @include background(gris_sombre);
             @include border($color: std_sombre);
         }
     }
 
     &._action {
-        @extend %background-active;
+        @include background(active);
         @extend %color-negatif;
         @include border($color: action);
 
         &:hover {
-            @extend %background-active-hover;
+            @include background(active_hover);
             @include border($color: action_hover);
         }
     }
@@ -190,6 +198,7 @@ a {
         padding: pas(m) pas(l);
     }
 }
+
 /*
 ---------------------------
  Icones
@@ -210,11 +219,21 @@ a {
     @extend %cercle;
     @include border($color: texte);
     display: inline-block;
+    text-transform: uppercase;
     height: 2em;
     width: 2em;
     line-height: 2em;
     margin-right: pas(s);
     text-align: center;
+
+    &._plus {
+        line-height: 1.8em; // vertical center "+" char
+    }
+
+    &._couleur {
+        @include border($color: action_hover);
+        @extend %color-active;
+    }
 }
 
 // icone CB (mastercard / etc...)
@@ -230,16 +249,17 @@ a {
 
 // iconne menu burger
 .iconburger {
-    display: block;
-    width: 20px;
-    height: 30px;
+    border: solid $blanc;
+    border-width: 2px 0;
+    display: flex;
+    align-items: center;
+    width: 23px;
+    height: 18px;
 
-    span {
-        @extend %background-clair;
-        display: block;
-        width: 100%;
-        height: 1px;
-        margin: pas(s) 0;
+    &::after {
+        content: "";
+        flex: 0 0 100%;
+        border-top: 2px solid $blanc;
     }
 }
 
@@ -327,7 +347,7 @@ textarea {
     }
     &:disabled {
         @extend %color-gris;
-        @extend %background-gris;
+        @include background(gris);
     }
 }
 
@@ -412,12 +432,21 @@ address {
 hr {
     border: 0;
     display: block;
-    margin: pas(m) 0;
+    margin: pas(m) auto;
     height: 0px;
 
-    &._petit{
+    &._petit {
         width: 70px;
-        margin: pas(m) auto;
+    }
+
+    &._sansmarge {
+        margin: 0 auto;
+    }
+
+    &._hide-medium {
+        @include screen(medium) {
+            display: none;
+        }
     }
 }
 

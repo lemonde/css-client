@@ -9,9 +9,9 @@
 
 .message {
     @extend %border-radius-std;
-    @extend %background-gris;
-    @include border();
+    @include background(gris);
     @extend %color-std;
+    @include border();
     display: flex;
     flex-flow: row wrap;
     padding: pas(s) pas(m);
@@ -38,19 +38,19 @@
     }
 
     &._erreur {
-        @extend %background-erreur;
+        @include background(erreur);
         @include border($color: erreur);
         @extend %color-erreur;
     }
 
     &._valide {
-        @extend %background-valide;
+        @include background(valide);
         @include border($color: valide);
         @extend %color-valide;
     }
 
     &._notif {
-        @extend %background-notif;
+        @include background(notif);
         @include border($color: action);
         @extend %color-link;
     }
@@ -184,12 +184,12 @@ portant d'autres selecteurs
     }
 }
 
-
 /*
 ---------------------------
  table
 ---------------------------
 */
+
 .table {
     @include border($cardinal: top);
     @include fontsize(std);
@@ -204,7 +204,7 @@ portant d'autres selecteurs
 
     thead {
         @extend %color-negatif;
-        @extend %background-colore-sombre;
+        @include background(colore_sombre);
 
         tr {
             border: 0;
@@ -216,7 +216,7 @@ portant d'autres selecteurs
         border-top: 0;
 
         &:nth-child(even){
-            @extend %background-gris;
+            @include background(gris);
         }
     }
 
@@ -251,10 +251,11 @@ portant d'autres selecteurs
   tooltip
 ---------------------------
 */
+
 .infobulle {
     @extend %border-radius-std;
     @include border();
-    @extend %background-clair;
+    @include background(clair);
     display: inline-block;
     position: relative;
     max-width: 400px;
@@ -273,6 +274,7 @@ portant d'autres selecteurs
         font-weight: bold;
     }
 }
+
 /*
 ---------------------------
   pagination
@@ -312,7 +314,7 @@ portant d'autres selecteurs
 
     &-bullet {
         @extend %cercle;
-        @extend %background-gris;
+        @include background(gris);
         @extend %transition;
         width: 8px;
         height: 8px;
@@ -320,7 +322,7 @@ portant d'autres selecteurs
         &.est-actif,
         &:hover {
             cursor: pointer;
-            @extend %background-active;
+            @include background(active);
         }
     }
 
@@ -347,6 +349,7 @@ portant d'autres selecteurs
   breadcrumb
 ---------------------------
 */
+
 .breadcrumb {
     padding: pas(m) 0;
 
@@ -379,6 +382,7 @@ portant d'autres selecteurs
         }
     }
 }
+
 /*
 ---------------------------
   Bloc centraux
@@ -386,6 +390,7 @@ portant d'autres selecteurs
   et texte gris
 ---------------------------
 */
+
 .mention {
     @extend %color-gris;
     @include fontsize(s);
@@ -414,6 +419,7 @@ portant d'autres selecteurs
   titre et sous-titre
 ---------------------------
 */
+
 .entete {
     padding: pas(l) 0;
 
@@ -437,6 +443,7 @@ portant d'autres selecteurs
   section de page
 ---------------------------
 */
+
 .section {
     @include border($width: large, $color: sombre, $cardinal: top);
     margin-bottom: pas(l);
@@ -463,7 +470,7 @@ portant d'autres selecteurs
 
 .boite {
     @include border();
-    @extend %background-clair;
+    @include background(clair);
     margin-bottom: pas(l);
 
     &._bordclair,
@@ -481,7 +488,7 @@ portant d'autres selecteurs
     }
 
     &._fondsombre {
-        @extend %background-gris;
+        @include background(gris);
     }
 
     &-section,
@@ -506,8 +513,21 @@ portant d'autres selecteurs
             @include border($cardinal: bottom);
         }
 
-        &._margebassenulle {
+        &._paddingbasnul {
             padding-bottom: 0;
+        }
+
+        &._sansbord {
+            border-bottom: 0;
+        }
+
+        &._bordhaut {
+            border-bottom: 0;
+            @include border($cardinal: top);
+        }
+
+        &._paddinglarge {
+            padding: pas(l);
         }
     }
 }
@@ -518,6 +538,7 @@ portant d'autres selecteurs
 menus
 ---------------------------
 */
+
 .blockliste {
     @include border();
     margin-bottom: pas(l);
@@ -538,12 +559,12 @@ menus
     }
 
     &._clair {
-        @extend %background-clair;
+        @include background(clair);
     }
 
     &._sombre {
         @include border($width: large, $color: action_hover, $cardinal: top);
-        @extend %background-gris;
+        @include background(gris);
     }
 
     &._bordurehaute {
@@ -631,6 +652,7 @@ menus
   Hub
 ---------------------------
 */
+
 .listeoptions {
 
     &:not(:last-of-type) {
@@ -760,6 +782,7 @@ menus
   Bloc nom + avatar
 ---------------------------
 */
+
 .blockclient {
     display: flex;
     align-items: center;
@@ -846,6 +869,7 @@ menus
  hack pour selection adresse existante
 ----------------
 */
+
 address.formater > br:not(:first-child):not(:last-child) { display: none; }
 
 
@@ -854,6 +878,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
  abonement concerne
 -----------------
 */
+
 .listeencadre {
     @include border($cardinal: bottom);
     padding-bottom: pas(m);
@@ -911,7 +936,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     }
 
     &-lien {
-        @extend %background-clair;
+        @include background(clair);
         @extend %transition;
         @extend %color-std;
         @include border($cardinal: right);
@@ -962,6 +987,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
  chargement (ajax)
 ---------------------------
 */
+
 .chargement {
     display: block;
     margin-top: pas(xl);
@@ -974,11 +1000,23 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
  menu deroulants
 ---------------------------
 */
+
+// utiliser .deroulant._from-large afin de n'activer
+// le deroulant que pour les devices larges.
+// ._from-large reset les propriétés du déroulant
+// pour tout autre viewport
+
 .deroulant {
     position: relative;
 
     &:hover {
-        @extend %background-active-hover;
+        @include background(active_hover);
+
+        &._from-large {
+            @include screen(not-large) {
+                background: none;
+            }
+        }
     }
 
     &-entete {
@@ -995,6 +1033,17 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
             margin-left: pas(m);
             transform: rotate(-90deg);
         }
+
+        ._from-large & {
+            @include screen(not-large) {
+                display: block;
+                cursor: default;
+
+                &:before {
+                    display: none;
+                }
+            }
+        }
     }
 
     &-corps {
@@ -1004,17 +1053,23 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
         top: 100%;
         left: 0;
         right: 0;
+
+        ._from-large & {
+            @include screen(not-large) {
+                position: static;
+                display: block;
+            }
+        }
     }
 
     &:hover &-corps {
         display: block;
     }
 
-    &-item {
+    &-item a {
+        display: block;
         padding: pas(s) 0;
-        a {
-            @extend %color-std;
-        }
+        @extend %color-std;
     }
 }
 
@@ -1060,13 +1115,13 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
 
 /*
 -----------------
- carousel
+ carrousel
  (site de recrutement)
 -----------------
 */
 
-.carousel {
-    background-color: $gris-16;
+.carrousel {
+    background: $gris-16 url('../imgs/recrutement/fond-carrousel-large.jpg') center / auto 100% no-repeat;
     position: relative;
     min-height: 400px;
 
@@ -1074,26 +1129,20 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
         min-height: 500px;
     }
 
-    &-items,
     &-item {
-        top: 0;
         position: absolute;
+        top: 0;
         bottom: 0;
-        width: 100%;
-    }
-
-    &-item {
         z-index: 0;
-        background: no-repeat center;
-        background-size: auto 100%;
+        width: 100%;
+        background: center / auto 100% no-repeat;
         opacity: 0;
         transform: translateZ(0);
-        transition: opacity 1.2s ease, transform 1s ease;
+        transition: opacity 0.8s ease;
 
         &.est-actif {
-            transform: translateZ(0);
             opacity: 1;
-            z-index: 10;
+            z-index: 1;
         }
 
         .aligne {
@@ -1125,7 +1174,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     &-pagination {
         position: absolute;
         bottom: pas(m);
-        z-index: 30;
+        z-index: 2;
         width: 100%;
     }
 
@@ -1133,7 +1182,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
         position: absolute;
         top: 50%;
         bottom:0;
-        z-index: 20;
+        z-index: 2;
         cursor: pointer;
 
         &._precedent:before,
@@ -1142,14 +1191,14 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
         }
 
         &._precedent {
-            left: 8%;
             @extend %icon;
             @extend .icon-Chevron-gauche-XL;
+            left: 5%;
         }
         &._suivant {
-            right: 8%;
             @extend %icon;
             @extend .icon-Chevron-droite-XL;
+            right: 5%;
         }
 
         @include screen(small) {
@@ -1169,6 +1218,134 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     &-pagination {
         user-select: none;
     }
+
+    &-promo {
+        display: flex;
+        margin: 0 auto;
+        padding: pas(xxl) pas(l) pas(xl);
+        height: 100%;
+        width: 100%;
+
+        @include screen(small) {
+            max-width: 320px;
+        }
+
+        @include screen(medium) {
+            max-width: 767px;
+        }
+
+        @include screen(from-large) {
+            max-width: 1023px;
+        }
+    }
+
+    &-promodevice {
+        display: none;
+        height: 100%;
+        width: 100%;
+        background: center center / contain no-repeat;
+
+        &._small {
+            @include screen(small) {
+                display: block;
+            }
+        }
+
+        &._medium {
+            @include screen(medium) {
+                display: block;
+                max-width: 767px;
+            }
+        }
+
+        &._large {
+            @include screen(from-large) {
+                display: block;
+                max-width: 1023px;
+            }
+        }
+    }
+}
+
+
+
+/*
+------------------------
+Popin (popup de en overlay)
+------------------------
+*/
+
+.popin {
+    @include background(alpha_sombre);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 4;
+    height: 100vh;
+    opacity: 1;
+    transition: opacity 0.2s ease-out;
+
+    @include screen(small) {
+        padding: pas(l);
+    }
+
+    &:not(.est-visible) {
+        height: 0;
+        padding: 0;
+        opacity: 0;
+        overflow: hidden;
+    }
+
+    &-conteneur {
+        @include background(clair);
+        max-width: 850px;
+        max-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        opacity: 0;
+        transform: translateZ(0);
+        transform: translateY(- 50px);
+        transition:
+            opacity 0.45s ease-out 0.1s,
+            transform 0.6s ease-out 0.05s;
+
+        @include screen(small) {
+            align-self: flex-start;
+        }
+
+        .est-visible > & {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    &-header {
+        @include background(header);
+        @include color(negatif);
+        padding: pas(m);
+    }
+
+    &-contenu {
+        min-height: 70px;
+        padding: pas(l);
+
+        @include screen(small) {
+            padding: pas(m);
+        }
+
+    }
+
+    &-fermer {
+        @include color(negatif);
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
 }
 
 /*
@@ -1178,9 +1355,8 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
 -----------------
 */
 .offrir {
-    background-size: auto 100%;
-    background: #f5f7f9 no-repeat center;
-    background-size: auto 100%;
+    background: #f5f7f9 center / auto 100% no-repeat;
+
     @include screen(from-large) {
         min-height: 640px;
         background-image: url('../imgs/recrutement/fond-offrir-large.jpg');
@@ -1199,6 +1375,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
 
     &-texte {
         margin-top: pas(xl);
+
         @include screen(small) {
             margin-top: pas(m);
         }
@@ -1214,12 +1391,11 @@ Formules
 */
 
 .formules {
-    background: url('../imgs/recrutement/fond-formules.jpg') bottom no-repeat;
-    background-size: 100% auto;
+    background: url('../imgs/recrutement/fond-formules.jpg') bottom / 100% auto no-repeat;
     text-align: center;
 
     @include screen(medium) {
-        &-corp {
+        &-corps {
             padding: 0 pas(l) pas(m);
             text-align: left;
         }
@@ -1239,16 +1415,16 @@ Formules
         @extend %color-gris;
     }
 
-    &-prixcontenneur {
-        margin: pas(m) 0;
+    &-prixconteneur {
         @extend %color-prix;
+        margin: pas(m) 0;
     }
 
     &-prix {
         @include fontsize(t1);
+        display: inline-block;
         margin-right: pas(m);
         font-weight: lighter;
-        display: inline-block;
     }
 
     &-prixduree {
@@ -1258,22 +1434,20 @@ Formules
 
     // dans le cas d'une offre à l'unité
     &-item._monoligne {
+
+        .t5 {
+            margin: 0;
+        }
+
         @include screen(from-medium) {
             text-align: left;
 
-            .formules-prixcontenneur {
+            .formules-prixconteneur {
                 margin: 0 pas(l) 0 0;
             }
-            .t5{
-                margin: 0;
-            }
-            .formules-corp {
+
+            .formules-corps {
                 padding-top: pas(m);
-            }
-        }
-        @include screen(small) {
-            .t5{
-                margin: 0;
             }
         }
     }
@@ -1311,7 +1485,6 @@ Formules
         padding: 0 pas(l);
         margin: 0 auto;
 
-
         @include screen(small) {
             padding: 0;
             max-width: 300px;
@@ -1323,9 +1496,7 @@ Formules
         margin: pas(m) 0 pas(m);
         width: 101px;
         height: 65px;
-        background-position: center center;
-        background-size: auto;
-        background-repeat: no-repeat;
+        background: center center / auto no-repeat;
 
         &._etudiant {
             background-image: url('../imgs/recrutement/icone-etudiant.svg');
@@ -1342,5 +1513,251 @@ Formules
 
     &-titre {
         margin: pas(m) 0;
+    }
+}
+
+/*
+------------------
+page gamme entete
+------------------
+*/
+
+.gammeentete {
+    @extend .clearfix;
+
+    &.conteneur {
+        @include screen(from-medium) {
+            padding-top: pas(xl);
+            padding-bottom: pas(xl);
+        }
+    }
+
+    &-entete {
+        @include screen(from-large) {
+            float: right;
+            width: 50%;
+            padding-left: pas(m);
+        }
+        @include screen(not-large) {
+            padding: pas(m);
+            text-align: center;
+        }
+        p {
+            margin: pas(s) 0;
+        }
+    }
+
+    &-titre {
+        margin: pas(s) 0;
+    }
+
+    &-texte {
+        @include screen(from-medium) {
+            float: right;
+            width: 50%;
+            padding-left: pas(m);
+        }
+    }
+
+    &-visuel {
+        text-align: center;
+
+        @include screen(from-medium) {
+            float: left;
+            width: 50%;
+            padding-right: pas(m);
+        }
+
+        img {
+            max-width: 520px;
+
+            @include screen(small) {
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+
+/*
+------------------
+page gamme selecteur
+------------------
+*/
+
+.choixduree {
+
+    &-item {
+        padding: pas(m) pas(m);
+
+        &:hover,
+        &.est-actif {
+            @include background(gris);
+            cursor: pointer;
+        }
+    }
+
+    &-titre {
+        // pour cohabiter avec offres spéciales
+        @include screen(from-medium) {
+            float: left;
+            margin-right: pas(m);
+        }
+    }
+
+    &-prix {
+        @include fontsize(t1);
+        display: inline-block;
+        margin-right: pas(m);
+        font-weight: lighter;
+    }
+
+    &-prixduree {
+        display: inline-block;
+        text-align: left;
+    }
+
+    &-promo {
+        @extend %color-gris;
+
+        @include screen(from-medium) {
+            text-align: right;
+        }
+    }
+
+    &-prixbarre {
+        @include fontsize(m);
+    }
+
+    &-input {
+        padding-right: pas(m);
+    }
+
+    &-type {
+        padding: pas(l) pas(m) pas(m);
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    &-liste {
+
+        @include screen(from-medium) {
+            @include border($cardinal:left);
+        }
+
+        @include screen(small) {
+            @include border($cardinal:top);
+        }
+    }
+}
+
+
+/*
+--------------------
+offre spéciale
+( dans le choix de la duréee de l'abo )
+--------------------
+*/
+
+.offrespeciale {
+    width: 350px;
+    max-width: 100%;
+    padding: pas(s) pas(m);
+
+    @include screen(from-medium) {
+        margin-bottom: 0;
+    }
+
+    @include screen(small) {
+        margin-bottom: pas(s);
+
+        &.offrespeciale {
+            margin-top: pas(m);
+        }
+    }
+
+    &-texte {
+        padding: 0 pas(m) 0 pas(s);
+    }
+}
+
+
+/*
+--------------------
+ex: page offrir et international
+entete
+--------------------
+*/
+.enteteinfo {
+    margin-bottom: pas(m);
+
+    &-titre {
+        @include screen(from-medium) {
+            margin: 0 0 pas(xl) 0;
+        }
+        @include screen(small) {
+            margin: 0;
+        }
+    }
+
+    &-chevron {
+        margin-right: pas(m);
+        margin-left: pas(s);
+        display: inline-block;
+        background: url('../imgs/recrutement/large-thin-arrow-right.svg') top center / contain no-repeat;
+        width: 40px;
+        height: 50px;
+    }
+
+    &-icon {
+        width: 32px;
+        height: 32px;
+        background: center center / contain no-repeat;
+
+        &._imprimer {
+            background-image: url('../imgs/recrutement/icon-print.svg');
+        }
+
+        &._journal {
+            width: 39px;
+            background-image: url('../imgs/recrutement/icon-journal.svg');
+        }
+
+        &._calendrier {
+            background-image: url('../imgs/recrutement/icon-calendar.svg');
+        }
+    }
+
+    &-fond {
+        background: $gris-16 right / auto 100% no-repeat;
+
+        &._offrir {
+            background-image: url('../imgs/recrutement/Offrir-abo-fond-entete.jpg');
+        }
+        &._international {
+            background-image: url('../imgs/recrutement/international-fond-entete.jpg');
+        }
+    }
+
+    &-guide {
+        @include screen(small) {
+            display: none;
+        }
+    }
+
+    &.conteneur {
+        padding: pas(xxl) (pas(xxl)*5) pas(xxl) pas(xxl);
+        min-height: 300px;
+
+        @include screen(medium) {
+            padding-right: pas(xxl);
+        }
+
+        @include screen(small) {
+            padding: pas(xl) pas(m);
+        }
     }
 }

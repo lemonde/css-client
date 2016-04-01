@@ -67,7 +67,7 @@
 .modal-content {
     @include border();
     @extend %border-radius-std;
-    @extend %background-clair;
+    @include background(clair);
     position: relative;
     background-clip: padding-box;
     outline: 0;
@@ -75,7 +75,7 @@
 
 // Modal background
 .modal-backdrop {
-    @extend %background-gris-sombre;
+    @include background(gris_sombre);
     position: fixed;
     top: 0;
     right: 0;

@@ -20,9 +20,30 @@ $breakpoints: (
     }
 }
 
+// RESPONSIVE MODIFIER //
+// /!\ requis : il faut que les règles 'tous devices' soient déclarés séparément avant.
+// avec le regroupement auto des media-queries via postCSS
+// l'ordre des declarartion est bon
+
+@mixin responsive-modifier($context, $modifier, $bps) {
+    @each $key in $bps {
+        @if $key == 'all' { // pour toutes
+            .#{$context}.#{$modifier} {
+                @content;
+            }
+        } @else {
+            .#{$context}.#{$modifier}-#{$key} {
+                @include screen($key) {
+                    @content;
+                }
+            }
+        }
+    }
+}
+
 /*
 ---------------------------
-colors
+all colors
 ---------------------------
 */
 
@@ -33,50 +54,50 @@ $gris-11: #8b9299;
 $gris-16: #16212c;
 $header: #153853;
 $bleu-sombre: #003366;
-
 $liens: #129af0;
-$liens-hover: #00b7ff;
 $liens-hover-sombre: darken($liens, 30);
-
+$liens-hover: #00b7ff;
+$bleu-clair: lighten($liens, 30);
 $alerte: #d50304;
 $alerte-bg: #ffd7d7;
 $valide: #6faa12;
 $valide-bg: #dff0d8;
-
 $blanc: #ffffff;
-
-$bleu-clair: lighten($liens, 30);
-
 $prix: #ff6e17;
+$alpha_sombre: rgba(0, 0, 0, 0.5);
 
 /*
 ---------------------------
-background
+backgrounds
 ---------------------------
 */
-%background-erreur { background-color: $alerte-bg; }
-%background-valide { background-color: $valide-bg; }
-%background-notif { background-color: $bleu-clair; }
 
-%background-active { background-color: $liens; }
-%background-active-hover { background-color: $liens-hover; }
+$backgrounds: (
+    erreur: $alerte-bg,
+    valide: $valide-bg,
+    notif: $bleu-clair,
+    active: $liens,
+    active_hover: $liens-hover,
+    gris: $gris-4,
+    gris_sombre: $gris-7,
+    sombre: $gris-16,
+    colore_sombre: $bleu-sombre,
+    header: $header,
+    clair: $blanc,
+    alpha_sombre: $alpha_sombre
+);
 
-%background-gris { background-color: $gris-4; }
-%background-gris-sombre { background-color: $gris-7; }
-
-%background-sombre { background-color: $gris-16; }
-%background-colore-sombre { background-color: $bleu-sombre; }
-
-%backgroud-header { background-color: $header; }
-
-%background-clair { background-color: $blanc; }
+@mixin background($bgcolor) {
+    background-color: map-get($backgrounds, $bgcolor);
+}
 
 /*
 ---------------------------
 borders
 ---------------------------
 */
-$border-widths : (
+
+$border-widths: (
     std: 1px,
     large: 3px
 );
@@ -84,7 +105,7 @@ $border-widths : (
 $border-width: map-get($border-widths, std);
 $border-width-large: map-get($border-widths, large);
 
-$border-colors : (
+$border-colors: (
     std: $gris-7,
     std_sombre: #d2d6db,
     texte: $gris-16,
@@ -115,6 +136,7 @@ $border-colors : (
 borders radius
 ---------------------------
 */
+
 $border-radius-std: 3px;
 
 %border-radius-std { border-radius: $border-radius-std; }
@@ -138,16 +160,19 @@ $border-radius-std: 3px;
 animations
 ---------------------------
 */
+
 %transition { transition: all .1s ease; }
 
 @keyframes rotation {
   to { transform: rotate(360deg); }
 }
+
 /*
 ---------------------------
 icons
 ---------------------------
 */
+
 %icon {
     &:before {
         font-size: 20px;
@@ -173,6 +198,7 @@ icons
     font-family: georgia, serif;
     font-style: italic;
 }
+
 /*
 ---------------------------
 typo
@@ -258,6 +284,22 @@ $config-font-size: (
 
 %color-prix { color: $prix; }
 
+$font-colors: (
+    std: $gris-16,
+    gris: $gris-11,
+    negatif: $blanc,
+    prix: $prix,
+    erreur: $alerte,
+    valide: $valide,
+    active: $liens-hover,
+    active_sombre: $liens-hover-sombre
+);
+
+@mixin color($color) {
+    color: map-get($font-colors, $color);
+};
+
+
 /* line-height */
 %line-height-xl { line-height: 400%; }
 %line-height-std { line-height: 140%; }
@@ -288,6 +330,10 @@ $pas: (
 @function pas($size) {
     @return map-get($pas, $size)
 }
+
+$goutiere: map-get($pas, m);
+$goutiere-large: map-get($pas, l);
+
 
 $arrow-size: 10px;
 

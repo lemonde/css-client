@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="201px" height="49px" viewBox="0 0 201 49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.6.1 (26313) - http://www.bohemiancoding.com/sketch -->
+    <title>Devices papier + num</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path id="path-1" d="M0,0 L18,0 L18,30 L0,30 L0,0 Z"></path>
+        <path id="path-3" d="M0,0 L29,0 L29,41 L0,41 L0,0 Z"></path>
+        <path id="path-5" d="M0,0 L59,0 L59,49 L0,49 L0,0 Z"></path>
+        <path id="path-7" d="M0,0 L59,0 L59,49 L0,49 L0,0 Z"></path>
+    </defs>
+    <g id="Gamme" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Gamme---Etudiant" transform="translate(-237.000000, -875.000000)">
+            <g id="Formules" transform="translate(184.000000, 563.000000)">
+                <g id="Papier+numérique" transform="translate(0.000000, 214.000000)">
+                    <g id="Devices-papier-+-num" transform="translate(53.000000, 98.000000)">
+                        <g id="Mobile" transform="translate(183.000000, 19.000000)">
+                            <path d="M16,0 L2,0 C0.9,0 0,0.9 0,2 L0,28 C0,29.1 0.9,30 2,30 L16,30 C17.1,30 18,29.1 18,28 L18,2 C18,0.9 17.1,0 16,0 L16,0 Z M16,28 L2,28 L2,2 L16,2 L16,28 Z" id="Fill-1" fill="#129AF0"></path>
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <g id="Clip-4"></g>
+                            <path d="M18,5 L0,5 L0,3 L18,3 L18,5 Z" id="Fill-3" fill="#129AF0" mask="url(#mask-2)"></path>
+                            <path d="M18,25 L0,25 L0,23 L18,23 L18,25 Z" id="Fill-5" fill="#129AF0" mask="url(#mask-2)"></path>
+                            <path d="M9.5,25 C8.673,25 8,25.673 8,26.5 C8,27.327 8.673,28 9.5,28 C10.327,28 11,27.327 11,26.5 C11,25.673 10.327,25 9.5,25 M9.5,26 C9.776,26 10,26.224 10,26.5 C10,26.776 9.776,27 9.5,27 C9.224,27 9,26.776 9,26.5 C9,26.224 9.224,26 9.5,26" id="Fill-6" fill="#129AF0" mask="url(#mask-2)"></path>
+                        </g>
+                        <g id="Tablet" transform="translate(142.000000, 8.000000)">
+                            <path d="M27,0 L2,0 C0.9,0 0,0.9 0,2 L0,39 C0,40.1 0.9,41 2,41 L27,41 C28.1,41 29,40.1 29,39 L29,2 C29,0.9 28.1,0 27,0 L27,0 Z M27,39 L2,39 L2,2 L27,2 L27,39 Z" id="Fill-1" fill="#129AF0"></path>
+                            <mask id="mask-4" fill="white">
+                                <use xlink:href="#path-3"></use>
+                            </mask>
+                            <g id="Clip-4"></g>
+                            <path d="M29,6 L0,6 L0,4 L29,4 L29,6 Z" id="Fill-3" fill="#129AF0" mask="url(#mask-4)"></path>
+                            <path d="M29,34 L0,34 L0,32 L29,32 L29,34 Z" id="Fill-5" fill="#129AF0" mask="url(#mask-4)"></path>
+                            <path d="M14.5,35 C13.673,35 13,35.673 13,36.5 C13,37.327 13.673,38 14.5,38 C15.327,38 16,37.327 16,36.5 C16,35.673 15.327,35 14.5,35 M14.5,36 C14.776,36 15,36.224 15,36.5 C15,36.776 14.776,37 14.5,37 C14.224,37 14,36.776 14,36.5 C14,36.224 14.224,36 14.5,36" id="Fill-6" fill="#129AF0" mask="url(#mask-4)"></path>
+                        </g>
+                        <g id="Desktop" transform="translate(71.000000, 0.000000)">
+                            <path d="M57,0 L2,0 C0.9,0 0,0.9 0,2 L0,41 C0,42.1 0.9,43 2,43 L57,43 C58.1,43 59,42.1 59,41 L59,2 C59,0.9 58.1,0 57,0 L57,0 Z M57,41 L2,41 L2,2 L57,2 L57,41 Z" id="Fill-1" fill="#129AF0"></path>
+                            <mask id="mask-6" fill="white">
+                                <use xlink:href="#path-5"></use>
+                            </mask>
+                            <g id="Clip-4"></g>
+                            <path d="M59,6 L0,6 L0,4 L59,4 L59,6 Z" id="Fill-3" fill="#129AF0" mask="url(#mask-6)"></path>
+                            <path d="M59,36 L0,36 L0,34 L59,34 L59,36 Z" id="Fill-5" fill="#129AF0" mask="url(#mask-6)"></path>
+                            <path d="M36,48 L23,48 L23,42 L36,42 L36,48 Z" id="Stroke-6" stroke="#129AF0" stroke-width="2" stroke-linejoin="round" mask="url(#mask-6)"></path>
+                            <path d="M13,48 L46,48" id="Stroke-7" stroke="#129AF0" stroke-width="2" stroke-linejoin="round" mask="url(#mask-6)"></path>
+                        </g>
+                        <g id="Journal">
+                            <path d="M57,0 L2,0 C0.9,0 0,0.9 0,2 L0,47 C0,48.1 0.9,49 2,49 L57,49 C58.1,49 59,48.1 59,47 L59,2 C59,0.9 58.1,0 57,0 L57,0 Z M57,47 L2,47 L2,2 L57,2 L57,47 Z" id="Fill-1" fill="#129AF0"></path>
+                            <mask id="mask-8" fill="white">
+                                <use xlink:href="#path-7"></use>
+                            </mask>
+                            <g id="Clip-4"></g>
+                            <path d="M27,24 L7,24 L7,22 L27,22 L27,24 Z" id="Fill-3" fill="#129AF0" mask="url(#mask-8)"></path>
+                            <path d="M52,24 L32,24 L32,22 L52,22 L52,24 Z" id="Fill-5" fill="#129AF0" mask="url(#mask-8)"></path>
+                            <path d="M27,28 L7,28 L7,26 L27,26 L27,28 Z" id="Fill-6" fill="#129AF0" mask="url(#mask-8)"></path>
+                            <path d="M52,28 L32,28 L32,26 L52,26 L52,28 Z" id="Fill-7" fill="#129AF0" mask="url(#mask-8)"></path>
+                            <path d="M27,32 L7,32 L7,30 L27,30 L27,32 Z" id="Fill-8" fill="#129AF0" mask="url(#mask-8)"></path>
+                            <path d="M52,37 L7,37 L7,35 L52,35 L52,37 Z" id="Fill-9" fill="#129AF0" mask="url(#mask-8)"></path>
+                            <path d="M52,41 L7,41 L7,39 L52,39 L52,41 Z" id="Fill-10" fill="#129AF0" mask="url(#mask-8)"></path>
+                            <path d="M52,32 L32,32 L32,30 L52,30 L52,32 Z" id="Fill-11" fill="#129AF0" mask="url(#mask-8)"></path>
+                            <path d="M34.4757,9.6183 C33.9757,9.9273 33.8087,10.3443 33.8087,10.9893 L33.8087,16.1323 C33.8087,16.4563 33.8477,16.6033 34.0137,16.6973 L34.1807,16.7923 L34.6417,16.5093 L34.7957,16.8323 L33.1947,17.8403 L32.6437,17.4493 C32.3997,17.2753 32.2967,17.0603 32.2967,16.6433 L32.2967,12.0503 C32.2967,11.1903 32.5537,10.7333 32.9127,10.4513 L33.1177,10.2903 L31.6067,9.3633 L30.9277,9.7923 L30.9277,16.4823 C30.9277,17.0463 30.8507,17.1273 30.3767,17.3823 C30.3767,17.3823 30.0057,17.5703 29.4937,17.8523 L29.3917,17.8523 L29.3917,10.4383 C29.3917,10.0763 29.3527,9.9943 29.1607,9.8333 L28.6227,9.3773 L27.9697,9.7663 L27.9697,13.6083 C27.9697,14.2793 27.8667,14.7633 27.3547,15.0983 L26.0747,15.9453 L25.9457,15.7173 C26.3427,15.3943 26.4327,14.9373 26.4327,14.4003 L26.4327,10.4783 C26.4327,9.9003 26.3567,9.6723 25.7797,9.7803 C25.5617,9.8193 25.2287,9.8733 25.0237,9.9003 C24.1787,10.0213 23.8197,9.3903 24.3957,8.5983 C24.3957,8.5983 24.5377,8.3963 24.8957,7.9123 L25.1777,8.1143 L24.9727,8.4233 C24.7037,8.8273 24.9217,9.0413 25.3567,8.8793 C25.5617,8.7993 25.9587,8.6383 26.2407,8.5173 C27.4567,8.0203 27.9057,8.8393 27.9697,9.3233 L29.4807,8.3693 L30.7867,9.4173 L32.3997,8.3693 L33.6427,9.1083 C34.0647,9.3633 34.2697,9.2563 34.5647,9.0943 L34.8077,8.9603 L34.9997,9.2963 L34.4757,9.6183 Z M26.5737,17.8523 C26.4457,17.4763 26.0747,17.0863 25.4077,17.0603 C24.7797,17.0463 23.8837,17.3023 23.1417,17.8933 L22.9997,17.7053 C23.5387,17.0863 24.7937,16.0933 26.1117,16.0793 C26.8047,16.0793 27.2907,16.3213 27.6367,16.7113 L28.2137,16.3753 L28.3797,16.7243 L26.5737,17.8523 Z" id="Fill-12" fill="#129AF0" mask="url(#mask-8)"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

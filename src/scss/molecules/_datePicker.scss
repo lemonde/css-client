@@ -41,7 +41,7 @@
     }
 
     thead {
-        @extend %background-colore-sombre;
+        @include background(colore_sombre);
         @extend %color-negatif;
     }
 
@@ -137,7 +137,7 @@
             &.hour:hover,
             &.minute:hover,
             &.second:hover {
-                @extend %background-colore-sombre;
+                @include background(colore_sombre);
                 @extend %color-negatif;
                 cursor: pointer;
             }
@@ -189,12 +189,12 @@
                 cursor: pointer;
 
                 &:hover {
-                    @extend %background-colore-sombre;
+                    @include background(colore_sombre);
                     @extend %color-negatif;
                 }
 
                 &.active {
-                    @extend %background-colore-sombre;
+                    @include background(colore_sombre);
                     @extend %color-negatif;
                 }
 
