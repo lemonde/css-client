@@ -55,6 +55,10 @@
         @extend %color-link;
     }
 
+    &._margebasse {
+        margin-bottom: pas(m);
+    }
+
     a {
         color: inherit;
         text-decoration: underline;
@@ -797,6 +801,10 @@ menus
     }
 
     &-infos {
+        flex: auto;
+    }
+
+    ._petit &-infos {
         flex: initial;
     }
 

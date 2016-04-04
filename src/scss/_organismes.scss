@@ -59,6 +59,14 @@
         }
     }
 
+    &-zone {
+        @include color(negatif);
+        font-size: 18px;
+        display: inline-block;
+        transform: translateY(-1px);
+        margin-left: pas(s);
+    }
+
     &-menu {
 
         @include screen(from-large) {
