@@ -1,34 +1,3 @@
-.conteneur {
-    max-width: 1260px;
-    margin: 0 auto;
-
-    &:empty {
-        display: none;
-    }
-
-    @include screen(small) {
-        padding: 0 pas(m);
-
-        &._principal {
-            padding: pas(m);
-        }
-    }
-
-    @include screen("from-medium") {
-        padding: 0 pas(xxl);
-
-        &._principal {
-            padding: pas(l) pas(xxl);
-            @extend .reset-haut;
-        }
-    }
-}
-
-.fondalt {
-    @extend %background-gris;
-    @extend %border-double;
-}
-
 .colonne {
     display: flex;
     align-items: stretch;

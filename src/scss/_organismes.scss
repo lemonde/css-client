@@ -5,104 +5,215 @@
 */
 
 .header {
-    @extend %backgroud-header;
+    @include background(header);
+    $header-height: 50px;
 
     &._transparent {
+        @include border($cardinal: bottom, $color: alpha_clair);
+        @include background(alpha_sombre);
         position: absolute;
-        z-index: 100;
+        z-index: 3;
         top: 0;
         width: 100%;
-        background: rgba(0,0,0,0.4);
-        @include border($cardinal: bottom, $color: alpha_clair);
     }
 
     &-conteneur {
         @extend .conteneur;
         display: flex;
         width: 100%;
+        height: 50px;
 
-        > a:not(._iconemobile):hover {
-            @extend %color-negatif;
+        @include screen(not-large) {
+            padding: 0;
         }
     }
 
-    &-bloc {
-        @extend %color-negatif;
+    &-burger,
+    &-logo {
         display: flex;
         align-items: center;
+    }
 
-        @include border($color: alpha_clair, $cardinal: left);
-        @include border($color: alpha_clair, $cardinal: right);
+    &-burger {
+        @include border($cardinal:left, $color:alpha_clair);
+        padding-left: pas(m);
 
-        + .header-bloc {
-            border-left: 0;
+        @include screen(medium) {
+            padding-right: pas(m);
         }
 
-        &._gauche {
-            flex: 1;
-            @include screen(not-large) {
-                padding-left:pas(m);
-            }
-        }
-
-        &._droite {
-            flex: initial;
-            padding: 0 pas(m);
-        }
-
-        &._iconemobile {
-            @extend %color-liens;
-            padding-right: 0;
-
-            &:hover {
-                text-decoration: none;
-            }
-
-            @include screen(from-medium) {
-                display: none;
-            }
-        }
-
-        &._hide-xs {
-            @include screen(small) {
-                display: none;
-            }
-        }
-
-        &._hide-not-large {
-            @include screen(not-large) {
-                display: none;
-            }
-        }
-
-        &._show-xs {
-            @include screen(from-medium) {
-                display: none;
-            }
-        }
-
-        &._last-xs {
-            padding-right: 0;
+        @include screen(from-large) {
+            display: none;
         }
     }
 
     &-logo {
-        padding: pas(m) 0;
+        flex: 1;
+
+        a {
+            line-height: 1em;
+        }
+
+        @include screen(medium) {
+            padding-left: pas(m);
+        }
     }
 
     &-zone {
-        @include fontsize(t7);
+        @include color(negatif);
+        font-size: 18px;
+        display: inline-block;
+        transform: translateY(-1px);
         margin-left: pas(s);
-        line-height: 1em;
-        transform: translateY(2px);
-        font-weight: lighter;
+    }
+
+    &-menu {
+
+        @include screen(from-large) {
+            @include border($cardinal:left, $color:alpha_clair);
+            @extend %color-negatif;
+            display: flex;
+            align-items: stretch;
+        }
+
+        @include screen(not-large) {
+            @include color(std);
+            display: block;
+            position: fixed;
+            z-index: 2;
+            flex: none;
+            height: 100vh;
+            width: 100vw;
+            max-width: 300px;
+            top: 0;
+            left: -320px;
+            color: #999;
+            background: white;
+            transition: left 0.3s ease-in;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        &.est-ouvert {
+
+            @include screen(not-large) {
+                left: 0;
+            }
+        }
+    }
+
+    &-filtresombre {
+        @include background(alpha_sombre);
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 0;
+        width: 100vw;
+        transform: translateZ(0);
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+        cursor: pointer;
+        z-index: 1;
+
+        @include screen(not-large) {
+            &.est-ouvert {
+                opacity: 1;
+                height: 100vh;
+            }
+        }
+    }
+
+    &-fermer {
+        padding: pas(s) pas(m) 0 0;
+
+        @include screen(from-large) {
+            display: none;
+        }
+
+        > a:before {
+            @include color(gris);
+            font-size: 30px;
+        }
+    }
+
+    &-item {
+
+        @include screen(from-large) {
+            @include border($cardinal:right, $color:alpha_clair);
+            display: flex;
+            align-items: center;
+
+            > a {
+                @extend %color-negatif;
+            }
+        }
+
+        @include screen(not-large) {
+
+            .deroulant-entete {
+                @include color(std);
+                @include border($cardinal:top);
+                padding: pas(m);
+                display: block;
+
+                &:before {
+                    display: none;
+                }
+            }
+        }
+
+        &.deroulant {
+
+            @include screen(not-large) {
+                margin-top: pas(s);
+            }
+        }
+    }
+
+    &-item,
+    .deroulant-item {
+
+        @include screen(not-large) {
+
+            > a {
+                @include color(std);
+            }
+        }
+    }
+
+    &-lien {
+        display: flex;
+        padding: pas(s) pas(m);
+    }
+
+    &-sousmenu {
+        margin-bottom: pas(s);
+
+        @include screen(not-large) {
+            border-left: 0;
+            border-right: 0;
+        }
+    }
+
+    ._hide-not-large {
+
+        @include screen(not-large) {
+            display: none;
+        }
+    }
+
+    a {
+        cursor: pointer;
+        text-decoration: none;
     }
 }
+
 /*
 ---------------------------
   footer
 ---------------------------
 */
+
 .liensfooter {
     padding: pas(l) 0;
     text-align: center;
@@ -325,6 +436,10 @@ $label-width-large: 220px;
             text-align: right;
         }
 
+        &._petitemarge {
+            padding-top: pas(m);
+        }
+
         .btn:not(:last-of-type) {
             margin-right: pas(m);
         }
@@ -333,7 +448,7 @@ $label-width-large: 220px;
     // sous un bouton (ex paiement sécurisé)
     &-boitebouton {
         display: inline-block;
-        padding: pas(l) 0;
+        padding: pas(m) 0;
         text-align: center;
     }
 }
@@ -349,15 +464,15 @@ $label-width-large: 220px;
         border-bottom: none;
 
         &:nth-child(4n+1) {
-            @extend %background-clair;
+            @include background(clair);
         }
         &:nth-child(4n+3) {
-            @extend %background-gris;
+            @include background(gris);
         }
     }
 
     &-detail {
-        @extend %background-gris;
+        @include background(gris);
 
         & > td {
             padding: 0;
@@ -378,7 +493,7 @@ $label-width-large: 220px;
         }
 
         &-liste {
-            @extend %background-clair;
+            @include background(clair);
             @include border();
             @include bloc-fleche($borderColor: $gris-7, $position: 'top');
             position: relative;
@@ -387,11 +502,11 @@ $label-width-large: 220px;
     }
 
     & &-detail:nth-child(4n+2) {
-        @extend %background-clair;
+        @include background(clair);
     }
 
     & &-detail:nth-child(4n+4) {
-        @extend %background-gris;
+        @include background(gris);
     }
 
     &-labelmobile {

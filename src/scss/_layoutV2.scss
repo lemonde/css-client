@@ -1,19 +1,44 @@
-$goutiere: map-get($pas, m);
-$goutiere-large: map-get($pas, l);
+.conteneur {
+    max-width: 1260px;
+    margin: 0 auto;
+
+    &:empty {
+        display: none;
+    }
+
+    @include screen(small) {
+        padding: 0 pas(m);
+
+        &._principal {
+            padding: pas(m);
+        }
+    }
+
+    @include screen("from-medium") {
+        padding: 0 pas(xxl);
+
+        &._principal {
+            padding: pas(l) pas(xxl);
+            @extend .reset-haut;
+        }
+    }
+}
+
+.fondalt {
+    @include background(gris);
+    @extend %border-double;
+}
+
+.fondsombre {
+    @include background(sombre);
+    @extend %color-clair;
+}
 
 /**
  * grid system du site :
  *
- *
- * pour créer une nouvelle colonne :
- *
- *    @include cell-responsive(
- *        $modifier: '_auto',                    => donne le nom du modifier ( .grille-cell._auto )
- *        $pbs: 'all', 'from-large', 'medium') { => on liste les breakpoints pour généré les variantes
- *            flex: 1;                           => on déclare la règle
- *    }
- *
  * mobile-first: les valeurs par defaut concernent les mobiles et + haut
+ * par defaut une grille-cell => 100% de la  largeur
  * ex : ( grille-cell _1sur2-from-medium ) = 100% en mobile, 50% à partir de medium
  */
 
@@ -58,149 +83,79 @@ $goutiere-large: map-get($pas, l);
     }
 }
 
-
-// RESPONSIVE CELLS //
-@mixin cell-responsive($modifier, $pbs) {
-  @each $key in $pbs {
-    @if $key == 'all' { // pour toutes
-      .grille-cell.#{$modifier} {
-         @content;
-      }
-    } @else {
-      .grille-cell.#{$modifier}-#{$key} {
-        @include screen($key) {
-          @content;
-        }
-      }
-    }
-  }
-}
-
-// RESPONSIVE GRID MODIFIER //
-@mixin grid-modifier-responsive($modifier, $pbs) {
-  @each $key in $pbs {
-    @if $key == 'all' { // pour toutes
-      .grille.#{$modifier} {
-         @content;
-      }
-    } @else {
-      .grille.#{$modifier}-#{$key} {
-        @include screen($key) {
-          @content;
-        }
-      }
-    }
-  }
-}
-
-@include grid-modifier-responsive(
+@include responsive-modifier(
+    $context: 'grille',
     $modifier: '_goutiere',
-    $pbs: 'all' 'medium') {
+    $bps: 'all' 'medium'
+) {
 
     margin-left: -($goutiere / 2);
     margin-right: -($goutiere / 2);
 
     > .grille-cell {
-      padding-left: ($goutiere / 2);
-      padding-right: ($goutiere / 2);
+        padding-left: ($goutiere / 2);
+        padding-right: ($goutiere / 2);
     }
 }
 
-@include grid-modifier-responsive(
+@include responsive-modifier(
+    $context: 'grille',
     $modifier: '_goutiere-large',
-    $pbs: 'all' 'medium') {
-
+    $bps: 'all' 'medium'
+) {
     margin-left: -($goutiere-large / 2);
     margin-right: -($goutiere-large / 2);
 
     > .grille-cell {
-      padding-left: ($goutiere-large / 2);
-      padding-right: ($goutiere-large / 2);
+        padding-left: ($goutiere-large / 2);
+        padding-right: ($goutiere-large / 2);
     }
 }
 
-// /!\ il faut que les règles 'tous devices' soient déclarés avant.
-
-// avec le regroupement auto des media-queries via postCSS
-// l'ordre des declarartion sera bonne
-// plus besoin de séparer les all et les autres
-// sinon il faut envisager un autre moyen de générer la grille
-
-
-@include cell-responsive(
-  $modifier: '_auto',
-  $pbs: 'all') {
+@include responsive-modifier(
+    $context: 'grille-cell',
+    $modifier: '_auto',
+    $bps: 'all' 'medium' 'from-medium' 'from-large'
+) {
     flex: 1;
 }
 
-@include cell-responsive(
-  $modifier: '_1sur3',
-  $pbs: 'all') {
-    flex: 0 0 33.333%;
-}
-
-@include cell-responsive(
-  $modifier: '_initial',
-  $pbs: 'all') {
+@include responsive-modifier(
+    $context: 'grille-cell',
+    $modifier: '_initial',
+    $bps: 'all' 'from-medium'
+) {
     flex: initial;
 }
 
-@include cell-responsive(
-  $modifier: '_1sur2',
-  $pbs: 'all') {
-    flex: 0 0 50%;
-}
-
-@include cell-responsive(
-  $modifier: '_1sur4',
-  $pbs:  'all' ) {
-    flex: 0 0 25%;
-}
-
-@include cell-responsive(
-  $modifier: '_full',
-  $pbs: 'all' ) {
-    flex: 0 0 100%;
-}
-
-@include cell-responsive(
-  $modifier: '_auto',
-  $pbs: 'medium' 'from-medium' 'from-large' ) {
-    flex: 1;
-}
-
-@include cell-responsive(
-  $modifier: '_taillepub',
-  $pbs: 'from-medium' 'from-large' ) {
+@include responsive-modifier(
+    $context: 'grille-cell',
+    $modifier: '_taillepub',
+    $bps: 'from-medium' 'from-large'
+) {
     flex: 0 0 300px;
 }
 
-@include cell-responsive(
-  $modifier: '_1sur2',
-  $pbs : 'medium' 'from-medium' 'from-large' ) {
-    flex: 0 0 50%;
-}
-
-@include cell-responsive(
-  $modifier: '_1sur3',
-  $pbs: 'medium' 'from-medium' 'from-large' ) {
+@include responsive-modifier(
+    $context: 'grille-cell',
+    $modifier: '_1sur3',
+    $bps: 'medium' 'from-large'
+) {
     flex: 0 0 33.333%;
 }
 
-@include cell-responsive(
-  $modifier: '_1sur4',
-  $pbs: 'medium' 'from-medium' 'from-large' ) {
+@include responsive-modifier(
+    $context: 'grille-cell',
+    $modifier: '_1sur4',
+    $bps:'from-medium'
+) {
     flex: 0 0 25%;
 }
 
-@include cell-responsive(
-  $modifier: '_full',
-  $pbs: 'small' 'medium' 'from-large' ) {
-    flex: 0 0 100%;
-}
-
-@include cell-responsive(
-  $modifier: '_initial',
-  $pbs: 'from-medium' 'from-large') {
-    flex: initial;
+@include responsive-modifier(
+    $context: 'grille-cell',
+    $modifier: '_1sur8',
+    $bps: 'from-medium'
+) {
+    flex: 0 0 12.5%;
 }
