@@ -104,6 +104,14 @@ h1, h2, h3, h4, h5, h6 {
     text-align: right;
 }
 
+@include responsive-modifier(
+    $context: 'textedroite',
+    $modifier: '_gauche',
+    $bps:'small'
+) {
+    text-align: left;
+}
+
 .prix {
     @extend %color-prix;
 }
@@ -111,6 +119,13 @@ h1, h2, h3, h4, h5, h6 {
 .gras {
     font-weight: bold;
 }
+
+p {
+    // hack : quand contennu dans un flex-item
+    // le p ne prend pas toute la largeur
+    width: 100%;
+}
+
 /*
 ---------------------------
  liens

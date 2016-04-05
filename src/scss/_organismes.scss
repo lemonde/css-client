@@ -61,10 +61,10 @@
 
     &-zone {
         @include color(negatif);
-        font-size: 18px;
         display: inline-block;
         transform: translateY(-1px);
         margin-left: pas(s);
+        font-size: 18px;
     }
 
     &-menu {
@@ -262,10 +262,16 @@ $label-width-large: 220px;
         @include border($cardinal: bottom);
         padding-bottom: pas(l);
         margin-bottom: pas(l);
+
+        &._sansbord {
+            border: 0;
+        }
     }
 
     &-soustitre {
         @extend .t7;
+        margin-bottom: pas(l);
+
         &:first-child {
             margin-top: 0;
         }
@@ -278,7 +284,7 @@ $label-width-large: 220px;
     }
 
     &-soustitre:first-child {
-        margin-top: pas(s);
+        margin-top: pas(m);
     }
 
     &-option {
