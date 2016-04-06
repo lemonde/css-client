@@ -193,6 +193,17 @@ a {
         }
     }
 
+    &._leger {
+        @include background(clair);
+        @extend %color-std;
+        @include border();
+        font-weight: lighter;
+
+        &:hover {
+            @include background(gris);
+        }
+    }
+
     &._action {
         @include background(active);
         @extend %color-negatif;
@@ -207,6 +218,7 @@ a {
     &._petit {
         @include fontsize(std);
         @extend %line-height-s;
+        padding: pas(m) pas(l);
     }
 
     @include screen(small) {
