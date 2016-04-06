@@ -698,3 +698,46 @@ $label-width-large: 220px;
         transform: translateY(-1.6em);
     }
 }
+
+
+/*
+---------------------------
+  liste de newsletters
+---------------------------
+*/
+
+.newsletter {
+    &-item {
+        @include border($cardinal: bottom);
+        padding: pas(l) 0;
+
+        &:last-child {
+            border: 0;
+        }
+    }
+
+    &-body {
+        @include screen(small) {
+            max-width: 460px;
+            margin: 0 auto;
+            padding: pas(l) 0;
+        }
+    }
+
+    &-titre,
+    &-abonne {
+        text-transform: uppercase;
+    }
+
+    &-titre {
+        font-weight: bold;
+    }
+
+    &-abonne {
+        @include color(abonne);
+    }
+
+    &-active {
+        @include color(valide);
+    }
+}

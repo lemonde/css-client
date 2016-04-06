@@ -141,8 +141,18 @@
     $modifier: '_principale',
     $bps: 'from-large'
 ) {
-    flex: auto;
-    max-width: 769px;
+    flex: 1;
+    margin-right: pas(xxl);
+    max-width: 720px;
+}
+
+
+@include responsive-modifier(
+    $context: 'grille-cell',
+    $modifier: '_1sur2',
+    $bps:'medium'
+) {
+    flex: 0 0 50%;
 }
 
 @include responsive-modifier(
@@ -159,6 +169,14 @@
     $bps:'from-medium'
 ) {
     flex: 0 0 25%;
+}
+
+@include responsive-modifier(
+    $context: 'grille-cell',
+    $modifier: '_1sur6',
+    $bps:'from-medium'
+) {
+    flex: 0 0 16.666%;
 }
 
 @include responsive-modifier(
