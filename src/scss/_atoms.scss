@@ -471,6 +471,10 @@ hr {
         width: 70px;
     }
 
+    &._margelarge {
+        margin: pas(l) auto;
+    }
+
     &._sansmarge {
         margin: 0 auto;
     }

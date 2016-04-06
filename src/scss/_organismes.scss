@@ -253,6 +253,7 @@
   page de formulaire
 ---------------------------
 */
+$label-width-petit: 90px;
 $label-width: 150px;
 $label-width-large: 220px;
 
@@ -393,6 +394,12 @@ $label-width-large: 220px;
                     width: $label-width-large;
                 }
             }
+
+            ._petitlabel & {
+                @include screen(from-medium) {
+                    width: $label-width-petit;
+                }
+            }
         }
 
         &-mention { // texte aligné avec les champs de formulaires
@@ -402,6 +409,10 @@ $label-width-large: 220px;
 
                 ._longlabel & {
                     margin-left: $label-width-large;
+                }
+
+                ._petitlabel & {
+                    margin-left: $label-width-petit;
                 }
             }
         }
@@ -440,6 +451,10 @@ $label-width-large: 220px;
         @include screen(from-large) {
             padding-top: pas(xl);
             text-align: right;
+        }
+
+        &._alignegauche {
+            text-align: left;
         }
 
         &._petitemarge {
