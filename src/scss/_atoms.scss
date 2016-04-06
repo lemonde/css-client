@@ -259,7 +259,12 @@ a {
 
     &._couleur {
         @include border($color: action_hover);
-        @extend %color-active;
+        @include color(action_hover);
+    }
+
+    &._valide {
+        @include border($color: valide);
+        @include color(valide);
     }
 }
 
