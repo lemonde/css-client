@@ -13,12 +13,10 @@
     @extend %color-std;
     @include border();
     display: flex;
+    width: 100%;
     flex-flow: row wrap;
     padding: pas(s) pas(m);
-
-    &:not(:last-child) {
-        margin-bottom: pas(l);
-    }
+    margin-bottom: pas(l);
 
     &:empty {
         display: none;
@@ -481,6 +479,11 @@ portant d'autres selecteurs
     &._bordsombre {
         border-top: 0;
         margin-top: $border-width-large;
+
+        &.est-desactive { // boites grisés
+            @include color(gris);
+            box-shadow: 0 (- $border-width-large) 0 0 map-get($border-colors, std);
+        }
     }
 
     &._bordclair {
@@ -1042,7 +1045,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
             transform: rotate(-90deg);
         }
 
-        ._from-large & {
+        .deroulant._from-large & {
             @include screen(not-large) {
                 display: block;
                 cursor: default;
@@ -1057,16 +1060,20 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     &-corps {
         position: absolute;
         display: none;
-        width: 100%;
         top: 100%;
         left: 0;
         right: 0;
 
-        ._from-large & {
+        .deroulant._from-large & {
             @include screen(not-large) {
                 position: static;
                 display: block;
             }
+        }
+
+        .deroulant._avecbordure & { // afin d'annuler la largeur de la bordure du parent
+            left: (- map-get($border-widths, std));
+            right: (- map-get($border-widths, std));
         }
     }
 
@@ -1711,6 +1718,12 @@ entete
         }
     }
 
+    &-intro {
+        @include screen(from-medium) {
+            margin-top: (- pas(xl) + pas(m)); // reset de la marge haute du titre
+        }
+    }
+
     &-chevron {
         margin-right: pas(m);
         margin-left: pas(s);
@@ -1743,10 +1756,13 @@ entete
         background: $gris-16 right / auto 100% no-repeat;
 
         &._offrir {
-            background-image: url('../imgs/recrutement/Offrir-abo-fond-entete.jpg');
+            background-image: url('../imgs/recrutement/fond-entete-offrir-abo.jpg');
         }
         &._international {
-            background-image: url('../imgs/recrutement/international-fond-entete.jpg');
+            background-image: url('../imgs/recrutement/fond-entete-international.jpg');
+        }
+        &._pro {
+            background-image: url('../imgs/recrutement/fond-entete-pro.jpg');
         }
     }
 

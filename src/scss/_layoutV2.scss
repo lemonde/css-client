@@ -138,8 +138,17 @@
 
 @include responsive-modifier(
     $context: 'grille-cell',
+    $modifier: '_principale',
+    $bps: 'from-large'
+) {
+    flex: auto;
+    max-width: 769px;
+}
+
+@include responsive-modifier(
+    $context: 'grille-cell',
     $modifier: '_1sur3',
-    $bps: 'medium' 'from-large'
+    $bps: 'all' 'medium' 'from-large'
 ) {
     flex: 0 0 33.333%;
 }
