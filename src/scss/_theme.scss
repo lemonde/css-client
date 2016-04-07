@@ -64,7 +64,9 @@ $valide: #6faa12;
 $valide-bg: #dff0d8;
 $blanc: #ffffff;
 $prix: #ff6e17;
+$abonnes: #ca0;
 $alpha_sombre: rgba(0, 0, 0, 0.5);
+
 
 /*
 ---------------------------
@@ -292,7 +294,8 @@ $font-colors: (
     erreur: $alerte,
     valide: $valide,
     active: $liens-hover,
-    active_sombre: $liens-hover-sombre
+    active_sombre: $liens-hover-sombre,
+    abonne: $abonnes
 );
 
 @mixin color($color) {
@@ -333,7 +336,6 @@ $pas: (
 
 $goutiere: map-get($pas, m);
 $goutiere-large: map-get($pas, l);
-
 
 $arrow-size: 10px;
 

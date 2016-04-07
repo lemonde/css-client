@@ -42,3 +42,15 @@
         visibility: hidden;
     }
 }
+
+/*
+-------------------------
+    marges
+-------------------------
+*/
+
+.marge {
+    &-bl {
+        margin-bottom: pas(l);
+    }
+}

@@ -116,6 +116,11 @@ h1, h2, h3, h4, h5, h6 {
     @extend %color-prix;
 }
 
+
+.couleur-abonne {
+    @include color(abonne);
+}
+
 .gras {
     font-weight: bold;
 }
@@ -193,6 +198,17 @@ a {
         }
     }
 
+    &._leger {
+        @include background(clair);
+        @extend %color-std;
+        @include border();
+        font-weight: lighter;
+
+        &:hover {
+            @include background(gris);
+        }
+    }
+
     &._action {
         @include background(active);
         @extend %color-negatif;
@@ -207,6 +223,7 @@ a {
     &._petit {
         @include fontsize(std);
         @extend %line-height-s;
+        padding: pas(m) pas(l);
     }
 
     @include screen(small) {
@@ -247,7 +264,12 @@ a {
 
     &._couleur {
         @include border($color: action_hover);
-        @extend %color-active;
+        @include color(action_hover);
+    }
+
+    &._valide {
+        @include border($color: valide);
+        @include color(valide);
     }
 }
 
@@ -452,6 +474,10 @@ hr {
 
     &._petit {
         width: 70px;
+    }
+
+    &._margelarge {
+        margin: pas(l) auto;
     }
 
     &._sansmarge {

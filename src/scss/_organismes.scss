@@ -253,6 +253,7 @@
   page de formulaire
 ---------------------------
 */
+$label-width-petit: 90px;
 $label-width: 150px;
 $label-width-large: 220px;
 
@@ -393,6 +394,12 @@ $label-width-large: 220px;
                     width: $label-width-large;
                 }
             }
+
+            ._petitlabel & {
+                @include screen(from-medium) {
+                    width: $label-width-petit;
+                }
+            }
         }
 
         &-mention { // texte aligné avec les champs de formulaires
@@ -402,6 +409,10 @@ $label-width-large: 220px;
 
                 ._longlabel & {
                     margin-left: $label-width-large;
+                }
+
+                ._petitlabel & {
+                    margin-left: $label-width-petit;
                 }
             }
         }
@@ -440,6 +451,10 @@ $label-width-large: 220px;
         @include screen(from-large) {
             padding-top: pas(xl);
             text-align: right;
+        }
+
+        &._alignegauche {
+            text-align: left;
         }
 
         &._petitemarge {
@@ -696,5 +711,44 @@ $label-width-large: 220px;
         padding: 0;
         line-height: 0;
         transform: translateY(-1.6em);
+    }
+}
+
+
+/*
+---------------------------
+  liste de newsletters
+---------------------------
+*/
+
+.newsletter {
+    &-item {
+        @include border($cardinal: bottom);
+        padding: pas(l) 0;
+
+        &:last-child {
+            border: 0;
+        }
+    }
+
+    &-body {
+        @include screen(small) {
+            max-width: 460px;
+            margin: 0 auto;
+            padding: pas(l) 0;
+        }
+    }
+
+    &-titre,
+    &-abonne {
+        text-transform: uppercase;
+    }
+
+    &-titre {
+        font-weight: bold;
+    }
+
+    &-active {
+        @include color(valide);
     }
 }

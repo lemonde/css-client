@@ -498,6 +498,12 @@ portant d'autres selecteurs
         @include background(gris);
     }
 
+    &._scrollable {
+        max-height: 240px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
     &-section,
     &-entete {
         ._margedroitelarge & {
