@@ -334,8 +334,6 @@ a {
 ---------------------------
 */
 
-$marge: 4px; // square inputs, radio, checkboxs
-
 [type="text"],
 [type="password"],
 [type="email"],
@@ -361,13 +359,11 @@ textarea {
     max-width: 800px;
     box-sizing: padding-box;
     padding: pas(m);
-    margin: 0 1;
     background: $blanc;
     -moz-appearance: none;
     -webkit-appearance: none;
     -ms-appearance: none;
     appearance: none;
-
 
     &:hover:not(:disabled) {
         @include border();
@@ -386,6 +382,10 @@ textarea {
         @extend %color-gris;
         @include background(gris);
     }
+}
+
+[type="checkbox"] + label {
+    margin-left: pas(s);
 }
 
 select {

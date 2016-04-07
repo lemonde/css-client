@@ -157,8 +157,16 @@
 
 @include responsive-modifier(
     $context: 'grille-cell',
+    $modifier: '_1sur2',
+    $bps: 'all'
+) {
+    flex: 0 0 50%;
+}
+
+@include responsive-modifier(
+    $context: 'grille-cell',
     $modifier: '_1sur3',
-    $bps: 'all' 'medium' 'from-large'
+    $bps: 'all' 'medium' 'from-medium' 'from-large'
 ) {
     flex: 0 0 33.333%;
 }
