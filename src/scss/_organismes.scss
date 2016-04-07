@@ -748,10 +748,6 @@ $label-width-large: 220px;
         font-weight: bold;
     }
 
-    &-abonne {
-        @include color(abonne);
-    }
-
     &-active {
         @include color(valide);
     }
