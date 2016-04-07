@@ -50,7 +50,12 @@
 */
 
 .marge {
+
     &-bl {
         margin-bottom: pas(l);
+    }
+
+    &-bm {
+        margin-bottom: pas(m);
     }
 }
