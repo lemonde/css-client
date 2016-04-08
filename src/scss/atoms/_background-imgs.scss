@@ -1,0 +1,19 @@
+%ico-appli {
+    background: url('../imgs/icones-applis.png') no-repeat top left/60px 273px;
+
+    &-aec {
+        background-position: left 0;
+    }
+
+    &-matinale {
+        background-position: left -70px;
+    }
+
+    &-journal {
+        background-position: left -138px;
+    }
+
+    &-archives {
+        background-position: left -210px;
+    }
+}
