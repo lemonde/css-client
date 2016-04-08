@@ -318,14 +318,6 @@ $label-width-large: 220px;
             align-items:flex-start;
         }
 
-        &._espaceur {
-            margin-bottom: pas(xl);
-
-            @include screen(small) {
-                margin-bottom: pas(l);
-            }
-        }
-
         @include screen(from-medium) {
             padding-top: 0;
             padding-bottom: 0;
@@ -441,6 +433,15 @@ $label-width-large: 220px;
             @extend %color-erreur;
             flex: 1 100%;
             margin-top: pas(s);
+        }
+
+        &-mention._espaceur,
+        &._espaceur {
+            margin-bottom: pas(xl);
+
+            @include screen(small) {
+                margin-bottom: pas(l);
+            }
         }
     }
 

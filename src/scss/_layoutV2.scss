@@ -194,3 +194,11 @@
 ) {
     flex: 0 0 12.5%;
 }
+
+@include responsive-modifier(
+    $context: 'grille-cell',
+    $modifier: '_avant',
+    $bps: 'small' 'not-large'
+) {
+    order: -1;
+}
