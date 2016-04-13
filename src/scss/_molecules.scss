@@ -1502,7 +1502,7 @@ Formules
 
         @include screen(not-large) {
             flex-basis: 100%;
-            padding: pas(l) 0 pas(l);
+            padding: pas(l) 0;
             margin: 0 auto;
         }
     }
@@ -1513,7 +1513,7 @@ Formules
             padding-bottom: pas(l) ;
         }
 
-        &:not(:last-child) {
+        &:nth-last-child(n + 2) {
             @include border($cardinal: right);
 
             @include screen(not-large) {
@@ -1524,7 +1524,7 @@ Formules
     }
 
     &-conteneur {
-            margin: 0 auto pas(l);
+        margin: 0 auto pas(l);
         @include screen(from-medium) {
             padding: 0;
             max-width: 300px;

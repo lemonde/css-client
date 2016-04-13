@@ -759,11 +759,11 @@ $label-width-large: 220px;
 
 /*
 ---------------------------
-  création de compte
+  Bloc de présentation des applis
 ---------------------------
 */
 
-.bloc-applis {
+.blocapplis {
     &-titre {
         margin: 0;
     }
@@ -784,36 +784,17 @@ $label-width-large: 220px;
         }
     }
 
-    [class*='appli-'] {
+    [class|='icoappli'] {
         display: flex;
         align-items: center;
+
         &::before {
-            @extend %ico-appli;
-            content: "";
             flex: 0 0 60px;
-            width: 60px;
-            height: 61px;
             margin-right: pas(s);
         }
 
         @include screen(not-large) {
             padding-bottom: pas(m);
         }
-    }
-
-    .appli-aec::before {
-        @extend %ico-appli-aec;
-    }
-
-    .appli-matinale::before {
-        @extend %ico-appli-matinale;
-    }
-
-    .appli-journal::before {
-        @extend %ico-appli-journal;
-    }
-
-    .appli-archives::before {
-        @extend %ico-appli-archives;
     }
 }
