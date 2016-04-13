@@ -1,7 +1,6 @@
 var gulp                = require('gulp');
 var notify              = require('gulp-notify');
 var sass                = require('gulp-sass');
-var minifyCss           = require('gulp-minify-css');
 var rename              = require('gulp-rename');
 var autoprefixer        = require('gulp-autoprefixer');
 var uglifycss           = require('gulp-clean-css');
@@ -62,7 +61,7 @@ module.exports = function(gulp) {
         .pipe(rename({ extname: '.min.css' }).on('error', onError))
         .pipe(sourcemaps.write('./map').on('error', onError))
         .pipe(gulp.dest(dest_paths.css).on('error', onError))
-        .pipe(notify("style compiled/minifyed/auoprefixed : <%= file.relative %>!"));
+        .pipe(notify("style minifyed and autoprefixed : <%= file.relative %>!"));
     });
 
     gulp.task('css-client:compile-fonts', function() {
