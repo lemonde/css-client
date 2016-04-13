@@ -24,6 +24,7 @@ var source_paths = {
     scss:         src_base_url + '/scss/app.scss',
     fonts:        src_base_url + '/fonts/**/*',
     images:       src_base_url + '/imgs/**/*.*',
+    js:           src_base_url + '/js/**/*.js',
 };
 
 // the destination paths
@@ -31,6 +32,7 @@ var dest_paths = {
     css:          dest_base_url + '/css/',
     fonts:        dest_base_url + '/fonts/',
     images:       dest_base_url + '/imgs/',
+    js:           dest_base_url + '/js/',
     root:         dest_base_url,
 };
 
@@ -76,64 +78,81 @@ module.exports = function(gulp) {
             { removeEmptyAttrs: true },
             { removeDoctype: true },
             { convertStyleToAttrs: true}
-        ]
-    }))
-    .pipe(gulp.dest(dest_paths.images));
-});
+        ]}))
+        .pipe(gulp.dest(dest_paths.images));
+    });
 
-gulp.task('css-client:compile-all', [
-    'css-client:compile-style',
-    'css-client:compile-images',
-    'css-client:compile-fonts',
-]);
+    gulp.task('css-client:compile-js', function() {
+        return gulp.src(source_paths.js)
+        .pipe(changed(dest_paths.js).on('error', onError))
+        .pipe(gulp.dest(dest_paths.js));
+    });
 
-// compile everything after cleaning the build
-gulp.task('css-client:compile', [
-    'css-client:build-clean',
-    'css-client:compile-all'
-]);
+    gulp.task('css-client:compile-all', [
+        'css-client:compile-style',
+        'css-client:compile-images',
+        'css-client:compile-fonts',
+        'css-client:compile-js'
+    ]);
 
-///////////////////////////////////////////////////////
-// CLEAN TASKS
-///////////////////////////////////////////////////////
+    // compile everything after cleaning the build
+    gulp.task('css-client:compile', [
+        'css-client:build-clean',
+        'css-client:compile-all'
+    ]);
+
+    ///////////////////////////////////////////////////////
+    // CLEAN TASKS
+    ///////////////////////////////////////////////////////
 
 
-gulp.task('css-client:clean-styles', function() {
-    return gulp.src(dest_paths.css, {read: false})
-    .pipe(clean({force: true}).on('error', onError));
-});
+    gulp.task('css-client:clean-styles', function() {
+        return gulp.src(dest_paths.css, {read: false})
+        .pipe(clean({force: true}).on('error', onError));
+    });
 
-gulp.task('css-client:clean-images', function() {
-    return gulp.src(dest_paths.images, {read: false})
-    .pipe(clean({force: true}).on('error', onError));
-});
+    gulp.task('css-client:clean-images', function() {
+        return gulp.src(dest_paths.images, {read: false})
+        .pipe(clean({force: true}).on('error', onError));
+    });
 
-gulp.task('css-client:clean-fonts', function() {
-    return gulp.src(dest_paths.fonts, {read: false})
-    .pipe(clean({force: true}).on('error', onError));
-});
+    gulp.task('css-client:clean-fonts', function() {
+        return gulp.src(dest_paths.fonts, {read: false})
+        .pipe(clean({force: true}).on('error', onError));
+    });
 
-gulp.task('css-client:build-clean', [
-    'css-client:clean-styles',
-    'css-client:clean-images',
-    'css-client:clean-fonts',
-]);
+    gulp.task('css-client:clean-scripts', function() {
+        return gulp.src(dest_paths.js, {read: false})
+        .pipe(clean({force: true}).on('error', onError));
+    });
 
-///////////////////////////////////////////////////////
-// WATCH TASKS
-///////////////////////////////////////////////////////
+    gulp.task('css-client:build-clean', [
+        'css-client:clean-styles',
+        'css-client:clean-images',
+        'css-client:clean-fonts',
+        'css-client:clean-scripts',
+    ]);
 
-gulp.task('css-client:watch-style', function(){
-    return gulp.watch(source_paths.styles, ['css-client:compile-style']);
-});
+    ///////////////////////////////////////////////////////
+    // WATCH TASKS
+    ///////////////////////////////////////////////////////
 
-gulp.task('css-client:watch-images', function(){
-    return gulp.watch(source_paths.images, ['css-client:compile-images']);
-});
+    gulp.task('css-client:watch-style', function(){
+        return gulp.watch(source_paths.styles, ['css-client:compile-style']);
+    });
 
-gulp.task('css-client:watch', function() {
+    gulp.task('css-client:watch-js', function(){
+        return gulp.watch(source_paths.js, ['css-client:compile-js']);
+    });
+
+    gulp.task('css-client:watch-images', function(){
+        return gulp.watch(source_paths.images, ['css-client:compile-images']);
+    });
+
+    gulp.task('css-client:watch', function() {
         runSequence([
             'css-client:watch-style',
+            'css-client:watch-js',
             'css-client:watch-images',
         ]);
     });
