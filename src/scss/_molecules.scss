@@ -1174,10 +1174,14 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
             z-index: 1;
         }
 
-        .aligne {
+        &.aligne {
             height: 100%;
-            padding-top: 50px;
+            padding-top: 15px;
         }
+    }
+
+    .has-one &-item.aligne {
+        padding-top: 50px;
     }
 
     &-conteneur {
@@ -1246,6 +1250,10 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     &-navmobile,
     &-pagination {
         user-select: none;
+
+        .has-one & {
+            display: none;
+        }
     }
 
     &-promo {
