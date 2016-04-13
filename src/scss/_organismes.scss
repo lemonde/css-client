@@ -318,14 +318,6 @@ $label-width-large: 220px;
             align-items:flex-start;
         }
 
-        &._espaceur {
-            margin-bottom: pas(xl);
-
-            @include screen(small) {
-                margin-bottom: pas(l);
-            }
-        }
-
         @include screen(from-medium) {
             padding-top: 0;
             padding-bottom: 0;
@@ -377,9 +369,10 @@ $label-width-large: 220px;
                 content: " *";
             }
 
-            @include screen(from-large) {
+            @include screen(from-medium) {
                 &:not(:first-child) {
-                    padding-left: pas(m);
+                    padding-right: pas(m);
+                    text-align: right;
                 }
             }
 
@@ -418,21 +411,24 @@ $label-width-large: 220px;
         }
 
         &-inputgroupes {
+            display: flex;
+            min-height: 35px;
+            align-items: center;
+            flex: 1;
+            flex-flow: row wrap;
+
             > * {
-                display: inline-block;
-                vertical-align: top;
+                flex: initial;
+
                 &:not([type="radio"],[type="checkbox"]){
                     margin-bottom: pas(s);
                 }
             }
+
             & >[type="radio"] ~ label ,
             & >[type="checkbox"] ~ label {
-                margin: 0 pas(m) pas(m) 0;
+                margin-right: pas(m);
             }
-        }
-        // set de la marge left à zero
-        &-input > &-inputgroupes {
-            margin-left: 0;
         }
 
         /* hack pour css magento */
@@ -441,6 +437,15 @@ $label-width-large: 220px;
             @extend %color-erreur;
             flex: 1 100%;
             margin-top: pas(s);
+        }
+
+        &-mention._espaceur,
+        &._espaceur {
+            margin-bottom: pas(xl);
+
+            @include screen(small) {
+                margin-bottom: pas(l);
+            }
         }
     }
 
@@ -720,7 +725,6 @@ $label-width-large: 220px;
   liste de newsletters
 ---------------------------
 */
-
 .newsletter {
     &-item {
         @include border($cardinal: bottom);
@@ -750,5 +754,47 @@ $label-width-large: 220px;
 
     &-active {
         @include color(valide);
+    }
+}
+
+/*
+---------------------------
+  Bloc de présentation des applis
+---------------------------
+*/
+
+.blocapplis {
+    &-titre {
+        margin: 0;
+    }
+
+    @include screen(from-large) {
+        margin-top: pas(l);
+        margin-bottom: pas(xl);
+    }
+
+    @include screen(small) {
+        &-entete {
+            text-align: center;
+            padding-bottom: pas(l);
+        }
+
+        .btn {
+            margin-top: pas(m);
+        }
+    }
+
+    [class|='icoappli'] {
+        display: flex;
+        align-items: center;
+
+        &::before {
+            flex: 0 0 60px;
+            margin-right: pas(s);
+        }
+
+        @include screen(not-large) {
+            padding-bottom: pas(m);
+        }
     }
 }

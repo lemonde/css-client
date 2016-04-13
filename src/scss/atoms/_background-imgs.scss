@@ -1,0 +1,27 @@
+[class|='icoappli']::before {
+    content: "";
+    display: inline-block;
+    width: 60px;
+    height: 61px;
+    background: url('../imgs/icones-applis.png') no-repeat top left/60px 273px;
+}
+
+.icoappli {
+
+    &-aec::before  {
+        background-position: left 0;
+    }
+
+    &-matinale::before  {
+        background-position: left -70px;
+    }
+
+    &-journal::before  {
+        background-position: left -138px;
+    }
+
+    &-archives::before  {
+        background-position: left -210px;
+    }
+}
+

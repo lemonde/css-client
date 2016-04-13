@@ -526,6 +526,14 @@ portant d'autres selecteurs
             @include border($cardinal: bottom);
         }
 
+        ._horizontale > & {
+            border: 0;
+
+            &:not(:last-of-type) {
+                @include border($cardinal: right);
+            }
+        }
+
         &._paddingbasnul {
             padding-bottom: 0;
         }
@@ -1485,37 +1493,52 @@ Formules
 .offres {
 
     &-item {
-        margin: pas(l) 0;
+
+        padding: 0 pas(l);
 
         @include screen(small) {
             margin: 0 pas(s);
+        }
+
+        @include screen(not-large) {
+            flex-basis: 100%;
             padding: pas(l) 0;
+            margin: 0 auto;
         }
     }
 
-    > div:not(:last-child) > .offres-item {
-        @include border($cardinal: right);
+    > div {
 
-        @include screen(small) {
-            border-right: 0;
-            @include border($cardinal: bottom);
+        @include screen(not-large) {
+            padding-bottom: pas(l) ;
+        }
+
+        &:nth-last-child(n + 2) {
+            @include border($cardinal: right);
+
+            @include screen(not-large) {
+                border-right: 0;
+                @include border($cardinal: bottom);
+            }
         }
     }
 
     &-conteneur {
-        padding: 0 pas(l);
-        margin: 0 auto;
-
-        @include screen(small) {
+        margin: 0 auto pas(l);
+        @include screen(from-medium) {
             padding: 0;
             max-width: 300px;
         }
     }
 
+    .btn {
+        margin: auto auto 0;
+    }
+
     &-icone {
         display: inline-block;
         margin: pas(m) 0 pas(m);
-        width: 101px;
+        width: 100%;
         height: 65px;
         background: center center / auto no-repeat;
 
@@ -1529,6 +1552,18 @@ Formules
 
         &._etranger {
             background-image: url('../imgs/recrutement/icone-etranger.svg');
+        }
+
+        &._config {
+            background-image: url('../imgs/recrutement/icon-config.svg');
+        }
+
+        &._devices {
+            background-image: url('../imgs/recrutement/icone-abo-num.svg');
+        }
+
+        &._boutique {
+            background-image: url('../imgs/recrutement/icone-boutique.svg');
         }
     }
 

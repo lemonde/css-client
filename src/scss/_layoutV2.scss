@@ -146,19 +146,10 @@
     max-width: 720px;
 }
 
-
 @include responsive-modifier(
     $context: 'grille-cell',
     $modifier: '_1sur2',
-    $bps:'medium'
-) {
-    flex: 0 0 50%;
-}
-
-@include responsive-modifier(
-    $context: 'grille-cell',
-    $modifier: '_1sur2',
-    $bps: 'all'
+    $bps: 'all' 'medium'
 ) {
     flex: 0 0 50%;
 }
@@ -193,4 +184,12 @@
     $bps: 'from-medium'
 ) {
     flex: 0 0 12.5%;
+}
+
+@include responsive-modifier(
+    $context: 'grille-cell',
+    $modifier: '_avant',
+    $bps: 'small' 'not-large'
+) {
+    order: -1;
 }
