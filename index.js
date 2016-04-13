@@ -1,15 +1,13 @@
 var gulp                = require('gulp');
-var concat              = require('gulp-concat');
 var notify              = require('gulp-notify');
 var sass                = require('gulp-sass');
 var minifyCss           = require('gulp-minify-css');
 var rename              = require('gulp-rename');
 var autoprefixer        = require('gulp-autoprefixer');
-var uglifycss           = require('gulp-uglifycss');
+var uglifycss           = require('gulp-clean-css');
 var imagemin            = require('gulp-imagemin');
 var changed             = require('gulp-changed');
 var gcmq                = require('gulp-group-css-media-queries');
-var connect             = require('gulp-connect');
 var clean               = require('gulp-clean');
 var sourcemaps          = require('gulp-sourcemaps');
 
@@ -53,17 +51,16 @@ module.exports = function(gulp){
     return gulp.src(source_paths.scss)
       .pipe(sourcemaps.init().on('error', onError))
       .pipe(changed(dest_paths.css).on('error', onError))
-      .pipe(sass().on('error', onError))
+      .pipe(sass({outputStyle: 'expanded'}).on('error', onError))
       .pipe(gulp.dest(dest_paths.css))
+      .pipe(notify("style compiled/minifyed/auoprefixed : <%= file.relative %>!"))
       .pipe(autoprefixer({browsers: ['> 1%','last 2 versions','ie > 8'],cascade:false}).on('error', onError))
-      .pipe(minifyCss({keepSpecialComments: 0}).on('error', onError))
       .pipe(gcmq().on('error', onError))
       .pipe(uglifycss().on('error', onError))
       .pipe(rename({ extname: '.min.css' }).on('error', onError))
       .pipe(sourcemaps.write('./map').on('error', onError))
       .pipe(gulp.dest(dest_paths.css).on('error', onError))
-      .pipe(notify("style compiled/minifyed/auoprefixed : <%= file.relative %>!"))
-      .pipe(connect.reload().on('error', onError));
+      .pipe(notify("style compiled/minifyed/auoprefixed : <%= file.relative %>!"));
   });
 
   gulp.task('css-client:compile-fonts', function() {
@@ -81,8 +78,7 @@ module.exports = function(gulp){
               { convertStyleToAttrs: true}
           ]
       }))
-      .pipe(gulp.dest(dest_paths.images))
-      .pipe(connect.reload());
+      .pipe(gulp.dest(dest_paths.images));
   });
 
   gulp.task('css-client:compile-all', [
