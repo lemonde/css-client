@@ -5,8 +5,11 @@
 */
 
 .header {
-    @include background(header);
     $header-height: 50px;
+
+    @include background(header);
+    position: relative;
+    z-index: 1; // debug déroulants qui passent sous certains elems
 
     &._transparent {
         @include border($cardinal: bottom, $color: alpha_clair);

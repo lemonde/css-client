@@ -498,6 +498,12 @@ portant d'autres selecteurs
         @include background(gris);
     }
 
+    &._hide-not-large {
+        @include screen(not-large) {
+            display: none;
+        }
+    }
+
     &._scrollable {
         max-height: 240px;
         overflow-x: hidden;
