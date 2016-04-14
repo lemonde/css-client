@@ -226,6 +226,19 @@ a {
         padding: pas(m) pas(l);
     }
 
+    &._pleinelargeur {
+        width: 100%;
+    }
+
+    &._icone {
+        display: flex;
+        align-items: center;
+
+        [class^=icon]:before {
+            padding-right: pas(m);
+        }
+    }
+
     @include screen(small) {
         padding: pas(m) pas(l);
     }
@@ -237,7 +250,8 @@ a {
 ---------------------------
 */
 
-[class^="icon-"], [class*=" icon-"]{
+[class^="icon-"],
+[class*=" icon-"] {
     @include icon;
     display: inline-block;
 
