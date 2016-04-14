@@ -1,6 +1,7 @@
-/*  CARROUSEL */
+
 
 (function () {
+    /*  CARROUSEL */
     'use strict';
 
     var activeClass = 'est-actif';
@@ -80,25 +81,70 @@
         }.bind(this));
     };
 
-    /* MENU BURGER */
-
-    var burger = document.getElementById('js-menu');
-    var overlay = document.getElementById('js-overlay');
-
-    function toggleBurger() {
-        burger.classList.toggle('est-ouvert');
-        overlay.classList.toggle('est-ouvert');
-    }
-
-    /* MENU BURGER */
-
-    function popin(handlerId, targetId) {
+    /* POPIN */
+    function popin(handler, targetId) {
 
         this.popin = document.getElementById(targetId);
-        this.handler = document.getElementById(handlerId);
+        this.handler = handler;
 
-        handler.addEventListener('click', function(){
-            this.popin.classList.toggle('est-visible');
+        this.handler.addEventListener('click', function(e) {
+            e.preventDefault();
+            togglePopin(this);
         }.bind(this));
+
+        this.popin.addEventListener('click', function(e) {
+            var targetClassList = e.target.classList;
+            if (targetClassList.contains('js-popin-close')) {
+                e.preventDefault();
+                togglePopin(this);
+            }
+        }.bind(this));
+
+        function togglePopin(instance) {
+            instance.popin.classList.toggle('est-visible');
+        };
+    };
+
+
+    function instanciatePopins() {
+        var handlers = document.getElementsByClassName('js-popin-luncher');
+
+        Array.prototype.slice.call(handlers).forEach(function(el) {
+            var targetId = el.getAttribute('data-popin-id');
+            new popin(el, targetId);
+        });
     }
+
+    /* MENU BURGER */
+    function burgerMenu(){
+
+        var menuContainer = document.getElementById('js-menu-container');
+
+        if( menuContainer != null ) {
+            var burger = document.getElementById('js-menu');
+            var overlay = document.getElementById('js-overlay');
+            listenner();
+        }
+
+        function listenner() {
+            menuContainer.addEventListener('click', function(e){
+                e.preventDefault();
+                var targetClassList = e.target.classList;
+
+                if (targetClassList.contains('js-toggle-menu')) {
+                    toggleMenu();
+                }
+            });
+        }
+
+        function toggleMenu() {
+            burger.classList.toggle('est-ouvert');
+            overlay.classList.toggle('est-ouvert');
+        };
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+        burgerMenu();
+        instanciatePopins();
+    });
 }());
