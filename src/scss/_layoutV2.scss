@@ -26,7 +26,6 @@
 
 .fondalt {
     @include background(gris);
-    @extend %border-double;
 }
 
 .fondsombre {

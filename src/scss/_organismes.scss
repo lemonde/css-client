@@ -448,6 +448,7 @@ $label-width-large: 220px;
             margin-top: pas(s);
         }
 
+        // ajouter un espace après une ligne de form
         &-mention._espaceur,
         &._espaceur {
             margin-bottom: pas(xl);
