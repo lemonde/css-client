@@ -919,16 +919,10 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
 
     &-item {
         list-style: disc;
-
-        &._gras {
-            @include fontsize(m);
-            font-weight: bold;
-        }
     }
 
     &-soustitre {
         margin-bottom: pas(s);
-        font-weight: bold;
     }
 }
 
