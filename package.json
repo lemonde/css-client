@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "main": "index.js",
   "description": "CSS to use for all projet client",
-  "devDependencies": {
+  "dependencies": {
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-changed": "^1.3.0",

@@ -14,25 +14,25 @@ var sourcemaps          = require('gulp-sourcemaps');
 // PATHS
 ///////////////////////////////////////////////////////
 
-var src_base_url = __dirname + '/src';
-var dest_base_url = './build-css-customer';
+var srcBaseUrl = __dirname + '/src';
+var destBaseUrl = './build-css-customer';
 
 // the source paths
-var source_paths = {
-    styles:       src_base_url + '/scss/**/*',
-    scss:         src_base_url + '/scss/app.scss',
-    fonts:        src_base_url + '/fonts/**/*',
-    images:       src_base_url + '/imgs/**/*.*',
-    js:           src_base_url + '/js/**/*.js',
+var sourcePaths = {
+    styles:       srcBaseUrl + '/scss/**/*',
+    scss:         srcBaseUrl + '/scss/app.scss',
+    fonts:        srcBaseUrl + '/fonts/**/*',
+    images:       srcBaseUrl + '/imgs/**/*.*',
+    js:           srcBaseUrl + '/js/**/*.js',
 };
 
 // the destination paths
-var dest_paths = {
-    css:          dest_base_url + '/css/',
-    fonts:        dest_base_url + '/fonts/',
-    images:       dest_base_url + '/imgs/',
-    js:           dest_base_url + '/js/',
-    root:         dest_base_url,
+var destPaths = {
+    css:          destBaseUrl + '/css/',
+    fonts:        destBaseUrl + '/fonts/',
+    images:       destBaseUrl + '/imgs/',
+    js:           destBaseUrl + '/js/',
+    root:         destBaseUrl,
 };
 
 module.exports = function(gulp) {
@@ -49,42 +49,42 @@ module.exports = function(gulp) {
     }
 
     gulp.task('css-client:compile-style', function() {
-        return gulp.src(source_paths.scss)
+        return gulp.src(sourcePaths.scss)
         .pipe(sourcemaps.init().on('error', onError))
-        .pipe(changed(dest_paths.css).on('error', onError))
+        .pipe(changed(destPaths.css).on('error', onError))
         .pipe(sass({outputStyle: 'expanded'}).on('error', onError))
-        .pipe(gulp.dest(dest_paths.css))
+        .pipe(gulp.dest(destPaths.css))
         .pipe(notify("style compiled : <%= file.relative %>!"))
         .pipe(autoprefixer({browsers: ['> 1%','last 2 versions','ie > 8'],cascade:false}).on('error', onError))
         .pipe(gcmq().on('error', onError))
         .pipe(uglifycss().on('error', onError))
         .pipe(rename({ extname: '.min.css' }).on('error', onError))
         .pipe(sourcemaps.write('./map').on('error', onError))
-        .pipe(gulp.dest(dest_paths.css).on('error', onError))
+        .pipe(gulp.dest(destPaths.css).on('error', onError))
         .pipe(notify("style minifyed and autoprefixed : <%= file.relative %>!"));
     });
 
     gulp.task('css-client:compile-fonts', function() {
-        gulp.src(source_paths.fonts)
-        .pipe(gulp.dest(dest_paths.fonts))
+        gulp.src(sourcePaths.fonts)
+        .pipe(gulp.dest(destPaths.fonts))
     });
 
     gulp.task('css-client:compile-images', function() {
-        return gulp.src(source_paths.images)
-        .pipe(changed(dest_paths.images).on('error', onError))
+        return gulp.src(sourcePaths.images)
+        .pipe(changed(destPaths.images).on('error', onError))
         .pipe(imagemin({svgoPlugins: [
             { removeViewBox: false },
             { removeEmptyAttrs: true },
             { removeDoctype: true },
             { convertStyleToAttrs: true}
         ]}))
-        .pipe(gulp.dest(dest_paths.images));
+        .pipe(gulp.dest(destPaths.images));
     });
 
     gulp.task('css-client:compile-js', function() {
-        return gulp.src(source_paths.js)
-        .pipe(changed(dest_paths.js).on('error', onError))
-        .pipe(gulp.dest(dest_paths.js));
+        return gulp.src(sourcePaths.js)
+        .pipe(changed(destPaths.js).on('error', onError))
+        .pipe(gulp.dest(destPaths.js));
     });
 
     gulp.task('css-client:compile-all', [
@@ -106,22 +106,22 @@ module.exports = function(gulp) {
 
 
     gulp.task('css-client:clean-styles', function() {
-        return gulp.src(dest_paths.css, {read: false})
+        return gulp.src(destPaths.css, {read: false})
         .pipe(clean({force: true}).on('error', onError));
     });
 
     gulp.task('css-client:clean-images', function() {
-        return gulp.src(dest_paths.images, {read: false})
+        return gulp.src(destPaths.images, {read: false})
         .pipe(clean({force: true}).on('error', onError));
     });
 
     gulp.task('css-client:clean-fonts', function() {
-        return gulp.src(dest_paths.fonts, {read: false})
+        return gulp.src(destPaths.fonts, {read: false})
         .pipe(clean({force: true}).on('error', onError));
     });
 
     gulp.task('css-client:clean-scripts', function() {
-        return gulp.src(dest_paths.js, {read: false})
+        return gulp.src(destPaths.js, {read: false})
         .pipe(clean({force: true}).on('error', onError));
     });
 
@@ -137,15 +137,15 @@ module.exports = function(gulp) {
     ///////////////////////////////////////////////////////
 
     gulp.task('css-client:watch-style', function(){
-        return gulp.watch(source_paths.styles, ['css-client:compile-style']);
+        return gulp.watch(sourcePaths.styles, ['css-client:compile-style']);
     });
 
     gulp.task('css-client:watch-js', function(){
-        return gulp.watch(source_paths.js, ['css-client:compile-js']);
+        return gulp.watch(sourcePaths.js, ['css-client:compile-js']);
     });
 
     gulp.task('css-client:watch-images', function(){
-        return gulp.watch(source_paths.images, ['css-client:compile-images']);
+        return gulp.watch(sourcePaths.images, ['css-client:compile-images']);
     });
 
     gulp.task('css-client:watch', function() {
