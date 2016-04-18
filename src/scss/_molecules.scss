@@ -1666,10 +1666,6 @@ page gamme entete
             width: 50%;
             padding-left: pas(m);
         }
-
-        p {
-            margin: pas(s) 0;
-        }
     }
 
     &-visuel {
@@ -1690,7 +1686,7 @@ page gamme entete
         }
     }
 
-    &-complement-formule {
+    &-incitatif {
         display: flex;
         a {
             display: inline-block;
