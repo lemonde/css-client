@@ -179,6 +179,7 @@ portant d'autres selecteurs
 [id="admin_messages"]:not(:empty) {
     @extend .message._erreur;
     @include icon;
+    margin-top: pas(l);
     padding: pas(m);
     &::before {
         @extend %icontexte;
@@ -243,6 +244,35 @@ portant d'autres selecteurs
             tr {
                 padding-top: pas(m);
                 padding-bottom: pas(m);
+            }
+        }
+    }
+
+    &._epure {
+        border: 0;
+
+        tbody, thead, tr, th, td {
+            @include color(std);
+            border: 0;
+            background: transparent;
+        }
+
+        thead tr th {
+            font-weight: bold;
+        }
+
+        tfoot {
+            @include border($cardinal: top);
+
+            th {
+                font-weight: bold;
+                @include screen(from-medium) {
+                    text-align: right;
+                }
+            }
+
+            th, td {
+                //padding: pas(s) pas(m);
             }
         }
     }
