@@ -1441,10 +1441,10 @@ Popin (popup de en overlay)
     }
 
     &-texte {
-        margin-top: pas(xl);
+        padding-top: pas(l);
 
         @include screen(small) {
-            margin-top: pas(m);
+            padding-top: pas(m);
         }
     }
 }

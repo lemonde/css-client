@@ -250,8 +250,7 @@ a {
 ---------------------------
 */
 
-[class^="icon-"],
-[class*=" icon-"] {
+[class|="icon-"] {
     @include icon;
     display: inline-block;
 
