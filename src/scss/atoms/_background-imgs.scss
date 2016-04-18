@@ -25,7 +25,6 @@
     }
 }
 
-
 [class|='icopanier']::before {
     display: block;
     content: "";
@@ -43,4 +42,14 @@
     &-telephone::before {
         background-image: url('../imgs/recrutement/icon-telephone.svg');
     }
+}
+
+.pouce-leve::before {
+    content: "";
+    display: inline-block;
+    width: 31px;
+    height: 32px;
+    flex: 0 0 31px;
+    background: url('../imgs/recrutement/icone-pouce.svg') no-repeat top left/31px 32px;
+
 }

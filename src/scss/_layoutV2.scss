@@ -152,7 +152,7 @@
 @include responsive-modifier(
     $context: 'grille-cell',
     $modifier: '_1sur2',
-    $bps: 'all' 'medium' 'from-medium'
+    $bps: 'all' 'medium' 'from-medium' 'from-large'
 ) {
     flex: 0 0 50%;
 }

@@ -1619,6 +1619,10 @@ page gamme entete
 .gammeentete {
     @extend .clearfix;
 
+    p {
+        margin: pas(s) 0;
+    }
+
     &.conteneur {
         @include screen(from-medium) {
             padding-top: pas(xl);
@@ -1627,17 +1631,16 @@ page gamme entete
     }
 
     &-entete {
+        padding-bottom: pas(m);
+
         @include screen(from-large) {
             float: right;
             width: 50%;
             padding-left: pas(m);
         }
+
         @include screen(not-large) {
-            padding: pas(m);
             text-align: center;
-        }
-        p {
-            margin: pas(s) 0;
         }
     }
 
@@ -1645,11 +1648,27 @@ page gamme entete
         margin: pas(s) 0;
     }
 
+    &-encadres {
+        @include screen(from-large) {
+            float: right;
+            width: 50%;
+        }
+
+        p {
+            padding: pas(m);
+            @include border();
+        }
+    }
+
     &-texte {
         @include screen(from-medium) {
             float: right;
             width: 50%;
             padding-left: pas(m);
+        }
+
+        p {
+            margin: pas(s) 0;
         }
     }
 
@@ -1663,11 +1682,19 @@ page gamme entete
         }
 
         img {
-            max-width: 520px;
+            max-width: 540px;
 
             @include screen(small) {
                 max-width: 100%;
             }
+        }
+    }
+
+    &-complement-formule {
+        display: flex;
+        a {
+            display: inline-block;
+            padding-left: pas(m);
         }
     }
 }
@@ -1758,7 +1785,7 @@ offre spéciale
 
 .offrespeciale {
     width: 350px;
-    max-width: 100%;
+    max-width: 75%;
     padding: pas(s) pas(m);
 
     @include screen(from-medium) {
