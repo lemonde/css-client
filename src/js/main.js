@@ -1,18 +1,16 @@
-
-
 (function () {
     /*  CARROUSEL */
     'use strict';
 
     var activeClass = 'est-actif';
 
-    function carrousel() {
+    function Carrousel() {
 
         this.config = {
-            carrouselId: 'carrousel-home-recrutement',
-            carrouselItemClass: 'js-item',
-            carrouselNextClass: 'js-next',
-            carrouselPrevClass: 'js-prev',
+            CarrouselId: 'carrousel-home-recrutement',
+            CarrouselItemClass: 'js-item',
+            CarrouselNextClass: 'js-next',
+            CarrouselPrevClass: 'js-prev',
             bulletClass: 'js-bullet',
             hasOneClass: 'has-one',
             loopDuration: 5000
@@ -20,29 +18,24 @@
 
         this.current;
         this.interval;
-        this.container = document.getElementById(this.config.carrouselId);
-        this.items = this.container.getElementsByClassName(this.config.carrouselItemClass);
+        this.container = document.getElementById(this.config.CarrouselId);
+        this.items = this.container.getElementsByClassName(this.config.CarrouselItemClass);
         this.bullets = this.container.getElementsByClassName(this.config.bulletClass);
         this.active = this.container.getElementsByClassName(activeClass);
-        this.hasOnlyOneItem = (this.bullets.length <= 1) ? true : false;
 
         this.goto(0);
         this.handleEvent();
     };
 
-    carrousel.prototype.next = function () {
+    Carrousel.prototype.next = function () {
         this.goto(this.current + 1);
     };
 
-    carrousel.prototype.prev = function () {
+    Carrousel.prototype.prev = function () {
         this.goto(this.current - 1);
     };
 
-    carrousel.prototype.hasOne = function () {
-        this.container.classList.add(this.config.hasOneClass);
-    };
-
-    carrousel.prototype.updateDom = function () {
+    Carrousel.prototype.updateDom = function () {
         Array.prototype.slice.call(this.active).forEach(function (el) {
             el.classList.remove(activeClass);
         });
@@ -51,12 +44,10 @@
         this.bullets[this.current].classList.add(activeClass);
     };
 
-    carrousel.prototype.goto = function (x) {
+    Carrousel.prototype.goto = function (x) {
 
-        if (! this.hasOnlyOneItem) {
-            clearTimeout(this.interval);
-            this.interval = setTimeout(this.next.bind(this), this.config.loopDuration);
-        }
+        clearTimeout(this.interval);
+        this.interval = setTimeout(this.next.bind(this), this.config.loopDuration);
 
         if (x === this.bullets.length) {
             this.current = 0;
@@ -69,102 +60,83 @@
         this.updateDom();
     };
 
-    carrousel.prototype.handleEvent = function () {
-        if (this.hasOnlyOneItem) {
-            this.hasOne();
-        } else {
-            this.container.addEventListener('click', function(e) {
-                var targetClassList = e.target.classList;
+    Carrousel.prototype.handleEvent = function () {
+        this.container.addEventListener('click', function(e) {
+            var targetClassList = e.target.classList;
 
-                if (targetClassList.contains(this.config.carrouselNextClass)) {
-                    e.preventDefault();
-                    this.next();
-                } else if (targetClassList.contains(this.config.carrouselPrevClass)) {
-                    e.preventDefault();
-                    this.prev();
-                } else if (targetClassList.contains(this.config.bulletClass)) {
-                    e.preventDefault();
-                    Array.prototype.slice.call(this.bullets).forEach(function (el, idx) {
-                        if(el === e.target) {
-                            this.goto(idx);
-                        }
-                    }.bind(this));
-                };
-            }.bind(this));
-        }
+            if (targetClassList.contains(this.config.CarrouselNextClass)) {
+                e.preventDefault();
+                this.next();
+            } else if (targetClassList.contains(this.config.CarrouselPrevClass)) {
+                e.preventDefault();
+                this.prev();
+            } else if (targetClassList.contains(this.config.bulletClass)) {
+                e.preventDefault();
+                Array.prototype.slice.call(this.bullets).forEach(function (el, idx) {
+                    if(el === e.target) {
+                        this.goto(idx);
+                    }
+                }.bind(this));
+            };
+        }.bind(this));
     };
 
-    function instanciateCarrousel() {
-        var carrouselExist = document.getElementById('carrousel-home-recrutement');
-        if (carrouselExist =! null) {
-            new carrousel();
+    function instantiateCarrousel() {
+        var CarrouselExist = document.getElementById('carrousel-home-recrutement');
+        if (CarrouselExist !== null) {
+            new Carrousel();
         }
     }
 
     /* POPIN */
     function popin(handler, targetId) {
+        var popin = document.getElementById(targetId);
 
-        this.popin = document.getElementById(targetId);
-        this.handler = handler;
+        handler.addEventListener('click', function(event) {
+            togglePopin(event);
+        });
 
-        this.handler.addEventListener('click', function(e) {
-            e.preventDefault();
-            togglePopin(this);
-        }.bind(this));
-
-        this.popin.addEventListener('click', function(e) {
-            var targetClassList = e.target.classList;
-            if (targetClassList.contains('js-popin-close')) {
-                e.preventDefault();
-                togglePopin(this);
+        popin.addEventListener('click', function(event) {
+            if (event.target.classList.contains('js-popin-close')) {
+                togglePopin(event);
             }
-        }.bind(this));
+        });
 
-        function togglePopin(instance) {
-            instance.popin.classList.toggle('est-visible');
+        function togglePopin(event) {
+            event.preventDefault();
+            popin.classList.toggle('est-visible');
         };
-    };
+    }
 
-    function instanciatePopins() {
-        var handlers = document.getElementsByClassName('js-popin-luncher');
-
+    function instantiatePopins() {
+        var handlers = document.getElementsByClassName('js-popin-launcher');
         Array.prototype.slice.call(handlers).forEach(function(el) {
             var targetId = el.getAttribute('data-popin-id');
-            new popin(el, targetId);
+            popin(el, targetId);
         });
     }
 
     /* MENU BURGER */
     function burgerMenu(){
-
         var menuContainer = document.getElementById('js-menu-container');
 
-        if( menuContainer != null ) {
-            var burger = document.getElementById('js-menu');
-            var overlay = document.getElementById('js-overlay');
-            listenner();
+        if (menuContainer === null) {
+            return;
         }
 
-        function listenner() {
-            menuContainer.addEventListener('click', function(e) {
-                var targetClassList = e.target.classList;
+        menuContainer.addEventListener('click', function(event) {
 
-                if (targetClassList.contains('js-toggle-menu')) {
-                    e.preventDefault();
-                    toggleMenu();
-                }
-            });
-        }
-
-        function toggleMenu() {
-            burger.classList.toggle('est-ouvert');
-            overlay.classList.toggle('est-ouvert');
-        };
-    };
+            if (event.target.classList.contains('js-toggle-menu')) {
+                event.preventDefault();
+                menuContainer.classList.toggle('est-menu-ouvert');
+            }
+        });
+    }
 
     document.addEventListener("DOMContentLoaded", function() {
         burgerMenu();
-        instanciatePopins();
-        instanciateCarrousel();
+        instantiatePopins();
+        instantiateCarrousel();
     });
+
 }());

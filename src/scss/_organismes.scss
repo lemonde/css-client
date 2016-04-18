@@ -97,7 +97,7 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        &.est-ouvert {
+        .est-menu-ouvert & {
 
             @include screen(not-large) {
                 left: 0;
@@ -119,7 +119,7 @@
         z-index: 1;
 
         @include screen(not-large) {
-            &.est-ouvert {
+            .est-menu-ouvert & {
                 opacity: 1;
                 height: 100vh;
             }
