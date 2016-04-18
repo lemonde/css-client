@@ -25,3 +25,22 @@
     }
 }
 
+
+[class|='icopanier']::before {
+    display: block;
+    content: "";
+    width: 28px;
+    height: 36px;
+    margin-right: pas(m);
+    background: no-repeat center center / contain;
+}
+
+.icopanier {
+    &-securise::before {
+        background-image: url('../imgs/recrutement/icon-securise.svg')
+    }
+
+    &-telephone::before {
+        background-image: url('../imgs/recrutement/icon-telephone.svg');
+    }
+}

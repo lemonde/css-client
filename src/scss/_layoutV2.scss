@@ -26,7 +26,6 @@
 
 .fondalt {
     @include background(gris);
-    @extend %border-double;
 }
 
 .fondsombre {
@@ -50,6 +49,10 @@
 
     &._aligne-centre {
         align-items: center;
+    }
+
+    &._aligne-top {
+        align-items: flex-start;
     }
 
     &._justifie-centre {
@@ -149,7 +152,7 @@
 @include responsive-modifier(
     $context: 'grille-cell',
     $modifier: '_1sur2',
-    $bps: 'all' 'medium'
+    $bps: 'all' 'medium' 'from-medium'
 ) {
     flex: 0 0 50%;
 }
@@ -173,7 +176,7 @@
 @include responsive-modifier(
     $context: 'grille-cell',
     $modifier: '_1sur6',
-    $bps:'from-medium'
+    $bps:'all' 'from-medium'
 ) {
     flex: 0 0 16.666%;
 }

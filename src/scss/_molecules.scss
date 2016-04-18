@@ -179,6 +179,7 @@ portant d'autres selecteurs
 [id="admin_messages"]:not(:empty) {
     @extend .message._erreur;
     @include icon;
+    margin-top: pas(l);
     padding: pas(m);
     &::before {
         @extend %icontexte;
@@ -243,6 +244,35 @@ portant d'autres selecteurs
             tr {
                 padding-top: pas(m);
                 padding-bottom: pas(m);
+            }
+        }
+    }
+
+    &._epure {
+        border: 0;
+
+        tbody, thead, tr, th, td {
+            @include color(std);
+            border: 0;
+            background: transparent;
+        }
+
+        thead tr th {
+            font-weight: bold;
+        }
+
+        tfoot {
+            @include border($cardinal: top);
+
+            th {
+                font-weight: bold;
+                @include screen(from-medium) {
+                    text-align: right;
+                }
+            }
+
+            th, td {
+                //padding: pas(s) pas(m);
             }
         }
     }
@@ -496,6 +526,12 @@ portant d'autres selecteurs
 
     &._fondsombre {
         @include background(gris);
+    }
+
+    &._hide-not-large {
+        @include screen(not-large) {
+            display: none;
+        }
     }
 
     &._scrollable {
@@ -919,16 +955,10 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
 
     &-item {
         list-style: disc;
-
-        &._gras {
-            @include fontsize(m);
-            font-weight: bold;
-        }
     }
 
     &-soustitre {
         margin-bottom: pas(s);
-        font-weight: bold;
     }
 }
 
@@ -1174,10 +1204,14 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
             z-index: 1;
         }
 
-        .aligne {
+        &.aligne {
             height: 100%;
-            padding-top: 50px;
+            padding-top: 15px;
         }
+    }
+
+    .has-one &-item.aligne {
+        padding-top: 50px;
     }
 
     &-conteneur {
@@ -1246,6 +1280,10 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     &-navmobile,
     &-pagination {
         user-select: none;
+
+        .has-one & {
+            display: none;
+        }
     }
 
     &-promo {
@@ -1403,10 +1441,10 @@ Popin (popup de en overlay)
     }
 
     &-texte {
-        margin-top: pas(xl);
+        padding-top: pas(l);
 
         @include screen(small) {
-            margin-top: pas(m);
+            padding-top: pas(m);
         }
     }
 }

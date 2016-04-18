@@ -5,8 +5,11 @@
 */
 
 .header {
-    @include background(header);
     $header-height: 50px;
+
+    @include background(header);
+    position: relative;
+    z-index: 1; // debug déroulants qui passent sous certains elems
 
     &._transparent {
         @include border($cardinal: bottom, $color: alpha_clair);
@@ -94,7 +97,7 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        &.est-ouvert {
+        .est-menu-ouvert & {
 
             @include screen(not-large) {
                 left: 0;
@@ -116,7 +119,7 @@
         z-index: 1;
 
         @include screen(not-large) {
-            &.est-ouvert {
+            .est-menu-ouvert & {
                 opacity: 1;
                 height: 100vh;
             }
@@ -316,6 +319,10 @@ $label-width-large: 220px;
 
         &._aligntop {
             align-items:flex-start;
+
+            > .form-ligne-label {
+                padding-top: pas(s);
+            }
         }
 
         @include screen(from-medium) {
@@ -370,7 +377,7 @@ $label-width-large: 220px;
             }
 
             @include screen(from-medium) {
-                &:not(:first-child) {
+                &:not(:first-of-type) {
                     padding-right: pas(m);
                     text-align: right;
                 }
@@ -412,22 +419,27 @@ $label-width-large: 220px;
 
         &-inputgroupes {
             display: flex;
-            min-height: 35px;
+            padding: pas(s) 0;
             align-items: center;
             flex: 1;
             flex-flow: row wrap;
 
             > * {
                 flex: initial;
+            }
 
-                &:not([type="radio"],[type="checkbox"]){
-                    margin-bottom: pas(s);
-                }
+            > div {
+                margin-top: pas(s);
             }
 
             & >[type="radio"] ~ label ,
             & >[type="checkbox"] ~ label {
                 margin-right: pas(m);
+            }
+
+            & >[type="radio"]:not(:first-child),
+            & >[type="checkbox"]:not(:first-child) {
+                margin-left: pas(s);
             }
         }
 
@@ -439,6 +451,7 @@ $label-width-large: 220px;
             margin-top: pas(s);
         }
 
+        // ajouter un espace après une ligne de form
         &-mention._espaceur,
         &._espaceur {
             margin-bottom: pas(xl);
