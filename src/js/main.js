@@ -133,10 +133,42 @@
         });
     }
 
+    /* Autoscroll Panier (tunnel) */
+    function instantiateScrollPanier() {
+
+        var viewport = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        var notLargeDevice = 1023;
+
+        if(viewport < notLargeDevice) {
+            return;
+        }
+
+        var panier = document.getElementById('js-panier');
+
+        if (panier === null) {
+            return;
+        }
+
+        var timeout;
+        var debounce = function () {
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+
+            timeout = setTimeout(function () {
+                panier.style.marginTop = window.pageYOffset + 'px';
+                timeout = null;
+            }, 100);
+        };
+
+        window.addEventListener('scroll', debounce);
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
         burgerMenu();
         instantiatePopins();
         instantiateCarrousel();
+        instantiateScrollPanier();
     });
 
 }());

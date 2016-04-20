@@ -258,6 +258,7 @@ portant d'autres selecteurs
         }
 
         thead tr th {
+            @include fontsize(m);
             font-weight: bold;
         }
 
@@ -508,7 +509,7 @@ portant d'autres selecteurs
     &._bordclair,
     &._bordsombre {
         border-top: 0;
-        margin-top: $border-width-large;
+        transform: translateY($border-width-large);
 
         &.est-desactive { // boites grisés
             @include color(gris);
@@ -1139,6 +1140,12 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
 */
 
 .panier {
+    transition: margin-top 0.3s ease;
+
+    @include screen(not-large) {
+        margin-top: 0!important; // overide js panier
+    }
+
     &-entete {
         padding: pas(m) 0;
         font-weight: bold;
@@ -1725,8 +1732,11 @@ page gamme selecteur
     &-prix {
         @include fontsize(t1);
         display: inline-block;
-        margin-right: pas(m);
         font-weight: lighter;
+    }
+
+    &-prix + &-prixduree {
+        margin-left: pas(s);
     }
 
     &-prixduree {
@@ -1885,5 +1895,26 @@ entete
         @include screen(small) {
             padding: pas(xl) pas(m);
         }
+    }
+}
+
+/*
+--------------------
+facture (checkout)
+--------------------
+*/
+
+.facture {
+    @include screen(from-medium) {
+        table-layout: fixed;
+    }
+
+    tr td {
+        vertical-align: top;
+    }
+
+    &-intitule {
+        font-weight: bold;
+        @include color(gris);
     }
 }
