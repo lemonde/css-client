@@ -509,7 +509,7 @@ portant d'autres selecteurs
     &._bordclair,
     &._bordsombre {
         border-top: 0;
-        margin-top: $border-width-large;
+        transform: translateY($border-width-large);
 
         &.est-desactive { // boites grisés
             @include color(gris);
@@ -1140,6 +1140,12 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
 */
 
 .panier {
+    transition: margin-top 0.3s ease;
+
+    @include screen(small) {
+        margin-top: 0!important; // overide js panier
+    }
+
     &-entete {
         padding: pas(m) 0;
         font-weight: bold;
