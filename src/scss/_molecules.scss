@@ -1726,8 +1726,11 @@ page gamme selecteur
     &-prix {
         @include fontsize(t1);
         display: inline-block;
-        margin-right: pas(m);
         font-weight: lighter;
+    }
+
+    &-prix + &-prixduree {
+        margin-left: pas(s);
     }
 
     &-prixduree {
