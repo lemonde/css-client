@@ -258,6 +258,7 @@ portant d'autres selecteurs
         }
 
         thead tr th {
+            @include fontsize(m);
             font-weight: bold;
         }
 
