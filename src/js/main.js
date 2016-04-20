@@ -156,7 +156,7 @@
             }
 
             timeout = setTimeout(function () {
-                panier.style.marginTop = document.body.scrollTop + 'px';
+                panier.style.marginTop = window.pageYOffset + 'px';
                 timeout = null;
             }, 100);
         };
