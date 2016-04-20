@@ -1891,3 +1891,24 @@ entete
         }
     }
 }
+
+/*
+--------------------
+facture (checkout)
+--------------------
+*/
+
+.facture {
+    @include screen(from-medium) {
+        table-layout: fixed;
+    }
+
+    tr td {
+        vertical-align: top;
+    }
+
+    &-intitule {
+        font-weight: bold;
+        @include color(gris);
+    }
+}
