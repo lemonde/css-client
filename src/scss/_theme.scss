@@ -26,29 +26,18 @@ $breakpoints: (
 // l'ordre des declarartion est bon
 
 @mixin responsive-modifier($context, $modifier, $bps) {
+    @if $context != "" {
+        $context: ".#{$context}";
+    }
     @each $key in $bps {
         @if $key == 'all' { // pour toutes
-            @if $context != "" {
-                .#{$context}.#{$modifier} {
-                    @content;
-                }
-            } @else {
-                .#{$modifier} {
-                    @content;
-                }
+            #{$context}.#{$modifier} {
+                @content;
             }
         } @else {
-            @if $context != "" {
-                .#{$context}.#{$modifier}-#{$key} {
-                    @include screen($key) {
-                        @content;
-                    }
-                }
-            } @else {
-                .#{$modifier}-#{$key} {
-                    @include screen($key) {
-                        @content;
-                    }
+            #{$context}.#{$modifier}-#{$key} {
+                @include screen($key) {
+                    @content;
                 }
             }
         }

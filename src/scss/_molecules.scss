@@ -1142,7 +1142,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
 .panier {
     transition: margin-top 0.3s ease;
 
-    @include screen(small) {
+    @include screen(not-large) {
         margin-top: 0!important; // overide js panier
     }
 

@@ -135,31 +135,33 @@
 
     /* Autoscroll Panier (tunnel) */
     function instantiateScrollPanier() {
+
+        var viewport = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        var notLargeDevice = 1023;
+
+        if(viewport < notLargeDevice) {
+            return;
+        }
+
         var panier = document.getElementById('js-panier');
 
         if (panier === null) {
             return;
         }
 
-        window.onscroll = debounce(50, function() {
-            console.log('scroll : ' + document.body.scrollTop);
-            panier.style.marginTop = document.body.scrollTop + 'px';
-        });
-    }
-
-    function debounce(delay, callback) {
-        var timeout = null;
-        return function () {
-
+        var timeout;
+        var debounce = function () {
             if (timeout) {
                 clearTimeout(timeout);
             }
-            var args = arguments;
+
             timeout = setTimeout(function () {
-                callback.apply(null, args);
+                panier.style.marginTop = document.body.scrollTop + 'px';
                 timeout = null;
-            }, delay);
+            }, 100);
         };
+
+        window.addEventListener('scroll', debounce);
     }
 
     document.addEventListener("DOMContentLoaded", function() {
