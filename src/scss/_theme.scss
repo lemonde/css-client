@@ -28,13 +28,27 @@ $breakpoints: (
 @mixin responsive-modifier($context, $modifier, $bps) {
     @each $key in $bps {
         @if $key == 'all' { // pour toutes
-            .#{$context}.#{$modifier} {
-                @content;
+            @if $context != "" {
+                .#{$context}.#{$modifier} {
+                    @content;
+                }
+            } @else {
+                .#{$modifier} {
+                    @content;
+                }
             }
         } @else {
-            .#{$context}.#{$modifier}-#{$key} {
-                @include screen($key) {
-                    @content;
+            @if $context != "" {
+                .#{$context}.#{$modifier}-#{$key} {
+                    @include screen($key) {
+                        @content;
+                    }
+                }
+            } @else {
+                .#{$modifier}-#{$key} {
+                    @include screen($key) {
+                        @content;
+                    }
                 }
             }
         }

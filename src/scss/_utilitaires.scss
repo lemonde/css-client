@@ -27,6 +27,14 @@
     display: none !important;
 }
 
+@include responsive-modifier(
+    $context: '',
+    $modifier: 'hide',
+    $bps: 'from-medium'
+) {
+    display: none;
+}
+
 /*
 -------------------------
     clearfix
