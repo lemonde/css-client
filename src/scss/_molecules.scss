@@ -8,9 +8,9 @@
 */
 
 .message {
-    @extend %border-radius-std;
+    @include borderradius(std);
     @include background(gris);
-    @extend %color-std;
+    @include color(std);
     @include border();
     display: flex;
     width: 100%;
@@ -38,19 +38,19 @@
     &._erreur {
         @include background(erreur);
         @include border($color: erreur);
-        @extend %color-erreur;
+        @include color(erreur);
     }
 
     &._valide {
         @include background(valide);
         @include border($color: valide);
-        @extend %color-valide;
+        @include color(valide);
     }
 
     &._notif {
         @include background(notif);
         @include border($color: action);
-        @extend %color-link;
+        @include color(liens);
     }
 
     &._margebasse {
@@ -89,7 +89,7 @@
         ._erreur & {
             @include icon;
             &::before {
-                @extend %icontexte;
+                @include icontexte;
                 content: "!";
             }
         }
@@ -100,14 +100,14 @@
         ._info & {
             @include icon;
             &::before {
-                @extend %icontexte;
+                @include icontexte;
                 content: "i";
             }
         }
         ._notif & {
             @include icon;
             &::before {
-                @extend %icontexte;
+                @include icontexte;
                 content: "?";
             }
         }
@@ -134,10 +134,21 @@
 /* hack pour restyler les messages magento
 sur lesquels nous n'avons pas la main */
 .messages {
-    @extend .conteneur;
+    max-width: 1260px;
+    margin: 0 auto;
+
+    &:empty {
+        display: none;
+    }
+
     @include screen(small) {
+        padding: 0 pas(m);
         margin-left: pas(m);
         margin-right: pas(m);
+    }
+
+    @include screen(from-medium) {
+        padding: 0 pas(xxl);
     }
 
     > li {
@@ -164,7 +175,7 @@ sur lesquels nous n'avons pas la main */
         li {
             @include icon;
             &::before {
-                @extend %icontexte;
+                @include icontexte;
                 content: "!";
             }
         }
@@ -182,7 +193,7 @@ portant d'autres selecteurs
     margin-top: pas(l);
     padding: pas(m);
     &::before {
-        @extend %icontexte;
+        @include icontexte;
         content: "!";
     }
 }
@@ -206,7 +217,7 @@ portant d'autres selecteurs
     }
 
     thead {
-        @extend %color-negatif;
+        @include color(negatif);
         @include background(colore_sombre);
 
         tr {
@@ -286,7 +297,7 @@ portant d'autres selecteurs
 */
 
 .infobulle {
-    @extend %border-radius-std;
+    @include borderradius(std);
     @include border();
     @include background(clair);
     display: inline-block;
@@ -333,11 +344,11 @@ portant d'autres selecteurs
     &-prec > a ,
     &-suiv > a {
         @include icon;
-        @extend %color-gris;
+        @include color(gris);
         cursor: pointer;
 
         &::before:hover {
-            @extend %color-link;
+            @include color(liens);
         }
     }
 
@@ -346,9 +357,9 @@ portant d'autres selecteurs
 
 
     &-bullet {
-        @extend %cercle;
+        @include borderradius(cercle);
         @include background(gris);
-        @extend %transition;
+        @include transition-std;
         width: 8px;
         height: 8px;
 
@@ -361,7 +372,7 @@ portant d'autres selecteurs
 
     &-numero {
         @include fontsize(m);
-        @extend %transition;
+        @include transition-std;
         width: 15px;
         margin-left: pas(s);
         padding-top: pas(s);
@@ -370,7 +381,7 @@ portant d'autres selecteurs
 
         &.est-actif,
         &:hover {
-            @extend %color-link;
+            @include color(liens);
             @include border($color: action, $cardinal: bottom);
             cursor: pointer;
         }
@@ -400,7 +411,7 @@ portant d'autres selecteurs
             }
 
             &::before {
-                @extend %color-clair;
+                @include color(clair);
                 padding-right: pas(s);
             }
         }
@@ -425,7 +436,7 @@ portant d'autres selecteurs
 */
 
 .mention {
-    @extend %color-gris;
+    @include color(gris);
     @include fontsize(s);
     display: block;
     padding: pas(s) 0;
@@ -436,7 +447,7 @@ portant d'autres selecteurs
     }
 
     &._bordure {
-        @extend %border-double;
+        @include border-double;
         padding: pas(m) 0;
     }
 
@@ -736,12 +747,12 @@ menus
                 border-top: 0;
 
                 &:first-child {
-                    @include borderRadius(top);
+                    @include borderradiusside(top);
                     @include border($cardinal: top);
                 }
 
                 &:last-child {
-                    @include borderRadius(bottom);
+                    @include borderradiusside(bottom);
                     margin-bottom: pas(l);
                 }
             }
@@ -759,7 +770,7 @@ menus
     &-option {
 
         @include screen(small) {
-            @include borderRadius(top);
+            @include borderradiusside(top);
             @include border();
             padding: pas(m) pas(s);
             border-bottom: 0;
@@ -810,7 +821,7 @@ menus
             }
 
             &:before { // icon fleche
-                @extend %color-gris;
+                @include color(gris);
                 @include fontsize(std);
                 line-height: 20px;
                 width: 12px;
@@ -867,7 +878,7 @@ menus
     }
 
     &-avatar {
-        @extend %cercle;
+        @include borderradius(cercle);
         align-self: top;
         flex-basis: 70px;
         width: 70px;
@@ -993,8 +1004,8 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
 
     &-lien {
         @include background(clair);
-        @extend %transition;
-        @extend %color-std;
+        @include transition-std;
+        @include color(std);
         @include border($cardinal: right);
         display: inline-block;
         padding: pas(m) pas(l);
@@ -1076,7 +1087,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     }
 
     &-entete {
-        @extend %icon;
+        @include icon;
         @extend .icon-Chevron-gauche;
         display: flex;
         min-width: 150px;
@@ -1129,7 +1140,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     &-item a {
         display: block;
         padding: pas(s) 0;
-        @extend %color-std;
+        @include color(std);
     }
 }
 
@@ -1159,7 +1170,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     }
 
     &-description {
-        @extend %color-gris;
+        @include color(gris);
         margin: pas(s) 0 pas(m);
     }
 
@@ -1169,7 +1180,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     }
 
     &-prix {
-        @extend %color-prix;
+        @include color(prix);
     }
 
     &-prixtotal {
@@ -1222,8 +1233,15 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     }
 
     &-conteneur {
-        @include screen(from-large) {
-            @extend .conteneur;
+        max-width: 1260px;
+        margin: 0 auto;
+
+        @include screen(small) {
+            padding: 0 pas(m);
+        }
+
+        @include screen("from-medium") {
+            padding: 0 pas(xxl);
         }
 
         @include screen(not-large) {
@@ -1261,12 +1279,12 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
         }
 
         &._precedent {
-            @extend %icon;
+            @include icon;
             @extend .icon-Chevron-gauche-XL;
             left: 5%;
         }
         &._suivant {
-            @extend %icon;
+            @include icon;
             @extend .icon-Chevron-droite-XL;
             right: 5%;
         }
@@ -1486,11 +1504,11 @@ Formules
     }
 
     &-engagement {
-        @extend %color-gris;
+        @include color(gris);
     }
 
     &-prixconteneur {
-        @extend %color-prix;
+        @include color(prix);
         margin: pas(m) 0;
     }
 
@@ -1624,7 +1642,7 @@ page gamme entete
 */
 
 .gammeentete {
-    @extend .clearfix;
+    @include clearfix;
 
     p {
         margin: pas(s) 0;
@@ -1745,7 +1763,7 @@ page gamme selecteur
     }
 
     &-promo {
-        @extend %color-gris;
+        @include color(gris);
 
         @include screen(from-medium) {
             text-align: right;
@@ -1914,7 +1932,7 @@ facture (checkout)
     }
 
     &-intitule {
-        font-weight: bold;
         @include color(gris);
+        font-weight: bold;
     }
 }

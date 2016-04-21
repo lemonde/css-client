@@ -42,7 +42,7 @@
 
     thead {
         @include background(colore_sombre);
-        @extend %color-negatif;
+        @include color(negatif);
     }
 
     thead, tbody, tfoot {
@@ -52,7 +52,7 @@
     th.prev,
     th.next,
     th.picker-switch {
-        @extend %color-negatif;
+        @include color(negatif);
     }
 
     .picker-switch {
@@ -95,16 +95,16 @@
 
             &.disabled,
             &.disabled:hover {
-                @extend %color-gris;
+                @include color(gris);
             }
 
             &.prev {
-                @extend %icon;
+                @include icon;
                 @extend .icon-Chevron-gauche;
             }
 
             &.next {
-                @extend %icon;
+                @include icon;
                 @extend .icon-Chevron-droite;
             }
         }
@@ -114,13 +114,13 @@
         }
 
         & td {
-            @extend %cercle;
+            @include borderradius(cercle);
             height: 54px;
             line-height: 54px;
             width: 54px;
 
             &.cw {
-                @extend %color-active-sombre;
+                @include color(active_sombre);
                 font-size: .8em;
                 height: 20px;
                 line-height: 20px;
@@ -138,13 +138,13 @@
             &.minute:hover,
             &.second:hover {
                 @include background(colore_sombre);
-                @extend %color-negatif;
+                @include color(negatif);
                 cursor: pointer;
             }
 
             &.old,
             &.new {
-                @extend %color-gris;
+                @include color(gris);
             }
 
             &.today {
@@ -165,8 +165,8 @@
 
             &.active,
             &.active:hover {
-                @extend %background-activeDark;
-                @extend %color-active;
+                @include background(colore_sombre);
+                @include color(valide);
             }
 
             &.active.today:before {
@@ -175,7 +175,7 @@
 
             &.disabled,
             &.disabled:hover {
-                @extend %color-gris;
+                @include color(gris);
                 background: none;
                 cursor: not-allowed;
             }
@@ -190,19 +190,19 @@
 
                 &:hover {
                     @include background(colore_sombre);
-                    @extend %color-negatif;
+                    @include color(negatif);
                 }
 
                 &.active {
                     @include background(colore_sombre);
-                    @extend %color-negatif;
+                    @include color(negatif);
                 }
 
-                &.old { @extend %color-std; }
+                &.old { @include color(std); }
 
                 &.disabled,
                 &.disabled:hover {
-                    @extend %color-gris;
+                    @include color(gris);
                     background: none;
                     cursor: not-allowed;
                 }

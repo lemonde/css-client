@@ -21,13 +21,18 @@
     }
 
     &-conteneur {
-        @extend .conteneur;
         display: flex;
+        max-width: 1260px;
         width: 100%;
         height: 50px;
+        margin: 0 auto;
 
-        @include screen(not-large) {
-            padding: 0;
+        @include screen(from-large) {
+            padding: 0 pas(xxl);
+        }
+
+        @include screen(small) {
+            padding: 0 pas(m);
         }
     }
 
@@ -74,7 +79,7 @@
 
         @include screen(from-large) {
             @include border($cardinal:left, $color:alpha_clair);
-            @extend %color-negatif;
+            @include color(negatif);
             display: flex;
             align-items: stretch;
         }
@@ -147,7 +152,7 @@
             align-items: center;
 
             > a {
-                @extend %color-negatif;
+                @include color(negatif);
             }
         }
 
@@ -232,9 +237,9 @@
         }
 
         &-lien {
-            @extend %color-liens-sombres;
+            @include color(liens_sombres);
             &:hover {
-                @extend %color-liens-sombres-hover;
+                @include color(liens);
             }
         }
     }
@@ -293,7 +298,7 @@ $label-width-large: 220px;
 
     &-option {
         @extend .itemfleche;
-        @extend %border-double;
+        @include border-double;
         display: block;
         padding: pas(m) 0;
 
@@ -372,7 +377,7 @@ $label-width-large: 220px;
             width: $label-width;
 
             &.est-requis::after {
-                @extend %color-gris;
+                @include color(gris);
                 content: " *";
             }
 
@@ -446,7 +451,7 @@ $label-width-large: 220px;
         /* hack pour css magento */
         div.validation-advice,
         &-erreur {
-            @extend %color-erreur;
+            @include color(erreur);
             flex: 1 100%;
             margin-top: pas(s);
         }
@@ -593,7 +598,7 @@ $label-width-large: 220px;
 ---------------------------
 */
 .confirmeadresse {
-    @extend %border-double;
+    @include border-double;
     margin: pas(m) 0 pas(l);
     padding: pas(m) 0;
 
@@ -670,13 +675,13 @@ $label-width-large: 220px;
     }
 
     &-titre {
-        @extend .textelarge;
+        @include fontsize(m);
         margin: 0 0 pas(s);
         font-weight: bold;
     }
 
     &-contenu {
-        @extend %transition;
+        @include transition-std;
         overflow: hidden;
         max-height: 0;
         margin-bottom: 0;
@@ -688,13 +693,13 @@ $label-width-large: 220px;
     }
 
     &-bouton {
-        @extend %icon;
+        @include icon;
         @extend .icon-Chevron-bas;
         text-align: center;
         max-height: 0;
 
         &:before {
-            @extend %transition;
+            @include transition-std;
             float: right;
             margin-left: pas(s);
         }
