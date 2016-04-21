@@ -242,6 +242,15 @@ a {
     @include screen(small) {
         padding: pas(m) pas(l);
     }
+
+    + .btn {
+        @include screen(from-medium) {
+            margin-left: pas(m);
+        }
+        @include screen(small) {
+            margin: 0 pas(s);
+        }
+    }
 }
 
 /*

@@ -509,7 +509,7 @@ portant d'autres selecteurs
     &._bordclair,
     &._bordsombre {
         border-top: 0;
-        transform: translateY($border-width-large);
+        margin-top: $border-width-large; // compenser le box-shadow
 
         &.est-desactive { // boites grisés
             @include color(gris);
