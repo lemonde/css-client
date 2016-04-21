@@ -1,15 +1,15 @@
 @import 'atoms/_icons.scss';
 @import 'atoms/_background-imgs.scss';
 * {
-    @extend %line-height-std;
+    @include lineheight(std);
     box-sizing: border-box;
     outline: none;
 }
 
 body {
-    @extend %sans-serif;
+    @include sansserif;
     @include background(clair);
-    @extend %color-std;
+    @include color(std);
     @include fontsize(std);
     margin: 0;
     padding: 0;
@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 .t5,
 .t6,
 .t7 {
-    @extend %serif;
+    @include serif;
     font-weight: normal;
 }
 
@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .textenegatif {
-    @extend %color-negatif;
+    @include color(negatif);
 }
 
 .texteclair {
@@ -113,7 +113,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .prix {
-    @extend %color-prix;
+    @include color(prix);
 }
 
 
@@ -137,11 +137,11 @@ p {
 ---------------------------
 */
 a {
-    @extend %color-liens;
+    @include color(liens);
     text-decoration: none;
 
     &:hover {
-        @extend %color-liens-hover;
+        @include color(liens_hover);
         text-decoration: underline;
     }
 
@@ -171,10 +171,10 @@ a {
 */
 
 .btn {
-    @extend %border-radius-std;
+    @include borderradius(std);
     @include fontsize(m);
-    @extend %line-height-std;
-    @extend %transition;
+    @include lineheight(std);
+    @include transition-std;
     display: inline-block;
     vertical-align: baseline;
     width: auto;
@@ -189,7 +189,7 @@ a {
 
     &._standard {
         @include background(gris);
-        @extend %color-std;
+        @include color(std);
         @include border();
 
         &:hover {
@@ -200,7 +200,7 @@ a {
 
     &._leger {
         @include background(clair);
-        @extend %color-std;
+        @include color(std);
         @include border();
         font-weight: lighter;
 
@@ -211,7 +211,7 @@ a {
 
     &._action {
         @include background(active);
-        @extend %color-negatif;
+        @include color(negatif);
         @include border($color: action);
 
         &:hover {
@@ -222,7 +222,7 @@ a {
 
     &._petit {
         @include fontsize(std);
-        @extend %line-height-s;
+        @include lineheight(s);
         padding: pas(m) pas(l);
     }
 
@@ -271,7 +271,7 @@ a {
 }
 
 .inconecercle {
-    @extend %cercle;
+    @include borderradius(cercle);
     @include border($color: texte);
     display: inline-block;
     text-transform: uppercase;
@@ -373,8 +373,8 @@ a {
 [type="url"],
 [type="week"],
 textarea {
-    @extend %transition;
-    @extend %border-radius-std;
+    @include transition-std;
+    @include borderradius(std);
     @include border();
     @include fontsize(std);
     display: block;
@@ -403,7 +403,7 @@ textarea {
         @include border($color: erreur);
     }
     &:disabled {
-        @extend %color-gris;
+        @include color(gris);
         @include background(gris);
     }
 }
@@ -415,7 +415,7 @@ textarea {
 
 select {
     @include fontsize(std);
-    @extend %border-radius-std;
+    @include borderradius(std);
     @include border();
     height: map-get($config-font-size, std) + pas(l);
     width: 100%;

@@ -19,7 +19,6 @@
 
         &._principal {
             padding: pas(l) pas(xxl);
-            @extend .reset-haut;
         }
     }
 }
@@ -30,7 +29,7 @@
 
 .fondsombre {
     @include background(sombre);
-    @extend %color-clair;
+    @include color(clair);
 }
 
 /**

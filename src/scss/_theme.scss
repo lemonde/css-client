@@ -131,24 +131,27 @@ $border-colors: (
     border#{$cardinal}: solid $width $color;
 }
 
-%border-double {
+@mixin border-double($color: std, $cardinal: "", $width: std){
     @include border($cardinal: top);
     @include border($cardinal: bottom);
 }
-
 /*
 ---------------------------
 borders radius
 ---------------------------
 */
 
-$border-radius-std: 3px;
+$border-radius: (
+    std: 3px,
+    s: 2px,
+    cercle: 50%
+);
 
-%border-radius-std { border-radius: $border-radius-std; }
-%border-radius-s { border-radius: 2px; }
-%cercle { border-radius: 50%; }
+@mixin borderradius($size) {
+    border-radius: map-get($border-radius, $size);
+}
 
-@mixin borderRadius($position:top, $radius:$border-radius-std ) {
+@mixin borderradiusside($position:top, $radius: map-get($border-radius, std) ) {
     @if $position == top {
         border-radius: $radius $radius 0 0;
     } @else if $position == bottom {
@@ -166,7 +169,9 @@ animations
 ---------------------------
 */
 
-%transition { transition: all .1s ease; }
+@mixin transition-std {
+    transition: all .1s ease;
+}
 
 @keyframes rotation {
   to { transform: rotate(360deg); }
@@ -178,7 +183,7 @@ icons
 ---------------------------
 */
 
-%icon {
+@mixin icon {
     &:before {
         font-size: 20px;
         vertical-align: middle;
@@ -194,11 +199,7 @@ icons
     }
 }
 
-@mixin icon {
-    @extend %icon;
-}
-
-%icontexte {
+@mixin icontexte {
     font-weight: bold;
     font-family: georgia, serif;
     font-style: italic;
@@ -270,32 +271,17 @@ $config-font-size: (
 }
 
 /* text colors */
-%color-erreur { color: $alerte; }
-%color-valide { color: $valide; }
-
-%color-active { color: $liens-hover; }
-%color-active-sombre { color: $liens-hover-sombre; }
-
-%color-liens { color: $liens; }
-%color-liens-hover { color: $liens-hover; }
-
-%color-gris { color: $gris-11; }
-%color-std { color: $gris-16; }
-%color-clair { color: $gris-7; }
-%color-negatif { color: $blanc; }
-
-%color-liens-sombres { color: $bleu-sombre; }
-%color-liens-sombres-hover { color: $liens; }
-
-%color-prix { color: $prix; }
-
 $font-colors: (
+    clair: $gris-7,
     std: $gris-16,
     gris: $gris-11,
     negatif: $blanc,
     prix: $prix,
     erreur: $alerte,
     valide: $valide,
+    liens: $liens,
+    liens_hover: $liens-hover,
+    liens_sombres: $bleu-sombre,
     active: $liens-hover,
     active_sombre: $liens-hover-sombre,
     abonne: $abonnes
@@ -307,15 +293,22 @@ $font-colors: (
 
 
 /* line-height */
-%line-height-xl { line-height: 400%; }
-%line-height-std { line-height: 140%; }
-%line-height-s { line-height: 100%; }
+$line-height: (
+    std: 140%,
+    s: 100%,
+    xxl: 400%
+);
+
+@mixin lineheight($lh) {
+    line-height: map-get($line-height, $lh);
+};
+
 
 // font-famillies
 $antiqua: 'TheAntiqua', georgia, serif;
 
-%sans-serif { font-family: helvetica, sans-serif; }
-%serif { font-family: $antiqua; }
+@mixin sansserif { font-family: helvetica, sans-serif; }
+@mixin serif { font-family: $antiqua; }
 
 /*
 -------------------------------
@@ -335,7 +328,7 @@ $pas: (
 
 @function pas($size) {
     @return map-get($pas, $size)
-}
+};
 
 $goutiere: map-get($pas, m);
 $goutiere-large: map-get($pas, l);
@@ -401,5 +394,20 @@ $arrow-size: 10px;
             margin-top: $border-width;
             border-bottom: ($size -$border-width) solid $backgroundColor ;
         }
+    }
+}
+/*
+-------------------------------
+ other utilities
+-------------------------------
+*/
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        clear: both;
+        display: block;
+        height: 0;
+        visibility: hidden;
     }
 }
