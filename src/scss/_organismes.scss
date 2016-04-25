@@ -816,3 +816,70 @@ $label-width-large: 220px;
         }
     }
 }
+
+/*
+--------------------
+facture (checkout)
+--------------------
+*/
+
+.facture {
+    margin-bottom: pas(xl);
+    margin-top: pas(xl);
+
+    &-entete {
+
+        @include screen(from-medium) {
+            table-layout: fixed;
+        }
+    }
+
+    tr td {
+        vertical-align: top;
+    }
+
+    &-espaceur {
+
+        td {
+
+            @include screen(from-medium) {
+                padding: pas(s);
+            }
+        }
+    }
+
+    &.facture tfoot {
+
+        @include screen(small) {
+            display: table;
+            width: 100%;
+        }
+
+        tr {
+
+            @include screen(small) {
+                display: table-row;
+            }
+        }
+
+        td {
+
+            @include screen(small) {
+                display: table-cell;
+            }
+        }
+    }
+
+    @include responsive-modifier(
+        $context: '',
+        $modifier: 'textedroite',
+        $bps:'from-medium'
+    ) {
+        text-align: right;
+    }
+
+    &-intitule {
+        @include color(gris);
+        font-weight: bold;
+    }
+}

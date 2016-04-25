@@ -30,9 +30,15 @@
 @include responsive-modifier(
     $context: '',
     $modifier: 'hide',
-    $bps: 'from-medium'
+    $bps: 'small' 'from-medium'
 ) {
     display: none;
+}
+
+.hide-print {
+    @media print {
+        display: none;
+    }
 }
 
 /*
@@ -59,5 +65,10 @@
 
     &-bm {
         margin-bottom: pas(m);
+    }
+
+    &-vxl {
+        margin-top: pas(xl);
+        margin-bottom: pas(xl);
     }
 }
