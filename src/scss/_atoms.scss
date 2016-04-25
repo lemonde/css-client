@@ -506,7 +506,12 @@ hr {
     }
 
     &._margelarge {
-        margin: pas(l) auto;
+        @include screen(form-medium) {
+            margin: pas(l) auto;
+        }
+        @include screen(small) {
+            margin: pas(m) auto;
+        }
     }
 
     &._sansmarge {
