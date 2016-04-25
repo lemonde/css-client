@@ -558,7 +558,9 @@ portant d'autres selecteurs
     &-section,
     &-entete {
         ._margedroitelarge & {
-            padding-right: pas(xl);
+            @include screen(from-medium) {
+                padding-right: pas(xl);
+            }
         }
     }
 
@@ -989,6 +991,8 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
 
     &-conteneur {
         @include border($cardinal: bottom);
+        max-width: 100%;
+        overflow-x: auto;
     }
 
     &-item {
