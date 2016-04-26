@@ -444,11 +444,6 @@ portant d'autres selecteurs
     display: block;
     padding: pas(s) 0;
 
-    &._bordure,
-    &._bordurebas {
-        @include fontsize(xs);
-    }
-
     &._bordure {
         @include border-double;
         padding: pas(m) 0;
