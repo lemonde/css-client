@@ -403,13 +403,13 @@ portant d'autres selecteurs
     &-item {
         display: inline-block;
         padding-right: pas(s);
-        font-weight: 400;
+        font-weight: bold;
 
         &:not(:first-child) {
             @extend .icon-Chevron-droite;
             @include icon;
 
-            @include screen(not-large) {
+            @include screen(small) {
                 display: none;
             }
 
