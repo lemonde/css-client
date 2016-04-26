@@ -145,6 +145,12 @@
         }
     }
 
+    &-fermer + &-item {
+        @include screen(not-large) {
+            @include border($cardinal:top);
+        }
+    }
+
     &-item {
 
         @include screen(from-large) {
