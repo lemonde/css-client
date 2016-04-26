@@ -13,6 +13,7 @@ body {
     @include fontsize(std);
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
 }
 
 /*
