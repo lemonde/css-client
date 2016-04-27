@@ -219,6 +219,7 @@
     text-align: center;
 
     &-item {
+
         @include screen(from-medium) {
             display: inline;
             padding: 0 pas(s);
@@ -242,6 +243,7 @@
             padding: 0 pas(s);
         }
         & &-item:not(:last-child)::after {
+            @include color(gris);
             content: "|";
             margin-left: pas(m);
         }
