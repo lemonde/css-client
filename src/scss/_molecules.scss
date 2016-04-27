@@ -255,6 +255,13 @@ portant d'autres selecteurs
             tr {
                 padding-top: pas(m);
                 padding-bottom: pas(m);
+
+                &.facture-espaceur {
+                    padding: 0;
+                    td {
+                        padding: pas(s);
+                    }
+                }
             }
         }
     }
@@ -281,10 +288,6 @@ portant d'autres selecteurs
                 @include screen(from-medium) {
                     text-align: right;
                 }
-            }
-
-            th, td {
-                //padding: pas(s) pas(m);
             }
         }
     }
@@ -555,7 +558,9 @@ portant d'autres selecteurs
     &-section,
     &-entete {
         ._margedroitelarge & {
-            padding-right: pas(xl);
+            @include screen(from-medium) {
+                padding-right: pas(xl);
+            }
         }
     }
 
@@ -986,6 +991,8 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
 
     &-conteneur {
         @include border($cardinal: bottom);
+        max-width: 100%;
+        overflow-x: auto;
     }
 
     &-item {
@@ -1913,26 +1920,5 @@ entete
         @include screen(small) {
             padding: pas(xl) pas(m);
         }
-    }
-}
-
-/*
---------------------
-facture (checkout)
---------------------
-*/
-
-.facture {
-    @include screen(from-medium) {
-        table-layout: fixed;
-    }
-
-    tr td {
-        vertical-align: top;
-    }
-
-    &-intitule {
-        @include color(gris);
-        font-weight: bold;
     }
 }

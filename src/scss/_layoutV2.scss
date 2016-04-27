@@ -1,6 +1,7 @@
 .conteneur {
     max-width: 1260px;
     margin: 0 auto;
+    overflow-y: auto; // hacker fusion des marges vertical 
 
     &:empty {
         display: none;

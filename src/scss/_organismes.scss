@@ -10,6 +10,7 @@
     @include background(header);
     position: relative;
     z-index: 1; // debug déroulants qui passent sous certains elems
+    height: $header-height;
 
     &._transparent {
         @include border($cardinal: bottom, $color: alpha_clair);
@@ -92,20 +93,19 @@
             flex: none;
             height: 100vh;
             width: 100vw;
-            max-width: 300px;
+            max-width: 240px;
             top: 0;
-            left: -320px;
+            right: -240px;
             color: #999;
             background: white;
-            transition: left 0.3s ease-in;
+            transition: right 0.3s ease-in;
             overflow: auto;
             -webkit-overflow-scrolling: touch;
         }
 
         .est-menu-ouvert & {
-
             @include screen(not-large) {
-                left: 0;
+                right: 0;
             }
         }
     }
@@ -132,7 +132,7 @@
     }
 
     &-fermer {
-        padding: pas(s) pas(m) 0 0;
+        padding: pas(m);
 
         @include screen(from-large) {
             display: none;
@@ -141,6 +141,7 @@
         > a:before {
             @include color(gris);
             font-size: 30px;
+            line-height: .7;
         }
     }
 
@@ -150,10 +151,6 @@
             @include border($cardinal:right, $color:alpha_clair);
             display: flex;
             align-items: center;
-
-            > a {
-                @include color(negatif);
-            }
         }
 
         @include screen(not-large) {
@@ -169,23 +166,20 @@
                 }
             }
         }
-
-        &.deroulant {
-
-            @include screen(not-large) {
-                margin-top: pas(s);
-            }
-        }
     }
 
-    &-item,
-    .deroulant-item {
+    a:not(.header-sousmenu a):not(.deroulant-corps a) {
+
+        @include screen(from-large) {
+            @include color(negatif);
+        }
 
         @include screen(not-large) {
+            @include color(std);
+        }
 
-            > a {
-                @include color(std);
-            }
+        &:hover {
+            @include color(liens_hover);
         }
     }
 
@@ -358,7 +352,9 @@ $label-width-large: 220px;
         }
 
         &-input + &-input {
-            margin-left: pas(s);
+            @include screen(from-medium) {
+                margin-left: pas(s);
+            }
         }
 
         // lignes forcées à 100%
@@ -605,10 +601,10 @@ $label-width-large: 220px;
     &-adresse {
         flex: 1;
         padding: pas(m);
+    }
 
-        &-titre {
-            margin: 0 0 pas(m);
-        }
+    &-soustitre {
+        margin: 0 0 pas(m);
     }
 
     &-fleche {
@@ -730,10 +726,12 @@ $label-width-large: 220px;
     padding-top: pas(xl);
 
     &-mention {
-        text-align: right;
-        padding: 0;
-        line-height: 0;
-        transform: translateY(-1.6em);
+        @include screen(from-medium) {
+            text-align: right;
+            padding: 0;
+            line-height: 0;
+            transform: translateY(-1.6em);
+        }
     }
 }
 
@@ -792,6 +790,7 @@ $label-width-large: 220px;
     }
 
     @include screen(small) {
+
         &-entete {
             text-align: center;
             padding-bottom: pas(l);
@@ -814,5 +813,73 @@ $label-width-large: 220px;
         @include screen(not-large) {
             padding-bottom: pas(m);
         }
+    }
+}
+
+/*
+--------------------
+facture (checkout)
+--------------------
+*/
+
+.facture {
+    margin-bottom: pas(xl);
+    margin-top: pas(xl);
+
+    &-entete {
+
+        @include screen(from-medium) {
+            table-layout: fixed;
+        }
+    }
+
+    // needed to overide .table
+    tr td {
+        vertical-align: top;
+    }
+
+    &-espaceur {
+
+        td {
+
+            @include screen(from-medium) {
+                padding: pas(s);
+            }
+        }
+    }
+
+    &.facture tfoot {
+
+        @include screen(small) {
+            display: table;
+            width: 100%;
+        }
+
+        tr {
+
+            @include screen(small) {
+                display: table-row;
+            }
+        }
+
+        td {
+
+            @include screen(small) {
+                display: table-cell;
+            }
+        }
+    }
+
+    @include responsive-modifier(
+        $context: '',
+        $modifier: 'textedroite',
+        $bps:'from-medium'
+    ) {
+        text-align: right;
+    }
+
+    &-intitule {
+        @include color(gris);
+        font-weight: bold;
     }
 }
