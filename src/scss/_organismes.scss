@@ -151,10 +151,6 @@
             @include border($cardinal:right, $color:alpha_clair);
             display: flex;
             align-items: center;
-
-            > a {
-                @include color(negatif);
-            }
         }
 
         @include screen(not-large) {
@@ -170,23 +166,20 @@
                 }
             }
         }
-
-        /*&.deroulant {
-
-            @include screen(not-large) {
-                margin-top: pas(s);
-            }
-        }*/
     }
 
-    &-item,
-    .deroulant-item {
+    a:not(.header-sousmenu a):not(.deroulant-corps a) {
+
+        @include screen(from-large) {
+            @include color(negatif);
+        }
 
         @include screen(not-large) {
+            @include color(std);
+        }
 
-            > a {
-                @include color(std);
-            }
+        &:hover {
+            @include color(liens_hover);
         }
     }
 
@@ -840,6 +833,7 @@ facture (checkout)
         }
     }
 
+    // needed to overide .table
     tr td {
         vertical-align: top;
     }

@@ -506,7 +506,7 @@ hr {
     }
 
     &._margelarge {
-        @include screen(form-medium) {
+        @include screen(from-medium) {
             margin: pas(l) auto;
         }
         @include screen(small) {
