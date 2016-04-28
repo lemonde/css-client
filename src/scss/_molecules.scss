@@ -446,6 +446,10 @@ portant d'autres selecteurs
         @include border($cardinal: bottom);
         padding: pas(m) 0;
     }
+
+    &._footer {
+        margin-top: pas(xl);
+    }
 }
 
 /*
