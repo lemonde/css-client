@@ -375,9 +375,14 @@ $label-width-large: 220px;
             }
 
             @include screen(from-medium) {
+
                 &:not(:first-of-type) {
                     padding-right: pas(m);
                     text-align: right;
+                }
+
+                &:first-of-type {
+                    padding-right: pas(xs);
                 }
             }
 
