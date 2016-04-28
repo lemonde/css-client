@@ -185,12 +185,13 @@ a {
     @include lineheight(std);
     @include transition-std;
     display: inline-block;
-    vertical-align: baseline;
+    vertical-align: top;
     width: auto;
     padding: pas(m) pas(xl);
     margin: 0;
     cursor: pointer;
     font-weight: 600;
+
 
     &:hover {
         text-decoration: none;
@@ -231,17 +232,25 @@ a {
 
     &._petit {
         @include fontsize(std);
-        @include lineheight(s);
+        @include lineheight(xs);
         padding: pas(m) pas(l);
+    }
+
+    &._pluspetit {
+        @include fontsize(std);
+        @include lineheight(xs);
+        padding: pas(m);
     }
 
     &._pleinelargeur {
         width: 100%;
+        text-align: center;
     }
 
     &._icone {
         display: flex;
         align-items: center;
+        justify-content: center;
 
         [class^=icon]:before {
             padding-right: pas(m);
