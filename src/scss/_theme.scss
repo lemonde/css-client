@@ -319,6 +319,7 @@ margin & padding utilities
 $padding-increment: 7px;
 
 $pas: (
+    'xs': round($padding-increment / 2),
     's': $padding-increment,
     'm': $padding-increment * 2,
     'l': $padding-increment * 4,

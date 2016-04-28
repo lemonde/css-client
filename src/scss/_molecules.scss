@@ -44,7 +44,7 @@
     &._valide {
         @include background(valide);
         @include border($color: valide);
-        @include color(valide);
+        @include color(std);
     }
 
     &._notif {
@@ -121,6 +121,7 @@
     }
 
     &-titre {
+        @include fontsize(m);
         display: block;
         font-weight: bold;
         margin-bottom: pas(s);
