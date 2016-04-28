@@ -59,7 +59,7 @@
         }
 
         @include screen(medium) {
-            padding-left: pas(m);
+            padding-left: pas(l);
         }
     }
 
@@ -337,10 +337,12 @@ $label-width-large: 220px;
 
         &-input {
             flex: 2;
+
             @include screen(small) {
                 flex: 1 100%;
-                margin-bottom: pas(m);
+                margin-bottom: pas(s);
             }
+
             @include screen(from-medium) {
                 margin: 0;
             }
@@ -381,8 +383,8 @@ $label-width-large: 220px;
 
             @include screen(small) {
                 flex: 1 100%;
-                margin-top: pas(m);
-                margin-bottom: pas(s);
+                margin-top: pas(s);
+                margin-bottom: pas(xs);
             }
 
             ._longlabel & {
@@ -670,8 +672,7 @@ $label-width-large: 220px;
     }
 
     &-titre {
-        @include fontsize(m);
-        margin: 0 0 pas(s);
+        margin: 0 0 pas(xs);
         font-weight: bold;
     }
 
