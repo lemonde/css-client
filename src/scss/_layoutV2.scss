@@ -1,27 +1,18 @@
 .conteneur {
-    max-width: 1260px;
-    margin: 0 auto;
-    overflow-y: auto; // hacker fusion des marges vertical 
+    @include conteneur-site-std;
 
-    &:empty {
-        display: none;
-    }
-
-    @include screen(small) {
-        padding: 0 pas(m);
-
-        &._principal {
-            padding: pas(m);
+    &._principal {
+        @include screen(small) {
+            padding: $conteneur-padding-small;
+        }
+        @include screen("medium") {
+            padding: pas(l) $conteneur-padding-medium;
+        }
+        @include screen("from-large") {
+            padding: pas(l) $conteneur-padding-from-large;
         }
     }
 
-    @include screen("from-medium") {
-        padding: 0 pas(xxl);
-
-        &._principal {
-            padding: pas(l) pas(xxl);
-        }
-    }
 }
 
 .fondalt {

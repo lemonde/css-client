@@ -22,18 +22,13 @@
     }
 
     &-conteneur {
+        @include conteneur-site-std;
         display: flex;
-        max-width: 1260px;
         width: 100%;
         height: 50px;
-        margin: 0 auto;
 
-        @include screen(from-large) {
-            padding: 0 pas(xxl);
-        }
-
-        @include screen(small) {
-            padding: 0 pas(m);
+        @include screen(medium) {
+            padding: 0;
         }
     }
 
@@ -64,16 +59,8 @@
         }
 
         @include screen(medium) {
-            padding-left: pas(m);
+            padding-left: pas(l);
         }
-    }
-
-    &-zone {
-        @include color(negatif);
-        display: inline-block;
-        transform: translateY(-1px);
-        margin-left: pas(s);
-        font-size: 18px;
     }
 
     &-menu {
@@ -142,6 +129,12 @@
             @include color(gris);
             font-size: 30px;
             line-height: .7;
+        }
+    }
+
+    &-fermer + &-item {
+        @include screen(not-large) {
+            @include border($cardinal:top);
         }
     }
 
@@ -221,6 +214,7 @@
     text-align: center;
 
     &-item {
+
         @include screen(from-medium) {
             display: inline;
             padding: 0 pas(s);
@@ -244,6 +238,7 @@
             padding: 0 pas(s);
         }
         & &-item:not(:last-child)::after {
+            @include color(gris);
             content: "|";
             margin-left: pas(m);
         }
@@ -342,10 +337,12 @@ $label-width-large: 220px;
 
         &-input {
             flex: 2;
+
             @include screen(small) {
                 flex: 1 100%;
-                margin-bottom: pas(m);
+                margin-bottom: pas(s);
             }
+
             @include screen(from-medium) {
                 margin: 0;
             }
@@ -378,16 +375,21 @@ $label-width-large: 220px;
             }
 
             @include screen(from-medium) {
+
                 &:not(:first-of-type) {
                     padding-right: pas(m);
                     text-align: right;
+                }
+
+                &:first-of-type {
+                    padding-right: pas(xs);
                 }
             }
 
             @include screen(small) {
                 flex: 1 100%;
-                margin-top: pas(m);
-                margin-bottom: pas(s);
+                margin-top: pas(s);
+                margin-bottom: pas(xs);
             }
 
             ._longlabel & {
@@ -660,7 +662,11 @@ $label-width-large: 220px;
 ---------------------------
 */
 .accordeon {
-    @include border($cardinal: top);
+    @include border($cardinal: top, $width: large);
+
+    &:first-of-type {
+        @include border($cardinal: top);
+    }
 
     &-entete {
         padding: pas(m) 0;
@@ -671,8 +677,7 @@ $label-width-large: 220px;
     }
 
     &-titre {
-        @include fontsize(m);
-        margin: 0 0 pas(s);
+        margin: 0 0 pas(xs);
         font-weight: bold;
     }
 
@@ -691,17 +696,39 @@ $label-width-large: 220px;
     &-bouton {
         @include icon;
         @extend .icon-Chevron-bas;
-        text-align: center;
-        max-height: 0;
+        display: flex;
+        align-items: center;
 
         &:before {
             @include transition-std;
-            float: right;
+            @include borderradius(cercle);
+            @include border($color: action_hover);
+            order: 2;
+            text-align: center;
+            width: 1.5em;
+            height: 1.5em;
+            line-height: 1.5em;
             margin-left: pas(s);
+            // allow rotation at smaller sise
+            // without dirty animation side effect
+            transform: scale(0.8);
         }
 
         &:after {
-            content: "ouvrir";
+            order: 1;
+
+            @include screen(from-medium) {
+                display: inline-block;
+                content: "ouvrir";
+            }
+
+            @include screen(small) {
+                display: none;
+            }
+        }
+
+        &:hover {
+            text-decoration: none;
         }
 
         .est-ouvert & {
@@ -710,7 +737,7 @@ $label-width-large: 220px;
                 content: "fermer";
             }
             &:before {
-                transform: rotateX(180deg);
+                transform: scale(0.8) rotate(180deg);
             }
         }
     }

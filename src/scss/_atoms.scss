@@ -13,6 +13,7 @@ body {
     @include fontsize(std);
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
 }
 
 /*
@@ -34,6 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 .t6,
 .t7 {
     @include serif;
+    @include lineheight(s);
     font-weight: normal;
 }
 
@@ -180,12 +182,13 @@ a {
     @include lineheight(std);
     @include transition-std;
     display: inline-block;
-    vertical-align: baseline;
+    vertical-align: top;
     width: auto;
     padding: pas(m) pas(xl);
     margin: 0;
     cursor: pointer;
     font-weight: 600;
+
 
     &:hover {
         text-decoration: none;
@@ -226,17 +229,25 @@ a {
 
     &._petit {
         @include fontsize(std);
-        @include lineheight(s);
+        @include lineheight(xs);
         padding: pas(m) pas(l);
+    }
+
+    &._trespetit {
+        @include fontsize(std);
+        @include lineheight(xs);
+        padding: pas(m);
     }
 
     &._pleinelargeur {
         width: 100%;
+        text-align: center;
     }
 
     &._icone {
         display: flex;
         align-items: center;
+        justify-content: center;
 
         [class^=icon]:before {
             padding-right: pas(m);
@@ -386,6 +397,8 @@ textarea {
     max-width: 800px;
     box-sizing: padding-box;
     padding: pas(m);
+    margin-top: 3px;
+    margin-bottom: 3px;
     background: $blanc;
     line-height: 1;
     -moz-appearance: none;
@@ -398,7 +411,8 @@ textarea {
     }
 
     &:focus,
-    &.validation-failed:focus {
+    &.validation-failed:focus,
+    &:hover:focus {
         @include border($color: action_hover);
         outline: none;
     }

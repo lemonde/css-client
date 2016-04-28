@@ -44,7 +44,7 @@
     &._valide {
         @include background(valide);
         @include border($color: valide);
-        @include color(valide);
+        @include color(std);
     }
 
     &._notif {
@@ -121,6 +121,7 @@
     }
 
     &-titre {
+        @include fontsize(m);
         display: block;
         font-weight: bold;
         margin-bottom: pas(s);
@@ -134,21 +135,13 @@
 /* hack pour restyler les messages magento
 sur lesquels nous n'avons pas la main */
 .messages {
-    max-width: 1260px;
-    margin: 0 auto;
 
-    &:empty {
-        display: none;
-    }
+    @include conteneur-site-std;
 
     @include screen(small) {
         padding: 0 pas(m);
         margin-left: pas(m);
         margin-right: pas(m);
-    }
-
-    @include screen(from-medium) {
-        padding: 0 pas(xxl);
     }
 
     > li {
@@ -403,13 +396,13 @@ portant d'autres selecteurs
     &-item {
         display: inline-block;
         padding-right: pas(s);
-        font-weight: 400;
+        font-weight: bold;
 
         &:not(:first-child) {
             @extend .icon-Chevron-droite;
             @include icon;
 
-            @include screen(not-large) {
+            @include screen(small) {
                 display: none;
             }
 
@@ -444,11 +437,6 @@ portant d'autres selecteurs
     display: block;
     padding: pas(s) 0;
 
-    &._bordure,
-    &._bordurebas {
-        @include fontsize(xs);
-    }
-
     &._bordure {
         @include border-double;
         padding: pas(m) 0;
@@ -457,6 +445,10 @@ portant d'autres selecteurs
     &._bordurebas {
         @include border($cardinal: bottom);
         padding: pas(m) 0;
+    }
+
+    &._footer {
+        margin-top: pas(xl);
     }
 }
 
@@ -471,7 +463,7 @@ portant d'autres selecteurs
     padding: pas(l) 0;
 
     @include screen(small) {
-        padding: pas(m) 0;
+        padding: pas(l) 0;
     }
 
     &-titre {
@@ -482,6 +474,10 @@ portant d'autres selecteurs
     &-intro {
         @include fontsize(m);
         margin: pas(s) 0 0;
+    }
+
+    & + .mention {
+        margin-top: (- pas(m));
     }
 }
 
@@ -1134,7 +1130,8 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
             }
         }
 
-        .deroulant._avecbordure & { // afin d'annuler la largeur de la bordure du parent
+        .deroulant._avecbordure & {
+            // afin d'annuler la largeur de la bordure du parent
             left: (- map-get($border-widths, std));
             right: (- map-get($border-widths, std));
         }
@@ -1145,9 +1142,9 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     }
 
     &-item a {
+        @include color(std);
         display: block;
         padding: pas(s) 0;
-        @include color(std);
     }
 }
 
@@ -1240,16 +1237,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     }
 
     &-conteneur {
-        max-width: 1260px;
-        margin: 0 auto;
-
-        @include screen(small) {
-            padding: 0 pas(m);
-        }
-
-        @include screen("from-medium") {
-            padding: 0 pas(xxl);
-        }
+        @include conteneur-site-std;
 
         @include screen(not-large) {
             max-width: 80%;
