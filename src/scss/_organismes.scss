@@ -690,17 +690,39 @@ $label-width-large: 220px;
     &-bouton {
         @include icon;
         @extend .icon-Chevron-bas;
-        text-align: center;
-        max-height: 0;
+        display: flex;
+        align-items: center;
 
         &:before {
             @include transition-std;
-            float: right;
+            @include borderradius(cercle);
+            @include border($color: action_hover);
+            order: 2;
+            text-align: center;
+            width: 1.5em;
+            height: 1.5em;
+            line-height: 1.5em;
             margin-left: pas(s);
+            // allow rotation at smaller sise
+            // without dirty animation side effect
+            transform: scale(0.8);
         }
 
         &:after {
-            content: "ouvrir";
+            order: 1;
+
+            @include screen(from-medium) {
+                display: inline-block;
+                content: "ouvrir";
+            }
+
+            @include screen(small) {
+                display: none;
+            }
+        }
+
+        &:hover {
+            text-decoration: none;
         }
 
         .est-ouvert & {
@@ -709,7 +731,7 @@ $label-width-large: 220px;
                 content: "fermer";
             }
             &:before {
-                transform: rotateX(180deg);
+                transform: scale(0.8) rotate(180deg);
             }
         }
     }
