@@ -1130,7 +1130,8 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
             }
         }
 
-        .deroulant._avecbordure & { // afin d'annuler la largeur de la bordure du parent
+        .deroulant._avecbordure & {
+            // afin d'annuler la largeur de la bordure du parent
             left: (- map-get($border-widths, std));
             right: (- map-get($border-widths, std));
         }
@@ -1141,9 +1142,9 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     }
 
     &-item a {
+        @include color(std);
         display: block;
         padding: pas(s) 0;
-        @include color(std);
     }
 }
 
