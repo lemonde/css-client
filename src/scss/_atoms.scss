@@ -233,7 +233,7 @@ a {
         padding: pas(m) pas(l);
     }
 
-    &._pluspetit {
+    &._trespetit {
         @include fontsize(std);
         @include lineheight(xs);
         padding: pas(m);
