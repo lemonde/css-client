@@ -414,7 +414,8 @@ textarea {
     }
 
     &:focus,
-    &.validation-failed:focus {
+    &.validation-failed:focus,
+    &:hover:focus {
         @include border($color: action_hover);
         outline: none;
     }
