@@ -35,6 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 .t6,
 .t7 {
     @include serif;
+    @include lineheight(s);
     font-weight: normal;
 }
 
@@ -48,10 +49,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .t3 {
     @include fontsize(t3);
-
-    @include screen(small) {
-        @include lineheight(s);
-    }
 }
 
 .t4 {
