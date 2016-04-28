@@ -22,18 +22,13 @@
     }
 
     &-conteneur {
+        @include conteneur-site-std;
         display: flex;
-        max-width: 1260px;
         width: 100%;
         height: 50px;
-        margin: 0 auto;
 
-        @include screen(from-large) {
-            padding: 0 pas(xxl);
-        }
-
-        @include screen(small) {
-            padding: 0 pas(m);
+        @include screen(medium) {
+            padding: 0;
         }
     }
 
@@ -660,7 +655,11 @@ $label-width-large: 220px;
 ---------------------------
 */
 .accordeon {
-    @include border($cardinal: top);
+    @include border($cardinal: top, $width: large);
+
+    &:first-of-type {
+        @include border($cardinal: top);
+    }
 
     &-entete {
         padding: pas(m) 0;

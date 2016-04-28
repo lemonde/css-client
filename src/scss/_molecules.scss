@@ -135,21 +135,13 @@
 /* hack pour restyler les messages magento
 sur lesquels nous n'avons pas la main */
 .messages {
-    max-width: 1260px;
-    margin: 0 auto;
 
-    &:empty {
-        display: none;
-    }
+    @include conteneur-site-std;
 
     @include screen(small) {
         padding: 0 pas(m);
         margin-left: pas(m);
         margin-right: pas(m);
-    }
-
-    @include screen(from-medium) {
-        padding: 0 pas(xxl);
     }
 
     > li {
@@ -1236,16 +1228,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     }
 
     &-conteneur {
-        max-width: 1260px;
-        margin: 0 auto;
-
-        @include screen(small) {
-            padding: 0 pas(m);
-        }
-
-        @include screen("from-medium") {
-            padding: 0 pas(xxl);
-        }
+        @include conteneur-site-std;
 
         @include screen(not-large) {
             max-width: 80%;
