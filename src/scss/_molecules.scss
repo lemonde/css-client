@@ -467,7 +467,7 @@ portant d'autres selecteurs
     }
 
     &-titre {
-        @extend .t3;
+        @include styletitre(t3);
         margin: 0;
     }
 
@@ -706,7 +706,6 @@ menus
             flex: 1 100%;
             padding-top: pas(s);
             padding-bottom: pas(s);
-            font-weight: normal;
 
             &._big,
             &._big > *  {

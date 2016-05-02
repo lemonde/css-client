@@ -480,12 +480,10 @@ ul, li {
 }
 
 .liste {
-    padding-left: pas(l);
     margin: pas(s) 0;
 
     li {
-        margin: pas(s) 0;
-        list-style: disc;
+        @include itemliste;
     }
 }
 /*

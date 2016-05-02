@@ -433,7 +433,7 @@ $arrow-size: 10px;
 }
 /*
 -------------------------------
- other utilities
+ autres utilitaires
 -------------------------------
 */
 
@@ -445,4 +445,33 @@ $arrow-size: 10px;
         height: 0;
         visibility: hidden;
     }
+}
+
+
+/*
+-------------------------------
+ mixins de composants
+-------------------------------
+*/
+
+@mixin itemliste {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: pas(s);
+
+    &:before {
+        @include color(gris);
+        content: "●";
+        display: block;
+        flex: 0; // align all items
+        padding-right: pas(m);
+        font-size: 0.7em;
+    }
+}
+
+@mixin styletitre($size) {
+    @include serif;
+    @include lineheight(s);
+    @include fontsize($size);
+    font-weight: normal;
 }

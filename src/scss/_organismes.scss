@@ -267,8 +267,8 @@ $label-width-large: 220px;
     }
 
     &-soustitre {
-        @extend .t7;
-        margin-bottom: pas(l);
+        @include styletitre(t6);
+        margin-bottom: pas(m);
 
         &:first-child {
             margin-top: 0;
@@ -301,6 +301,10 @@ $label-width-large: 220px;
         flex-flow: row wrap;
         align-items: center;
         margin: pas(s) 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
 
         &._petit {
             @include screen(small) {
