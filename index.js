@@ -65,7 +65,7 @@ module.exports = function(gulp) {
     });
 
     gulp.task('css-client:compile-fonts', function() {
-        gulp.src(sourcePaths.fonts)
+        return gulp.src(sourcePaths.fonts)
         .pipe(gulp.dest(destPaths.fonts))
     });
 
