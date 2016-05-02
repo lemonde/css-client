@@ -309,6 +309,15 @@ a {
         @include border($color: valide);
         @include color(valide);
     }
+
+    &._petite,
+    &._petite:before {
+        @include fontsize(s);
+    }
+
+    &._petite {
+        margin-right: pas(s);
+    }
 }
 
 // icone CB (mastercard / etc...)
