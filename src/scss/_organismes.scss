@@ -638,9 +638,10 @@ $label-width-large: 220px;
 
 /*
 ---------------------------
-  Gerer mon abonement
+  Gerer mes adresses de livraison
 ---------------------------
 */
+
 .gererabo {
     margin-bottom: pas(l);
 
@@ -651,10 +652,16 @@ $label-width-large: 220px;
     }
 
     &-soustitre {
+        @include fontsize(m);
         font-weight: bold;
+        margin-bottom: pas(s);
+
+        @include screen(from-medium) {
+            margin-top: 0;
+        }
 
         @include screen(small) {
-            margin-top: pas(m);
+            margin-top: pas(l);
         }
     }
 }
