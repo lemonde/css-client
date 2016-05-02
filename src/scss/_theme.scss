@@ -388,21 +388,21 @@ $arrow-size: 10px;
             border-top: $size solid transparent;
             border-bottom: $size solid transparent;
             left: -$size;
-            top: $size * 2;
+            top: pas(m);
 
         } @else if $position == 'bottom' {
 
             border-left: $size solid transparent;
             border-right: $size solid transparent;
             bottom: -$size;
-            left: $size * 2;
+            left: pas(m);
 
         } @else if $position == 'top' {
 
             border-right: $size solid transparent;
             border-left: $size solid transparent;
             top: (-$size) + 1px;
-            left: $size * 5;
+            left: pas(m);
         }
     }
 

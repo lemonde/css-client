@@ -293,27 +293,67 @@ portant d'autres selecteurs
 */
 
 .infobulle {
-    @include borderradius(std);
-    @include border();
-    @include background(clair);
-    display: inline-block;
+    $hauteur-icone: pas(m) * 2;
+
     position: relative;
-    max-width: 400px;
-    padding: pas(m);
+    display: inline-block;
 
-    &._top {
-        @include bloc-fleche($position: 'bottom');
+    &-bulle {
+        @include borderradius(std);
+        @include border();
+        @include background(clair);
+        display: none;
+        position: absolute;
+        width: 300px;
+        padding: pas(m);
+
+        &._top {
+            @include bloc-fleche($position: 'bottom');
+            bottom: $hauteur-icone + $arrow-size + pas(xs);
+            left: ($hauteur-icone / 2) - (pas(m) + $arrow-size);
+        }
+
+        &._right {
+            @include bloc-fleche;
+            top: 50%;
+            height: 30px;
+            left: 100%;
+            margin-top: -15px;
+        }
     }
 
-    &._right {
-        @include bloc-fleche;
+    &:hover &-bulle {
+        display: block;
     }
 
-    &-title {
+    &-titre {
         display: block;
         font-weight: bold;
     }
+
+    &-icone {
+
+        &:before {
+            @include borderradius(cercle);
+            @include background(gris);
+            @include border();
+            @include color(gris);
+            content: "?";
+            display: block;
+            font-weight: bold;
+            width: $hauteur-icone;
+            height: $hauteur-icone;
+            line-height: $hauteur-icone;
+            text-align: center;
+        }
+
+        &:hover:before {
+            @include color(std);
+        }
+    }
 }
+
+
 
 /*
 ---------------------------
