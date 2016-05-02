@@ -466,11 +466,10 @@ $label-width-large: 220px;
     }
 
     &-action {
-        padding-top: pas(l);
+        padding-top: pas(xl);
         text-align: center;
 
         @include screen(from-large) {
-            padding-top: pas(xl);
             text-align: right;
         }
 

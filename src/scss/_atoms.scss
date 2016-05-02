@@ -406,8 +406,8 @@ textarea {
     max-width: 800px;
     box-sizing: padding-box;
     padding: pas(m);
-    margin-top: 3px;
-    margin-bottom: 3px;
+    margin-top: pas(xs);
+    margin-bottom:  pas(xs);
     background: $blanc;
     line-height: 1;
     -moz-appearance: none;
@@ -446,6 +446,8 @@ select {
     @include border();
     height: map-get($config-font-size, std) + pas(l);
     width: 100%;
+    margin-top: pas(xs);
+    margin-bottom:  pas(xs);
 }
 
 button,

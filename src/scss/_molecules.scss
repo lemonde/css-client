@@ -886,6 +886,7 @@ menus
         height: 70px;
         background: #CCC url('../imgs/avatar_empty.jpg') top no-repeat;
         background-size: 100% 100%;
+        overflow: hidden;
 
         &:not(:only-child) {
             margin: 0 pas(m) 0 0;
@@ -959,15 +960,11 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     margin-bottom: pas(l);
 
     &-titre {
-        margin: 0 0 pas(s);
-    }
-
-    &-liste {
-        padding-left: pas(l);
+        margin: 0 0 pas(m);
     }
 
     &-item {
-        list-style: disc;
+        @include itemliste;
     }
 
     &-soustitre {
