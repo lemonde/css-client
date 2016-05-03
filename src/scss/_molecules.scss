@@ -193,96 +193,22 @@ portant d'autres selecteurs
 
 /*
 ---------------------------
- table
+ tableaux
 ---------------------------
 */
 
 .table {
-    @include border($cardinal: top);
-    @include fontsize(std);
-    width: 100%;
+    @include tablestyle(std);
+}
 
-    td, th {
-        @include fontsize(std);
-        padding: pas(m);
-        text-align: left;
-        font-weight: normal;
-    }
+.tableepure {
+    @include tablestyle(epure);
+}
 
-    thead {
-        @include color(negatif);
-        @include background(colore_sombre);
-
-        tr {
-            border: 0;
-        }
-    }
-
-    tr {
-        @include border();
-        border-top: 0;
-
-        &:nth-child(even){
-            @include background(gris);
-        }
-    }
-
-    /* Responsive table */
+.table,
+.tableepure {
     &._responsive {
-        @include screen(small) {
-            tbody, tr, th, td {
-                display: block;
-            }
-
-            th, td {
-                position: relative;
-                padding: pas(s) pas(m);
-
-            }
-
-            thead {
-                position: absolute;
-                top: -110%;
-            }
-
-            tr {
-                padding-top: pas(m);
-                padding-bottom: pas(m);
-
-                &.facture-espaceur {
-                    padding: 0;
-                    td {
-                        padding: pas(s);
-                    }
-                }
-            }
-        }
-    }
-
-    &._epure {
-        border: 0;
-
-        tbody, thead, tr, th, td {
-            @include color(std);
-            border: 0;
-            background: transparent;
-        }
-
-        thead tr th {
-            @include fontsize(m);
-            font-weight: bold;
-        }
-
-        tfoot {
-            @include border($cardinal: top);
-
-            th {
-                font-weight: bold;
-                @include screen(from-medium) {
-                    text-align: right;
-                }
-            }
-        }
+        @include tableresponsive;
     }
 }
 

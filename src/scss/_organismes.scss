@@ -521,6 +521,8 @@ $label-width-large: 220px;
 */
 
 .achats {
+    @include tablestyle(std);
+    @include tableresponsive();
 
     @include screen(small) {
         margin: pas(l) 0;
@@ -537,23 +539,16 @@ $label-width-large: 220px;
         }
     }
 
-    &-detail {
+    & &-detail {
         @include background(gris);
 
         & > td {
             padding: 0;
             margin: 0;
-
-            @include screen(small) {
-                padding: 0;
-                margin: 0;
-            }
         }
 
         &-conteneur {
-            @include screen(small) {
-                padding-bottom: pas(m);
-            }
+            padding: 0 pas(m) pas(m);
         }
 
         &-liste {
@@ -564,7 +559,6 @@ $label-width-large: 220px;
             padding: pas(m);
         }
     }
-    // beat spécificity of .table._responsive tr
     & &-detail:nth-child(4n+2) {
         @include background(clair);
     }
@@ -573,8 +567,7 @@ $label-width-large: 220px;
         @include background(gris);
     }
 
-    // beat spécificity of .table._responsive tr
-    &.achats &-detail {
+    & &-detail {
         padding-top: 0;
         padding-bottom: 0;
     }
@@ -590,7 +583,7 @@ $label-width-large: 220px;
         }
     }
 
-    &-actions {
+    & &-actions {
         @include screen(from-medium) {
             min-width: 250px;
         }
@@ -901,9 +894,36 @@ facture (checkout)
         }
     }
 
-    // needed to overide .table
-    tr td {
-        vertical-align: top;
+    &-entete,
+    &-corps {
+        @include tablestyle(epure);
+        @include tableresponsive();
+
+        tr td {
+            vertical-align: top;
+        }
+
+        tfoot {
+
+            @include screen(small) {
+                display: table;
+                width: 100%;
+            }
+
+            tr {
+
+                @include screen(small) {
+                    display: table-row;
+                }
+            }
+
+            td {
+
+                @include screen(small) {
+                    display: table-cell;
+                }
+            }
+        }
     }
 
     &-espaceur {
@@ -912,28 +932,6 @@ facture (checkout)
 
             @include screen(from-medium) {
                 padding: pas(s);
-            }
-        }
-    }
-
-    &.facture tfoot {
-
-        @include screen(small) {
-            display: table;
-            width: 100%;
-        }
-
-        tr {
-
-            @include screen(small) {
-                display: table-row;
-            }
-        }
-
-        td {
-
-            @include screen(small) {
-                display: table-cell;
             }
         }
     }

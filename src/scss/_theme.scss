@@ -475,3 +475,91 @@ $arrow-size: 10px;
     @include fontsize($size);
     font-weight: normal;
 }
+
+// tableaux apparence
+@mixin tablestyle($style) {
+    @include fontsize(std);
+    width: 100%;
+
+    td {
+        @include fontsize(std);
+        padding: pas(m);
+        text-align: left;
+    }
+
+    th {
+        padding: pas(m);
+        text-align: left;
+    }
+
+    thead tr {
+        border: 0;
+    }
+
+    @if $style == 'std' {
+        @include border($cardinal: top);
+
+        th {
+            @include fontsize(std);
+            font-weight: normal;
+        }
+
+        thead {
+            @include color(negatif);
+            @include background(colore_sombre);
+        }
+
+        tr {
+            @include border();
+            border-top: 0;
+
+            &:nth-child(even){
+                @include background(gris);
+            }
+        }
+
+    } @else if $style == epure {
+        border: 0;
+
+        th {
+            @include fontsize(m);
+            font-weight: bold;
+        }
+
+        tfoot {
+            @include border($cardinal: top);
+
+            th {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+// tableaux responsives
+
+@mixin tableresponsive() {
+
+    @include screen(small) {
+
+        tbody, tr, th, td {
+            display: block;
+        }
+
+        th,
+        td {
+            position: relative;
+            padding: pas(s) pas(m);
+        }
+
+        thead {
+            position: absolute;
+            top: -110%;
+        }
+
+        tr {
+            padding-top: pas(m);
+            padding-bottom: pas(m);
+        }
+    }
+}
