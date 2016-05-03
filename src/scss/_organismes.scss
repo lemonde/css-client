@@ -521,6 +521,11 @@ $label-width-large: 220px;
 */
 
 .achats {
+
+    @include screen(small) {
+        margin: pas(l) 0;
+    }
+
     & &-ligne {
         border-bottom: none;
 
@@ -546,8 +551,6 @@ $label-width-large: 220px;
         }
 
         &-conteneur {
-            padding: 0 pas(s) pas(s);
-
             @include screen(small) {
                 padding-bottom: pas(m);
             }
@@ -561,13 +564,19 @@ $label-width-large: 220px;
             padding: pas(m);
         }
     }
-
+    // beat spécificity of .table._responsive tr
     & &-detail:nth-child(4n+2) {
         @include background(clair);
     }
 
     & &-detail:nth-child(4n+4) {
         @include background(gris);
+    }
+
+    // beat spécificity of .table._responsive tr
+    &.achats &-detail {
+        padding-top: 0;
+        padding-bottom: 0;
     }
 
     &-labelmobile {
@@ -578,6 +587,12 @@ $label-width-large: 220px;
             display: block;
             font-weight: bold;
             width: 100%;
+        }
+    }
+
+    &-actions {
+        @include screen(from-medium) {
+            min-width: 250px;
         }
     }
 }

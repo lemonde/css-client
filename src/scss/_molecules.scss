@@ -236,7 +236,7 @@ portant d'autres selecteurs
 
             th, td {
                 position: relative;
-                padding: pas(s);
+                padding: pas(s) pas(m);
 
             }
 
@@ -421,6 +421,10 @@ portant d'autres selecteurs
             @include border($color: action, $cardinal: bottom);
             cursor: pointer;
         }
+
+        > a {
+            @include color(std);
+        }
     }
 }
 
@@ -448,7 +452,6 @@ portant d'autres selecteurs
 
             &::before {
                 @include color(clair);
-                padding-right: pas(s);
             }
         }
 
