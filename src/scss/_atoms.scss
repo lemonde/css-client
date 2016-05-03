@@ -306,6 +306,11 @@ a {
         @include color(valide);
     }
 
+    &._grande,
+    &._grande:before {
+        @include fontsize(m);
+    }
+
     &._petite,
     &._petite:before {
         @include fontsize(s);
