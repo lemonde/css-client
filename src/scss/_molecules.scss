@@ -1763,7 +1763,7 @@ page gamme selecteur
         padding: pas(m) pas(m);
 
         &:hover,
-        &.est-actif {
+        &.est-selectionne {
             @include background(gris);
             cursor: pointer;
         }
@@ -1794,10 +1794,6 @@ page gamme selecteur
 
     &-promo {
         @include color(gris);
-
-        @include screen(from-medium) {
-            text-align: right;
-        }
     }
 
     &-prixbarre {
