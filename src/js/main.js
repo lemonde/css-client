@@ -164,11 +164,40 @@
         window.addEventListener('scroll', debounce);
     }
 
+
+    /* selection d'une offre */
+    function formuleSelector(selectorContainer) {
+        var selected = selectorContainer.getElementsByClassName('est-selectionne');
+        var inputs = selectorContainer.getElementsByTagName("input");
+        var selectChoices = selectorContainer.getElementsByClassName('js-select-choice');
+
+
+        Array.prototype.slice.call(inputs).forEach(function(input, idx) {
+            input.addEventListener('change', function(event) {
+                if(selected.length) {
+                    selected[0].classList.remove('est-selectionne');
+                }
+                selectChoices[idx].classList.add('est-selectionne');
+            });
+        });
+    }
+
+    function instantiateFormuleSelector() {
+        var selectorContainer = document.getElementById('js-select-duration');
+
+        if (!selectorContainer) {
+            return;
+        }
+
+        formuleSelector(selectorContainer);
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
         burgerMenu();
         instantiatePopins();
         instantiateCarrousel();
         instantiateScrollPanier();
+        instantiateFormuleSelector();
     });
 
 }());
