@@ -160,6 +160,11 @@ a {
     }
 }
 
+.liensombre,
+.liensombre:hover {
+    @include color(std);
+}
+
 .itemfleche {
     @include icon;
     @extend .icon-Chevron-droite;
