@@ -1005,10 +1005,6 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
         margin: 0 0 pas(m);
     }
 
-    &-item {
-        @include itemliste;
-    }
-
     &-soustitre {
         margin-bottom: pas(s);
     }
