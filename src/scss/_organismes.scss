@@ -470,23 +470,39 @@ $label-width-large: 220px;
     }
 
     &-action {
+        display: flex;
+        justify-content: center;
+        flex-flow: row wrap;
         padding-top: pas(xl);
-        text-align: center;
 
         @include screen(from-large) {
-            text-align: right;
+            justify-content: flex-end;
         }
 
         &._alignegauche {
-            text-align: left;
+            justify-content: flex-start;
         }
 
         &._petitemarge {
             padding-top: pas(m);
         }
 
-        .btn:not(:last-of-type) {
-            margin-right: pas(m);
+        .btn {
+
+            &:not(:last-child) {
+                margin-right: pas(m);
+            }
+
+            @include screen(small) {
+                flex: 0 0 100%;
+                max-width: 250px;
+                text-align: center;
+
+                &:not(:last-child) {
+                    margin-right: 0;
+                    margin-bottom: pas(m);
+                }
+            }
         }
     }
     // utilisé pour insérer du texte
