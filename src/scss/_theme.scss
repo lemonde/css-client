@@ -388,21 +388,21 @@ $arrow-size: 10px;
             border-top: $size solid transparent;
             border-bottom: $size solid transparent;
             left: -$size;
-            top: $size * 2;
+            top: pas(m);
 
         } @else if $position == 'bottom' {
 
             border-left: $size solid transparent;
             border-right: $size solid transparent;
             bottom: -$size;
-            left: $size * 2;
+            left: pas(m);
 
         } @else if $position == 'top' {
 
             border-right: $size solid transparent;
             border-left: $size solid transparent;
             top: (-$size) + 1px;
-            left: $size * 5;
+            left: pas(m);
         }
     }
 
@@ -433,7 +433,7 @@ $arrow-size: 10px;
 }
 /*
 -------------------------------
- other utilities
+ autres utilitaires
 -------------------------------
 */
 
@@ -444,5 +444,122 @@ $arrow-size: 10px;
         display: block;
         height: 0;
         visibility: hidden;
+    }
+}
+
+
+/*
+-------------------------------
+ mixins de composants
+-------------------------------
+*/
+
+@mixin itemliste {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: pas(s);
+
+    &:before {
+        @include color(gris);
+        content: "●";
+        display: block;
+        flex: 0; // align all items
+        padding-right: pas(m);
+        font-size: 0.7em;
+    }
+}
+
+@mixin styletitre($size) {
+    @include serif;
+    @include lineheight(s);
+    @include fontsize($size);
+    font-weight: normal;
+}
+
+// tableaux apparence
+@mixin tablestyle($style) {
+    @include fontsize(std);
+    width: 100%;
+
+    td {
+        @include fontsize(std);
+        padding: pas(m);
+        text-align: left;
+    }
+
+    th {
+        padding: pas(m);
+        text-align: left;
+    }
+
+    thead tr {
+        border: 0;
+    }
+
+    @if $style == 'std' {
+        @include border($cardinal: top);
+
+        th {
+            @include fontsize(std);
+            font-weight: normal;
+        }
+
+        thead {
+            @include color(negatif);
+            @include background(colore_sombre);
+        }
+
+        tr {
+            @include border();
+            border-top: 0;
+
+            &:nth-child(even){
+                @include background(gris);
+            }
+        }
+
+    } @else if $style == epure {
+        border: 0;
+
+        th {
+            @include fontsize(m);
+            font-weight: bold;
+        }
+
+        tfoot {
+            @include border($cardinal: top);
+
+            th {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+// tableaux responsives
+
+@mixin tableresponsive() {
+
+    @include screen(small) {
+
+        tbody, tr, th, td {
+            display: block;
+        }
+
+        th,
+        td {
+            position: relative;
+            padding: pas(s) pas(m);
+        }
+
+        thead {
+            position: absolute;
+            top: -110%;
+        }
+
+        tr {
+            padding-top: pas(m);
+            padding-bottom: pas(m);
+        }
     }
 }

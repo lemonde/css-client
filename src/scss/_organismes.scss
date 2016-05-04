@@ -267,8 +267,8 @@ $label-width-large: 220px;
     }
 
     &-soustitre {
-        @extend .t7;
-        margin-bottom: pas(l);
+        @include styletitre(t6);
+        margin-bottom: pas(m);
 
         &:first-child {
             margin-top: 0;
@@ -301,6 +301,10 @@ $label-width-large: 220px;
         flex-flow: row wrap;
         align-items: center;
         margin: pas(s) 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
 
         &._petit {
             @include screen(small) {
@@ -466,24 +470,39 @@ $label-width-large: 220px;
     }
 
     &-action {
-        padding-top: pas(l);
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-flow: row wrap;
+        padding-top: pas(xl);
 
         @include screen(from-large) {
-            padding-top: pas(xl);
-            text-align: right;
+            justify-content: flex-end;
         }
 
         &._alignegauche {
-            text-align: left;
+            justify-content: flex-start;
         }
 
         &._petitemarge {
             padding-top: pas(m);
         }
 
-        .btn:not(:last-of-type) {
-            margin-right: pas(m);
+        .btn {
+
+            &:not(:last-child) {
+                margin-right: pas(m);
+            }
+
+            @include screen(small) {
+                flex: 0 0 100%;
+                max-width: 250px;
+                text-align: center;
+
+                &:not(:last-child) {
+                    margin-right: 0;
+                    margin-bottom: pas(m);
+                }
+            }
         }
     }
     // utilisé pour insérer du texte
@@ -502,36 +521,30 @@ $label-width-large: 220px;
 */
 
 .achats {
-    & &-ligne {
-        border-bottom: none;
+    @include tablestyle(std);
+    @include tableresponsive();
 
-        &:nth-child(4n+1) {
-            @include background(clair);
+    @include screen(small) {
+        margin: pas(l) 0;
+    }
+
+    &-labelmobile {
+
+        @include screen(from-medium) {
+            display:none;
         }
-        &:nth-child(4n+3) {
-            @include background(gris);
+
+        @include screen(small) {
+            display: block;
+            font-weight: bold;
+            width: 100%;
         }
     }
 
     &-detail {
-        @include background(gris);
-
-        & > td {
-            padding: 0;
-            margin: 0;
-
-            @include screen(small) {
-                padding: 0;
-                margin: 0;
-            }
-        }
 
         &-conteneur {
-            padding: 0 pas(s) pas(s);
-
-            @include screen(small) {
-                padding-bottom: pas(m);
-            }
+            padding: 0 pas(m) pas(m);
         }
 
         &-liste {
@@ -543,22 +556,41 @@ $label-width-large: 220px;
         }
     }
 
-    & &-detail:nth-child(4n+2) {
-        @include background(clair);
-    }
+    .achats-ligne {
+        border-bottom: none;
 
-    & &-detail:nth-child(4n+4) {
-        @include background(gris);
-    }
-
-    &-labelmobile {
-        @include screen(from-medium) {
-            display:none;
+        &:nth-child(4n+1) {
+            @include background(clair);
         }
-        @include screen(small) {
-            display: block;
-            font-weight: bold;
-            width: 100%;
+
+        &:nth-child(4n+3) {
+            @include background(gris);
+        }
+    }
+
+    .achats-detail {
+        @include background(gris);
+        padding-top: 0;
+        padding-bottom: 0;
+
+        > td {
+            padding: 0;
+            margin: 0;
+        }
+
+        &:nth-child(4n+2) {
+            @include background(clair);
+        }
+
+        &:nth-child(4n+4) {
+            @include background(gris);
+        }
+    }
+
+    .achats-actions {
+
+        @include screen(from-medium) {
+            min-width: 250px;
         }
     }
 }
@@ -635,9 +667,10 @@ $label-width-large: 220px;
 
 /*
 ---------------------------
-  Gerer mon abonement
+  Gerer mes adresses de livraison
 ---------------------------
 */
+
 .gererabo {
     margin-bottom: pas(l);
 
@@ -648,10 +681,16 @@ $label-width-large: 220px;
     }
 
     &-soustitre {
+        @include fontsize(m);
         font-weight: bold;
+        margin-bottom: pas(s);
+
+        @include screen(from-medium) {
+            margin-top: 0;
+        }
 
         @include screen(small) {
-            margin-top: pas(m);
+            margin-top: pas(l);
         }
     }
 }
@@ -860,9 +899,36 @@ facture (checkout)
         }
     }
 
-    // needed to overide .table
-    tr td {
-        vertical-align: top;
+    &-entete,
+    &-corps {
+        @include tablestyle(epure);
+        @include tableresponsive();
+
+        tr td {
+            vertical-align: top;
+        }
+
+        tfoot {
+
+            @include screen(small) {
+                display: table;
+                width: 100%;
+            }
+
+            tr {
+
+                @include screen(small) {
+                    display: table-row;
+                }
+            }
+
+            td {
+
+                @include screen(small) {
+                    display: table-cell;
+                }
+            }
+        }
     }
 
     &-espaceur {
@@ -871,28 +937,6 @@ facture (checkout)
 
             @include screen(from-medium) {
                 padding: pas(s);
-            }
-        }
-    }
-
-    &.facture tfoot {
-
-        @include screen(small) {
-            display: table;
-            width: 100%;
-        }
-
-        tr {
-
-            @include screen(small) {
-                display: table-row;
-            }
-        }
-
-        td {
-
-            @include screen(small) {
-                display: table-cell;
             }
         }
     }

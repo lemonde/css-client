@@ -96,6 +96,10 @@
         ._valide & {
             @include icon;
             @extend .icon-Check-XL;
+
+            &::before {
+                @include color(valide);
+            }
         }
         ._info & {
             @include icon;
@@ -135,8 +139,7 @@
 /* hack pour restyler les messages magento
 sur lesquels nous n'avons pas la main */
 .messages {
-
-    @include conteneur-site-std;
+    margin-top: pas(l);
 
     @include screen(small) {
         padding: 0 pas(m);
@@ -154,10 +157,15 @@ sur lesquels nous n'avons pas la main */
     // success
     > .success-msg {
         @extend .message._valide;
+        margin-bottom: 0;
 
         li {
             @include icon;
             @extend .icon-Check-XL;
+
+            &::before {
+                @include color(valide);
+            }
         }
     }
 
@@ -193,96 +201,22 @@ portant d'autres selecteurs
 
 /*
 ---------------------------
- table
+ tableaux
 ---------------------------
 */
 
 .table {
-    @include border($cardinal: top);
-    @include fontsize(std);
-    width: 100%;
+    @include tablestyle(std);
+}
 
-    td, th {
-        @include fontsize(std);
-        padding: pas(m);
-        text-align: left;
-        font-weight: normal;
-    }
+.tableepure {
+    @include tablestyle(epure);
+}
 
-    thead {
-        @include color(negatif);
-        @include background(colore_sombre);
-
-        tr {
-            border: 0;
-        }
-    }
-
-    tr {
-        @include border();
-        border-top: 0;
-
-        &:nth-child(even){
-            @include background(gris);
-        }
-    }
-
-    /* Responsive table */
+.table,
+.tableepure {
     &._responsive {
-        @include screen(small) {
-            tbody, tr, th, td {
-                display: block;
-            }
-
-            th, td {
-                position: relative;
-                padding: pas(s);
-
-            }
-
-            thead {
-                position: absolute;
-                top: -110%;
-            }
-
-            tr {
-                padding-top: pas(m);
-                padding-bottom: pas(m);
-
-                &.facture-espaceur {
-                    padding: 0;
-                    td {
-                        padding: pas(s);
-                    }
-                }
-            }
-        }
-    }
-
-    &._epure {
-        border: 0;
-
-        tbody, thead, tr, th, td {
-            @include color(std);
-            border: 0;
-            background: transparent;
-        }
-
-        thead tr th {
-            @include fontsize(m);
-            font-weight: bold;
-        }
-
-        tfoot {
-            @include border($cardinal: top);
-
-            th {
-                font-weight: bold;
-                @include screen(from-medium) {
-                    text-align: right;
-                }
-            }
-        }
+        @include tableresponsive;
     }
 }
 
@@ -293,27 +227,67 @@ portant d'autres selecteurs
 */
 
 .infobulle {
-    @include borderradius(std);
-    @include border();
-    @include background(clair);
-    display: inline-block;
+    $hauteur-icone: pas(m) * 2;
+
     position: relative;
-    max-width: 400px;
-    padding: pas(m);
+    display: inline-block;
 
-    &._top {
-        @include bloc-fleche($position: 'bottom');
+    &-bulle {
+        @include borderradius(std);
+        @include border();
+        @include background(clair);
+        display: none;
+        position: absolute;
+        width: 300px;
+        padding: pas(m);
+
+        &._top {
+            @include bloc-fleche($position: 'bottom');
+            bottom: $hauteur-icone + $arrow-size + pas(xs);
+            left: ($hauteur-icone / 2) - (pas(m) + $arrow-size);
+        }
+
+        &._right {
+            @include bloc-fleche;
+            top: 50%;
+            height: 30px;
+            left: 100%;
+            margin-top: -15px;
+        }
     }
 
-    &._right {
-        @include bloc-fleche;
+    &:hover &-bulle {
+        display: block;
     }
 
-    &-title {
+    &-titre {
         display: block;
         font-weight: bold;
     }
+
+    &-icone {
+
+        &:before {
+            @include borderradius(cercle);
+            @include background(gris);
+            @include border();
+            @include color(gris);
+            content: "?";
+            display: block;
+            font-weight: bold;
+            width: $hauteur-icone;
+            height: $hauteur-icone;
+            line-height: $hauteur-icone;
+            text-align: center;
+        }
+
+        &:hover:before {
+            @include color(std);
+        }
+    }
 }
+
+
 
 /*
 ---------------------------
@@ -381,6 +355,10 @@ portant d'autres selecteurs
             @include border($color: action, $cardinal: bottom);
             cursor: pointer;
         }
+
+        > a {
+            @include color(std);
+        }
     }
 }
 
@@ -408,7 +386,6 @@ portant d'autres selecteurs
 
             &::before {
                 @include color(clair);
-                padding-right: pas(s);
             }
         }
 
@@ -467,7 +444,7 @@ portant d'autres selecteurs
     }
 
     &-titre {
-        @extend .t3;
+        @include styletitre(t3);
         margin: 0;
     }
 
@@ -706,7 +683,6 @@ menus
             flex: 1 100%;
             padding-top: pas(s);
             padding-bottom: pas(s);
-            font-weight: normal;
 
             &._big,
             &._big > *  {
@@ -886,6 +862,7 @@ menus
         height: 70px;
         background: #CCC url('../imgs/avatar_empty.jpg') top no-repeat;
         background-size: 100% 100%;
+        overflow: hidden;
 
         &:not(:only-child) {
             margin: 0 pas(m) 0 0;
@@ -959,15 +936,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     margin-bottom: pas(l);
 
     &-titre {
-        margin: 0 0 pas(s);
-    }
-
-    &-liste {
-        padding-left: pas(l);
-    }
-
-    &-item {
-        list-style: disc;
+        margin: 0 0 pas(m);
     }
 
     &-soustitre {
@@ -1728,7 +1697,7 @@ page gamme selecteur
         padding: pas(m) pas(m);
 
         &:hover,
-        &.est-actif {
+        &.est-selectionne {
             @include background(gris);
             cursor: pointer;
         }
@@ -1759,10 +1728,6 @@ page gamme selecteur
 
     &-promo {
         @include color(gris);
-
-        @include screen(from-medium) {
-            text-align: right;
-        }
     }
 
     &-prixbarre {

@@ -160,6 +160,11 @@ a {
     }
 }
 
+.liensombre,
+.liensombre:hover {
+    @include color(std);
+}
+
 .itemfleche {
     @include icon;
     @extend .icon-Chevron-droite;
@@ -257,15 +262,6 @@ a {
     @include screen(small) {
         padding: pas(m) pas(l);
     }
-
-    + .btn {
-        @include screen(from-medium) {
-            margin-left: pas(m);
-        }
-        @include screen(small) {
-            margin: 0 pas(s);
-        }
-    }
 }
 
 /*
@@ -308,6 +304,20 @@ a {
     &._valide {
         @include border($color: valide);
         @include color(valide);
+    }
+
+    &._grande,
+    &._grande:before {
+        @include fontsize(m);
+    }
+
+    &._petite,
+    &._petite:before {
+        @include fontsize(s);
+    }
+
+    &._petite {
+        margin-right: pas(s);
     }
 }
 
@@ -397,8 +407,8 @@ textarea {
     max-width: 800px;
     box-sizing: padding-box;
     padding: pas(m);
-    margin-top: 3px;
-    margin-bottom: 3px;
+    margin-top: pas(xs);
+    margin-bottom:  pas(xs);
     background: $blanc;
     line-height: 1;
     -moz-appearance: none;
@@ -437,6 +447,8 @@ select {
     @include border();
     height: map-get($config-font-size, std) + pas(l);
     width: 100%;
+    margin-top: pas(xs);
+    margin-bottom:  pas(xs);
 }
 
 button,
@@ -469,12 +481,10 @@ ul, li {
 }
 
 .liste {
-    padding-left: pas(l);
     margin: pas(s) 0;
 
     li {
-        margin: pas(s) 0;
-        list-style: disc;
+        @include itemliste;
     }
 }
 /*
