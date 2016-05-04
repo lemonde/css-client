@@ -96,6 +96,10 @@
         ._valide & {
             @include icon;
             @extend .icon-Check-XL;
+
+            &::before {
+                @include color(valide);
+            }
         }
         ._info & {
             @include icon;
@@ -135,8 +139,7 @@
 /* hack pour restyler les messages magento
 sur lesquels nous n'avons pas la main */
 .messages {
-
-    @include conteneur-site-std;
+    margin-top: pas(l);
 
     @include screen(small) {
         padding: 0 pas(m);
@@ -154,10 +157,15 @@ sur lesquels nous n'avons pas la main */
     // success
     > .success-msg {
         @extend .message._valide;
+        margin-bottom: 0;
 
         li {
             @include icon;
             @extend .icon-Check-XL;
+
+            &::before {
+                @include color(valide);
+            }
         }
     }
 

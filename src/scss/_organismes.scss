@@ -528,24 +528,20 @@ $label-width-large: 220px;
         margin: pas(l) 0;
     }
 
-    & &-ligne {
-        border-bottom: none;
+    &-labelmobile {
 
-        &:nth-child(4n+1) {
-            @include background(clair);
+        @include screen(from-medium) {
+            display:none;
         }
-        &:nth-child(4n+3) {
-            @include background(gris);
+
+        @include screen(small) {
+            display: block;
+            font-weight: bold;
+            width: 100%;
         }
     }
 
-    & &-detail {
-        @include background(gris);
-
-        & > td {
-            padding: 0;
-            margin: 0;
-        }
+    &-detail {
 
         &-conteneur {
             padding: 0 pas(m) pas(m);
@@ -559,31 +555,40 @@ $label-width-large: 220px;
             padding: pas(m);
         }
     }
-    & &-detail:nth-child(4n+2) {
-        @include background(clair);
+
+    .achats-ligne {
+        border-bottom: none;
+
+        &:nth-child(4n+1) {
+            @include background(clair);
+        }
+
+        &:nth-child(4n+3) {
+            @include background(gris);
+        }
     }
 
-    & &-detail:nth-child(4n+4) {
+    .achats-detail {
         @include background(gris);
-    }
-
-    & &-detail {
         padding-top: 0;
         padding-bottom: 0;
+
+        > td {
+            padding: 0;
+            margin: 0;
+        }
+
+        &:nth-child(4n+2) {
+            @include background(clair);
+        }
+
+        &:nth-child(4n+4) {
+            @include background(gris);
+        }
     }
 
-    &-labelmobile {
-        @include screen(from-medium) {
-            display:none;
-        }
-        @include screen(small) {
-            display: block;
-            font-weight: bold;
-            width: 100%;
-        }
-    }
+    .achats-actions {
 
-    & &-actions {
         @include screen(from-medium) {
             min-width: 250px;
         }
