@@ -841,6 +841,11 @@ $label-width-large: 220px;
     &-active {
         @include color(valide);
     }
+
+    &-abonne {
+        @include color(abonne);
+        font-weight: 700;
+    }
 }
 
 /*
