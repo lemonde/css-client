@@ -445,6 +445,7 @@ select {
     @include fontsize(std);
     @include borderradius(std);
     @include border();
+    @include background(clair);
     height: map-get($config-font-size, std) + pas(l);
     width: 100%;
     margin-top: pas(xs);
