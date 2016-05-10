@@ -505,7 +505,7 @@ portant d'autres selecteurs
     }
 
     &._bordclair {
-        box-shadow: 0 (- $border-width-large) 0 0 map-get($border-colors, action);
+        box-shadow: 0 (- $border-width-large) 0 0 map-get($border-colors, action_hover);
     }
 
     &._bordsombre {
