@@ -250,7 +250,7 @@ a {
     }
 
     &._icone {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
 
@@ -445,6 +445,7 @@ select {
     @include fontsize(std);
     @include borderradius(std);
     @include border();
+    @include background(clair);
     height: map-get($config-font-size, std) + pas(l);
     width: 100%;
     margin-top: pas(xs);
