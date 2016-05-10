@@ -234,10 +234,12 @@
     }
 
     @include screen(from-medium) {
+
         &-item {
             display: inline-block;
             padding: 0 pas(s);
         }
+
         & &-item:not(:last-child)::after {
             @include color(gris);
             content: "|";
