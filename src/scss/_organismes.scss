@@ -222,6 +222,7 @@
         @include screen(small) {
             display: block;
             text-align: center;
+            margin-bottom: pas(s);
         }
 
         &-lien {
