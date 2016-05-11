@@ -67,8 +67,16 @@
         margin-bottom: pas(m);
     }
 
+    &-bxl {
+        margin-bottom: pas(xl);
+    }
+
     &-vxl {
         margin-top: pas(xl);
         margin-bottom: pas(xl);
+    }
+
+    &-tm {
+        margin-top: pas(m);
     }
 }

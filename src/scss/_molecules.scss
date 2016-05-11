@@ -424,7 +424,7 @@ portant d'autres selecteurs
         padding: pas(m) 0;
     }
 
-    &._footer {
+    &._footer:not(._bordurebas) {
         margin-top: pas(xl);
     }
 }
@@ -562,6 +562,10 @@ portant d'autres selecteurs
 
         &._paddingbasnul {
             padding-bottom: 0;
+        }
+
+        &._paddingtopnul {
+            padding-top: 0;
         }
 
         &._sansbord {
