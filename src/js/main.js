@@ -136,10 +136,10 @@
     /* Autoscroll Panier (tunnel) */
     function instantiateScrollPanier() {
 
-        var viewport = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        var viewportX = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
         var notLargeDevice = 1023;
 
-        if(viewport < notLargeDevice) {
+        if(viewportX < notLargeDevice) {
             return;
         }
 
@@ -149,15 +149,26 @@
             return;
         }
 
+        var panierContainer = document.getElementById('js-panier-container');
+        var panierHeight = panier.offsetHeight;
+        var panierContainerHeight = panierContainer.offsetHeight;
+        var initialTopPosition = panier.offsetTop;
+        var initialDocumentHeight = document.documentElement.offsetHeight;
         var timeout;
+
         var debounce = function () {
             if (timeout) {
                 clearTimeout(timeout);
             }
 
             timeout = setTimeout(function () {
-                panier.style.marginTop = window.pageYOffset + 'px';
+                var margin = ((window.pageYOffset - initialTopPosition) < 0 ) ? 0 : (window.pageYOffset - initialTopPosition + 30);
+                margin = (margin < (panierContainerHeight - panierHeight) ) ? margin : (panierContainerHeight - panierHeight);
+
+                panier.style.marginTop = margin + 'px';
+
                 timeout = null;
+
             }, 100);
         };
 
