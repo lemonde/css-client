@@ -59,12 +59,16 @@
 
 .marge {
 
-    &-bl {
-        margin-bottom: pas(l);
+    &-bs{
+        margin-bottom: pas(s);
     }
 
     &-bm {
         margin-bottom: pas(m);
+    }
+
+    &-bl {
+        margin-bottom: pas(l);
     }
 
     &-bxl {

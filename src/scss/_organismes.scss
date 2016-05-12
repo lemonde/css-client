@@ -495,13 +495,12 @@ $label-width-large: 220px;
 
         .btn {
 
-            &:not(:last-child) {
+            > &:not(:last-child) {
                 margin-right: pas(m);
             }
 
             @include screen(small) {
                 flex: 0 0 100%;
-                max-width: 250px;
                 text-align: center;
 
                 &:not(:last-child) {
@@ -825,8 +824,6 @@ $label-width-large: 220px;
 
     &-body {
         @include screen(small) {
-            max-width: 460px;
-            margin: 0 auto;
             padding: pas(l) 0;
         }
     }
@@ -838,6 +835,10 @@ $label-width-large: 220px;
 
     &-titre {
         font-weight: bold;
+
+        @include screen(small) {
+            display: block;
+        }
     }
 
     &-active {
@@ -847,6 +848,17 @@ $label-width-large: 220px;
     &-abonne {
         @include color(abonne);
         font-weight: 700;
+        @include fontsize(s);
+    }
+
+    & ._basique {
+        align-items: center;
+
+        @include screen(small) {
+            div:last-child {
+                padding-top: pas(l);
+            }
+        }
     }
 }
 

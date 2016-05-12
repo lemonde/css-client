@@ -385,7 +385,7 @@ portant d'autres selecteurs
             }
 
             &::before {
-                @include color(clair);
+                @include color(gris);
             }
         }
 
@@ -556,7 +556,13 @@ portant d'autres selecteurs
             border: 0;
 
             &:not(:last-of-type) {
-                @include border($cardinal: right);
+                @include screen(small) {
+                    @include border($cardinal: bottom);
+                }
+
+                @include screen(from-medium) {
+                    @include border($cardinal: right);
+                }
             }
         }
 
@@ -1671,11 +1677,8 @@ page gamme entete
         }
 
         img {
+            width: 100%;
             max-width: 540px;
-
-            @include screen(small) {
-                max-width: 100%;
-            }
         }
     }
 
@@ -1723,6 +1726,7 @@ page gamme selecteur
 
     &-prix + &-prixduree {
         margin-left: pas(s);
+        margin-right: pas(m);
     }
 
     &-prixduree {
@@ -1732,6 +1736,10 @@ page gamme selecteur
 
     &-promo {
         @include color(gris);
+
+        @include screen(small) {
+            margin-right: auto;
+        }
     }
 
     &-prixbarre {
@@ -1772,15 +1780,15 @@ offre spéciale
 */
 
 .offrespeciale {
-    width: 350px;
-    max-width: 75%;
     padding: pas(s) pas(m);
 
     @include screen(from-medium) {
+        width: 350px;
         margin-bottom: 0;
     }
 
     @include screen(small) {
+        max-width: 100%;
         margin-bottom: pas(s);
 
         &.offrespeciale {
