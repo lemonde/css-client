@@ -1802,6 +1802,35 @@ offre spéciale
     }
 }
 
+/*
+------------------
+bloc selector
+------------------
+*/
+
+.choixfrequence {
+    @include border();
+    @include borderradius(std);
+    padding: pas(m);
+    display: flex;
+    cursor: pointer;
+
+    &.est-selectionne {
+        @include border(action_hover);
+    }
+
+    &-input {
+        flex: initial;
+    }
+
+    &-texte {
+        flex: 1;
+        margin-left: pas(m);
+    }
+}
+
+
+
 
 /*
 --------------------
