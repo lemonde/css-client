@@ -12,7 +12,6 @@
             CarrouselNextClass: 'js-next',
             CarrouselPrevClass: 'js-prev',
             bulletClass: 'js-bullet',
-            hasOneClass: 'has-one',
             loopDuration: 5000
         };
 
