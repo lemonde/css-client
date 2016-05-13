@@ -149,12 +149,9 @@
             return;
         }
 
-        var panierContainer = document.getElementById('js-panier-container');
-        var panierHeight = panier.offsetHeight;
-        var panierContainerHeight = panierContainer.offsetHeight;
-        var initialTopPosition = panier.offsetTop;
-        var initialDocumentHeight = document.documentElement.offsetHeight;
-        var timeout;
+        // element with witch we compare the height to get maximum height
+        var maxHeightElement = document.getElementById('js-max-height-col');
+        var maxMargin, timeout;
 
         var debounce = function () {
             if (timeout) {
@@ -162,9 +159,8 @@
             }
 
             timeout = setTimeout(function () {
-                var margin = ((window.pageYOffset - initialTopPosition) < 0 ) ? 0 : (window.pageYOffset - initialTopPosition + 30);
-                margin = (margin < (panierContainerHeight - panierHeight) ) ? margin : (panierContainerHeight - panierHeight);
-
+                maxMargin = maxHeightElement.offsetHeight - panier.offsetHeight;
+                var margin = ( window.pageYOffset < maxMargin ) ? window.pageYOffset : maxMargin;
                 panier.style.marginTop = margin + 'px';
 
                 timeout = null;

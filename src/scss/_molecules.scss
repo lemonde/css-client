@@ -564,6 +564,11 @@ portant d'autres selecteurs
             padding-bottom: 0;
         }
 
+
+        &._sansmarge {
+            margin-bottom: 0;
+        }
+
         &._paddingtopnul {
             padding-top: 0;
         }
@@ -579,6 +584,10 @@ portant d'autres selecteurs
 
         &._paddinglarge {
             padding: pas(l);
+        }
+
+        &._paddingbaslarge {
+            padding-bottom: pas(l);
         }
     }
 }
