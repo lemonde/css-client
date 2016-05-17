@@ -212,7 +212,7 @@ a {
 
     &._leger {
         @include background(clair);
-        @include color(std);
+        @include color(gris);
         @include border();
         font-weight: lighter;
 
