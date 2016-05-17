@@ -80,7 +80,31 @@
         margin-bottom: pas(xl);
     }
 
+    &-vxs {
+        margin-top: pas(xs);
+        margin-bottom: pas(xs);
+    }
+
+    &-vl {
+        &-from-large {
+            @include screen(from-large) {
+                margin-top: pas(l);
+                margin-bottom: pas(l);
+            }
+        }
+    }
+
+
     &-tm {
         margin-top: pas(m);
+        &-small {
+            @include screen(small) {
+                margin-top: pas(m);
+            }
+        }
+    }
+
+    &-tl {
+        margin-top: pas(l);
     }
 }
