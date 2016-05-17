@@ -257,6 +257,10 @@ a {
         [class^=icon]:before {
             padding-right: pas(m);
         }
+
+        @include screen(small) {
+            text-align: left;
+        }
     }
 
     @include screen(small) {
