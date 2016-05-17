@@ -1498,24 +1498,31 @@ Formules
         }
     }
 
+    @include screen(from-large) {
+        &-desc {
+            min-height: 170px;
+        }
+    }
+
     &-soustitre {
         margin-bottom: 0;
     }
 
     &-engagement {
         @include color(gris);
+        display: inline-block;
+        margin-bottom: pas(m);
     }
 
     &-prixconteneur {
         @include color(prix);
-        margin: pas(m) 0;
+        margin: pas(m) 0 0;
     }
 
     &-prix {
         @include fontsize(t1);
         display: inline-block;
-        margin-right: pas(m);
-        font-weight: lighter;
+        margin-right: pas(s);
     }
 
     &-prixduree {
@@ -1523,6 +1530,18 @@ Formules
         text-align: left;
     }
 
+    &-corps {
+        flex: 1;
+    }
+
+    &-pied {
+        flex: initial;
+    }
+
+    &-item {
+        display: flex;
+        flex-flow: column;
+    }
     // dans le cas d'une offre à l'unité
     &-item._monoligne {
 
@@ -1552,49 +1571,50 @@ Formules
 -----------------
 */
 
+.separateurvertical:not(:last-child) {
+
+    @include screen(from-medium) {
+        @include border($cardinal: right);
+    }
+
+    @include screen(small) {
+        @include border($cardinal: bottom);
+    }
+}
+
 .offres {
 
     &-item {
-
         padding: 0 pas(l);
 
         @include screen(small) {
             margin: 0 pas(s);
-        }
-
-        @include screen(not-large) {
             flex-basis: 100%;
             padding: pas(l) 0;
             margin: 0 auto;
         }
     }
 
-    > div {
-
-        @include screen(not-large) {
-            padding-bottom: pas(l) ;
-        }
-
-        &:nth-last-child(n + 2) {
-            @include border($cardinal: right);
-
-            @include screen(not-large) {
-                border-right: 0;
-                @include border($cardinal: bottom);
-            }
-        }
-    }
-
     &-conteneur {
-        margin: 0 auto pas(l);
+        margin: 0 auto;
+
         @include screen(from-medium) {
             padding: 0;
             max-width: 300px;
         }
+
+        @include screen(small) {
+            border-right: 0;
+        }
     }
 
-    .btn {
-        margin: auto auto 0;
+    &-pied {
+        padding: pas(m) pas(m) 0;
+        text-align: center;
+        align-self: flex-end;
+        @include screen(small) {
+            padding-bottom: pas(l);
+        }
     }
 
     &-icone {
@@ -1679,8 +1699,9 @@ page gamme entete
         }
 
         p {
+            @include border(std_sombre);
             padding: pas(m);
-            @include border();
+            margin: 0 0 pas(m);
         }
     }
 
@@ -1715,7 +1736,6 @@ page gamme entete
         }
     }
 }
-
 
 /*
 ------------------
