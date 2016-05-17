@@ -1719,7 +1719,7 @@ page gamme selecteur
     }
 
     &-prix {
-        @include fontsize(t1);
+        @include fontsize(t2);
         display: inline-block;
         font-weight: lighter;
     }

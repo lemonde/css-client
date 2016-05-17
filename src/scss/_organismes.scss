@@ -495,7 +495,7 @@ $label-width-large: 220px;
 
         .btn {
 
-            > &:not(:last-child) {
+            >&:not(:last-child) {
                 margin-right: pas(m);
             }
 
@@ -822,9 +822,10 @@ $label-width-large: 220px;
         }
     }
 
-    &-body {
+    &-action {
+        text-align: center;
         @include screen(small) {
-            padding: pas(l) 0;
+            margin-top: pas(l);
         }
     }
 
