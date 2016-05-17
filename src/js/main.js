@@ -12,7 +12,6 @@
             CarrouselNextClass: 'js-next',
             CarrouselPrevClass: 'js-prev',
             bulletClass: 'js-bullet',
-            hasOneClass: 'has-one',
             loopDuration: 5000
         };
 
@@ -149,12 +148,9 @@
             return;
         }
 
-        var panierContainer = document.getElementById('js-panier-container');
-        var panierHeight = panier.offsetHeight;
-        var panierContainerHeight = panierContainer.offsetHeight;
-        var initialTopPosition = panier.offsetTop;
-        var initialDocumentHeight = document.documentElement.offsetHeight;
-        var timeout;
+        // element with witch we compare the height to get maximum margi-top
+        var maxHeightElement = document.getElementById('js-max-height-col');
+        var maxMargin, timeout, margin;
 
         var debounce = function () {
             if (timeout) {
@@ -162,19 +158,15 @@
             }
 
             timeout = setTimeout(function () {
-                var margin = ((window.pageYOffset - initialTopPosition) < 0 ) ? 0 : (window.pageYOffset - initialTopPosition + 30);
-                margin = (margin < (panierContainerHeight - panierHeight) ) ? margin : (panierContainerHeight - panierHeight);
-
+                maxMargin = Math.max(0, (maxHeightElement.offsetHeight - panier.offsetHeight));
+                margin = Math.min(window.pageYOffset, maxMargin);
                 panier.style.marginTop = margin + 'px';
-
                 timeout = null;
-
             }, 100);
         };
 
         window.addEventListener('scroll', debounce);
     }
-
 
     /* selection d'une offre */
     function formuleSelector(selectorContainer) {

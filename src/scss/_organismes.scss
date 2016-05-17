@@ -795,6 +795,12 @@ $label-width-large: 220px;
 .tunnel {
     padding-top: pas(xl);
 
+    &-colform {
+        // pour comparer la hauteur des
+        // colonnes en javascript
+        align-self: flex-start;
+    }
+
     &-mention {
         @include screen(from-medium) {
             text-align: right;

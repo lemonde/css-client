@@ -570,6 +570,10 @@ portant d'autres selecteurs
             padding-bottom: 0;
         }
 
+        &._margenulle {
+            margin-bottom: 0;
+        }
+
         &._paddingtopnul {
             padding-top: 0;
         }
@@ -585,6 +589,10 @@ portant d'autres selecteurs
 
         &._paddinglarge {
             padding: pas(l);
+        }
+
+        &._paddingbaslarge {
+            padding-bottom: pas(l);
         }
     }
 }
@@ -1800,6 +1808,35 @@ offre spéciale
         padding: 0 pas(m) 0 pas(s);
     }
 }
+
+/*
+------------------
+bloc selector
+------------------
+*/
+
+.choixfrequence {
+    @include border();
+    @include borderradius(std);
+    padding: pas(m);
+    display: flex;
+    cursor: pointer;
+
+    &.est-selectionne {
+        @include border(action_hover);
+    }
+
+    &-input {
+        flex: initial;
+    }
+
+    &-texte {
+        flex: 1;
+        margin-left: pas(m);
+    }
+}
+
+
 
 
 /*
