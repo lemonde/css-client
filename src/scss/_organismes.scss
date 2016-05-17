@@ -493,12 +493,11 @@ $label-width-large: 220px;
             padding-top: pas(m);
         }
 
+         > .btn:not(:last-child) {
+             margin-right: pas(m);
+         }
+
         .btn {
-
-            >&:not(:last-child) {
-                margin-right: pas(m);
-            }
-
             @include screen(small) {
                 flex: 0 0 100%;
                 text-align: center;
