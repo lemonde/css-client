@@ -1755,6 +1755,10 @@ page gamme selecteur
         }
     }
 
+    &-input {
+        padding-right: pas(s);
+    }
+
     &-titre {
         // pour cohabiter avec offres spéciales
         @include screen(from-medium) {
@@ -1789,10 +1793,6 @@ page gamme selecteur
 
     &-prixbarre {
         @include fontsize(m);
-    }
-
-    &-input {
-        padding-right: pas(m);
     }
 
     &-type {
@@ -1839,6 +1839,11 @@ offre spéciale
         &.offrespeciale {
             margin-top: pas(m);
         }
+    }
+
+    &-titre {
+        font-weight: bold;
+        text-transform: uppercase;
     }
 
     &-texte {
