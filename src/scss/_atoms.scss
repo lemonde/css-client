@@ -263,6 +263,15 @@ a {
         }
     }
 
+    &.est-inactif,
+    &.est-inactif:hover {
+        @include background(gris);
+        @include color(gris);
+        @include border();
+        opacity: .6;
+        cursor: not-allowed;
+    }
+
     @include screen(small) {
         padding: pas(m) pas(l);
     }
@@ -431,7 +440,8 @@ textarea {
         outline: none;
     }
 
-    &.validation-failed {
+    &.validation-failed,
+    &.est-invalide {
         @include border($color: erreur);
     }
     &:disabled {
