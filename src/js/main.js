@@ -91,24 +91,30 @@
     function popin(handler, targetId) {
         var popin = document.getElementById(targetId);
 
+        function openPopin(event) {
+            event.preventDefault();
+            popin.classList.add('est-visible');
+        };
+
+        function closePopin(event) {
+            event.preventDefault();
+            popin.classList.remove('est-visible');
+        };
+
         handler.addEventListener('click', function(event) {
-            togglePopin(event);
+            openPopin(event);
         });
 
         popin.addEventListener('click', function(event) {
             if (event.target.classList.contains('js-popin-close')) {
-                togglePopin(event);
+                closePopin(event);
             }
         });
-
-        function togglePopin(event) {
-            event.preventDefault();
-            popin.classList.toggle('est-visible');
-        };
     }
 
     function instantiatePopins() {
         var handlers = document.getElementsByClassName('js-popin-launcher');
+
         Array.prototype.slice.call(handlers).forEach(function(el) {
             var targetId = el.getAttribute('data-popin-id');
             popin(el, targetId);
