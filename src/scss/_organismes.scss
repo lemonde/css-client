@@ -161,24 +161,25 @@
         }
     }
 
-    a:not(.header-sousmenu a):not(.deroulant-corps a) {
-
-        @include screen(from-large) {
-            @include color(negatif);
-        }
-
-        @include screen(not-large) {
-            @include color(std);
-        }
-
-        &:hover {
-            @include color(liens_hover);
-        }
-    }
-
     &-lien {
         display: flex;
         padding: pas(s) pas(m);
+
+
+        &:not(.deroulant-entete),
+        & a:not(.deroulant-entete) {
+            @include screen(from-large) {
+                @include color(negatif);
+            }
+
+            @include screen(not-large) {
+                @include color(std);
+            }
+
+            &:hover {
+                @include color(liens_hover);
+            }
+        }
     }
 
     &-sousmenu {
