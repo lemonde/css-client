@@ -455,18 +455,9 @@ $arrow-size: 10px;
 */
 
 @mixin itemliste {
-    display: flex;
-    align-items: baseline;
+    margin-left: pas(m)+ pas(xs);
     margin-bottom: pas(s);
-
-    &:before {
-        @include color(gris);
-        content: "●";
-        display: block;
-        flex: 0; // align all items
-        padding-right: pas(m);
-        font-size: 0.7em;
-    }
+    list-style: disc;
 }
 
 @mixin styletitre($size) {
