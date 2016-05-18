@@ -443,6 +443,14 @@ portant d'autres selecteurs
     &._footer:not(._bordurebas) {
         margin-top: pas(xl);
     }
+
+    &:empty,
+    &._bordurebas:empty,
+    &._bordure:empty,
+    &.est-vide {
+        border-top:0;
+        padding: 0;
+    }
 }
 
 /*
