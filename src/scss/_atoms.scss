@@ -1,5 +1,6 @@
 @import 'atoms/_icons.scss';
 @import 'atoms/_background-imgs.scss';
+
 * {
     @include lineheight(std);
     box-sizing: border-box;
@@ -14,6 +15,12 @@ body {
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
+}
+
+a,
+button,
+[type="button"] {
+    cursor: pointer;
 }
 
 /*
@@ -263,6 +270,15 @@ a {
         }
     }
 
+    &.est-inactif,
+    &.est-inactif:hover {
+        @include background(gris);
+        @include color(gris);
+        @include border();
+        opacity: .6;
+        cursor: not-allowed;
+    }
+
     @include screen(small) {
         padding: pas(m) pas(l);
     }
@@ -431,7 +447,8 @@ textarea {
         outline: none;
     }
 
-    &.validation-failed {
+    &.validation-failed,
+    &.est-invalide {
         @include border($color: erreur);
     }
     &:disabled {
@@ -490,6 +507,11 @@ ul, li {
 
     li {
         @include itemliste;
+    }
+
+    &._bulletinside li {
+        margin-left: 0;
+        list-style-position: inside;
     }
 }
 /*

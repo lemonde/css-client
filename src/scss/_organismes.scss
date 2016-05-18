@@ -161,24 +161,25 @@
         }
     }
 
-    a:not(.header-sousmenu a):not(.deroulant-corps a) {
-
-        @include screen(from-large) {
-            @include color(negatif);
-        }
-
-        @include screen(not-large) {
-            @include color(std);
-        }
-
-        &:hover {
-            @include color(liens_hover);
-        }
-    }
-
     &-lien {
         display: flex;
         padding: pas(s) pas(m);
+
+
+        &:not(.deroulant-entete),
+        & a:not(.deroulant-entete) {
+            @include screen(from-large) {
+                @include color(negatif);
+            }
+
+            @include screen(not-large) {
+                @include color(std);
+            }
+
+            &:hover {
+                @include color(liens_hover);
+            }
+        }
     }
 
     &-sousmenu {
@@ -227,6 +228,7 @@
 
         &-lien {
             @include color(liens_sombres);
+
             &:hover {
                 @include color(liens);
             }
@@ -310,9 +312,11 @@ $label-width-large: 220px;
         }
 
         &._petit {
+
             @include screen(small) {
                 width: 100%;
             }
+
             @include screen(from-medium) {
                 width: 50%;
             }
@@ -368,6 +372,7 @@ $label-width-large: 220px;
             display: flex;
             flex-flow: row wrap;
             align-items: center;
+
             @include screen(small) {
                 padding-left: pas(l);
             }

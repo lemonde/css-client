@@ -443,6 +443,14 @@ portant d'autres selecteurs
     &._footer:not(._bordurebas) {
         margin-top: pas(xl);
     }
+
+    &:empty,
+    &._bordurebas:empty,
+    &._bordure:empty,
+    &.est-vide {
+        border-top:0;
+        padding: 0;
+    }
 }
 
 /*
@@ -1134,7 +1142,6 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
 
         .deroulant._avecbordure & {
             // afin d'annuler la largeur de la bordure du parent
-            left: (- map-get($border-widths, std));
             right: (- map-get($border-widths, std));
         }
     }
@@ -1501,6 +1508,9 @@ Formules
     @include screen(from-large) {
         &-desc {
             min-height: 170px;
+            &._grand {
+                min-height: 310px;
+            }
         }
     }
 
@@ -1597,10 +1607,10 @@ Formules
 
     &-conteneur {
         margin: 0 auto;
+        max-width: 360px;
 
         @include screen(from-medium) {
             padding: 0;
-            max-width: 300px;
         }
 
         @include screen(small) {
