@@ -227,6 +227,7 @@
 
         &-lien {
             @include color(liens_sombres);
+
             &:hover {
                 @include color(liens);
             }
