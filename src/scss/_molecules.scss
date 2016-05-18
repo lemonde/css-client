@@ -1607,10 +1607,10 @@ Formules
 
     &-conteneur {
         margin: 0 auto;
+        max-width: 360px;
 
         @include screen(from-medium) {
             padding: 0;
-            max-width: 300px;
         }
 
         @include screen(small) {
