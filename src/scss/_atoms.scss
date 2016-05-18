@@ -509,11 +509,9 @@ ul, li {
         @include itemliste;
     }
 
-    &._bulletinside {
-        li {
-            margin-left: 0;
-            list-style-position: inside;
-        }
+    &._bulletinside li {
+        margin-left: 0;
+        list-style-position: inside;
     }
 }
 /*
