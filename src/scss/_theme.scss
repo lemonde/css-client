@@ -340,6 +340,7 @@ Layout
 
 $goutiere: pas(m);
 $goutiere-large: pas(l);
+
 $conteneur-width: 1260px;
 $conteneur-padding-small: pas(m);
 $conteneur-padding-medium: pas(xl);
@@ -358,11 +359,11 @@ $conteneur-padding-from-large: pas(xxl);
         padding: 0.1px $conteneur-padding-small;
     }
 
-    @include screen("medium") {
+    @include screen(medium) {
         padding: 0.1px $conteneur-padding-medium;
     }
 
-    @include screen("from-large") {
+    @include screen(from-large) {
         padding: 0.1px $conteneur-padding-from-large;
     }
 }
