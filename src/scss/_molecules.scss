@@ -1680,6 +1680,14 @@ page gamme entete
 .gammeentete {
     @include clearfix;
 
+    @include screen(not-large) {
+        margin: pas(l) 0;
+    }
+
+    @include screen(from-large) {
+        margin: pas(xl) 0;
+    }
+
     p {
         margin: pas(s) 0;
     }
@@ -1692,7 +1700,11 @@ page gamme entete
     }
 
     &-entete {
-        padding-bottom: pas(m);
+        margin-bottom: pas(m);
+
+        @include screen(small) {
+            margin-bottom: pas(l);
+        }
 
         @include screen(from-large) {
             float: right;
@@ -1706,20 +1718,13 @@ page gamme entete
     }
 
     &-titre {
-        margin: pas(s) 0;
+        margin:0;
     }
 
-    &-encadres {
-        @include screen(from-large) {
-            float: right;
-            width: 50%;
-        }
-
-        p {
-            @include border(std_sombre);
-            padding: pas(m);
-            margin: 0 0 pas(m);
-        }
+    &-encadre {
+        @include border(std_sombre);
+        padding: pas(m);
+        //margin-bottom: 0 0 pas(m);
     }
 
     &-texte {
@@ -1733,6 +1738,15 @@ page gamme entete
     &-visuel {
         text-align: center;
 
+        @include screen(from-large) {
+            padding-top: pas(m);
+        }
+
+        @include screen(small) {
+            padding-top: pas(m);
+            padding-bottom: pas(m);
+        }
+
         @include screen(from-medium) {
             float: left;
             width: 50%;
@@ -1741,12 +1755,13 @@ page gamme entete
 
         img {
             width: 100%;
-            max-width: 540px;
+            max-width: 460px;
         }
     }
 
     &-incitatif {
         display: flex;
+
         a {
             display: inline-block;
             padding-left: pas(m);
