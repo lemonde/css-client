@@ -132,12 +132,6 @@
         }
     }
 
-    &-fermer + &-item {
-        @include screen(not-large) {
-            @include border($cardinal:top);
-        }
-    }
-
     &-item {
 
         @include screen(from-large) {
@@ -191,7 +185,10 @@
         }
     }
 
-    ._hide-not-large {
+
+    // win spécificity war against
+    // .deroulant._from-large .deroulant-entete
+    &.header ._hide-not-large {
 
         @include screen(not-large) {
             display: none;
