@@ -1922,21 +1922,23 @@ entete
 --------------------
 */
 .enteteinfo {
-    margin-bottom: pas(m);
+    display: flex;
+    align-items: center;
+
+    @include screen(from-medium) {
+        min-height: 290px;
+    }
+
+    @include screen(small) {
+        min-height: 150px;
+    }
 
     &-titre {
-        @include screen(from-medium) {
-            margin: 0 0 pas(xl) 0;
-        }
-        @include screen(small) {
-            margin: 0;
-        }
+        margin: 0;
     }
 
     &-intro {
-        @include screen(from-medium) {
-            margin-top: (- pas(xl) + pas(m)); // reset de la marge haute du titre
-        }
+        margin-bottom: 0;
     }
 
     &-chevron {
@@ -1951,7 +1953,12 @@ entete
     &-icon {
         width: 32px;
         height: 32px;
+        margin-right: pas(s);
         background: center center / contain no-repeat;
+
+        @include screen(not-large) {
+            display: none;
+        }
 
         &._imprimer {
             background-image: url('../imgs/recrutement/icon-print.svg');
@@ -1982,21 +1989,16 @@ entete
     }
 
     &-guide {
+        margin-top: pas(l);
+
         @include screen(small) {
             display: none;
         }
     }
 
-    &.conteneur {
-        padding: pas(xxl) (pas(xxl)*5) pas(xxl) pas(xxl);
-        min-height: 300px;
-
-        @include screen(medium) {
-            padding-right: pas(xxl);
-        }
-
-        @include screen(small) {
-            padding: pas(xl) pas(m);
-        }
+    &-conteneur {
+        width: 100%;
+        max-width: 768px;
+        padding: pas(l) 0;
     }
 }
