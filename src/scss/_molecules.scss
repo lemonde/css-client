@@ -1026,7 +1026,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
         box-shadow: 0 map-get($border-widths, large) 0 0 map-get($border-colors, std) inset;
 
         &:hover {
-            box-shadow: 0 map-get($border-widths, large) 0 0 map-get($border-colors, action) inset;
+            box-shadow: 0 map-get($border-widths, large) 0 0 map-get($border-colors, action_hover) inset;
             text-decoration: none;
         }
 
@@ -1048,7 +1048,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
         font-weight: bold;
         box-shadow:
             0 map-get($border-widths, std) 0 0 $blanc,
-            0 map-get($border-widths, large) 0 0 map-get($border-colors, action) inset;
+            0 map-get($border-widths, large) 0 0 map-get($border-colors, action_hover) inset;
 
         ._simple & {
             box-shadow: 0 map-get($border-widths, std) 0 0 $blanc;
