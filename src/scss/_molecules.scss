@@ -1799,6 +1799,11 @@ page gamme selecteur
         }
     }
 
+    &-engagement {
+        @include color(gris);
+        display: block;
+    }
+
     &-prix {
         @include fontsize(t2);
         display: inline-block;
@@ -1817,14 +1822,11 @@ page gamme selecteur
 
     &-promo {
         @include color(gris);
+        @include fontsize(s);
 
         @include screen(small) {
             margin-right: auto;
         }
-    }
-
-    &-prixbarre {
-        @include fontsize(m);
     }
 
     &-type {
@@ -1857,7 +1859,7 @@ offre spéciale
 */
 
 .offrespeciale {
-    padding: pas(s) pas(m);
+    padding: pas(m);
 
     @include screen(from-medium) {
         width: 350px;
