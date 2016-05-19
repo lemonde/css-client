@@ -30,7 +30,7 @@
 @include responsive-modifier(
     $context: '',
     $modifier: 'hide',
-    $bps: 'small' 'from-medium'
+    $bps: 'small' 'from-medium' 'not-large'
 ) {
     display: none;
 }

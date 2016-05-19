@@ -339,6 +339,10 @@ a {
     &._petite {
         margin-right: pas(s);
     }
+
+    &._petitespace {
+        margin-right: pas(xs);
+    }
 }
 
 // icone CB (mastercard / etc...)
