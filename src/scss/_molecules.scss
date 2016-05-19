@@ -1535,6 +1535,13 @@ Formules
         margin-right: pas(s);
     }
 
+    &-listeprix {
+        @include fontsize(m);
+        display: inline-block;
+        width: auto;
+        margin: 0 auto;
+    }
+
     &-prixduree {
         display: inline-block;
         text-align: left;
