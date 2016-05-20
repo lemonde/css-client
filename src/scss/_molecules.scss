@@ -1440,10 +1440,19 @@ Popin (popup de en overlay)
 
     &-contenu {
         min-height: 70px;
+        max-width: 90vw;
         padding: pas(l);
 
         @include screen(small) {
             padding: pas(m);
+        }
+
+        @include screen(medium) {
+            min-width: 560px;
+        }
+
+        @include screen(from-large) {
+            min-width: 780px;
         }
 
     }
