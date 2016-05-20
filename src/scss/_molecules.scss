@@ -70,7 +70,7 @@
         padding-left: pas(l);
 
         @include screen(medium) {
-            flex: 1;
+            flex: 1 1 0%;
         }
 
         &::before {
@@ -193,6 +193,7 @@ portant d'autres selecteurs
     @include icon;
     margin-top: pas(l);
     padding: pas(m);
+
     &::before {
         @include icontexte;
         content: "!";
@@ -855,9 +856,11 @@ menus
         }
 
         & &-link:last-child {
+
             @include screen(from-medium) {
                 padding-bottom: pas(n);
             }
+
             @include screen(small) {
                 border-bottom: 0;
             }
@@ -889,7 +892,7 @@ menus
     }
 
     ._petit &-infos {
-        flex: initial;
+        flex: 0 1 auto;
     }
 
     &-numero {
@@ -945,9 +948,11 @@ menus
     }
 
     &-welcome {
+
         @include screen(small) {
             display: none;
         }
+
         ._petit & {
             @include screen(medium) {
                 display: none;
@@ -1548,11 +1553,11 @@ Formules
     }
 
     &-corps {
-        flex: 1;
+        flex: 1 0 auto;
     }
 
     &-pied {
-        flex: initial;
+        flex: 0 1 auto;
     }
 
     &-item {
@@ -1903,11 +1908,11 @@ bloc selector
     }
 
     &-input {
-        flex: initial;
+        flex: 0 1 auto;
     }
 
     &-texte {
-        flex: 1;
+        flex: 1 1 0%;
         margin-left: pas(m);
     }
 }

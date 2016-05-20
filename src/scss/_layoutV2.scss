@@ -60,7 +60,7 @@
     }
 
     &-cell {
-        flex: 0 0 100%;
+        flex: 1 1 100%;
 
         // permet de gérer des alignement verticaux
         &._aligne-haut {
@@ -113,7 +113,7 @@
 ) {
     // since minifictaion remove units from 0 values
     // and ie11 need units, the % is required
-    flex: 1 1 0%;
+    flex: 1 1 0px;
 }
 
 @include responsive-modifier(
@@ -137,7 +137,7 @@
     $modifier: '_principale',
     $bps: 'from-large'
 ) {
-    flex: 1;
+    flex: 1 1 0%;
     margin-right: pas(xxl);
     max-width: 750px;
 }
