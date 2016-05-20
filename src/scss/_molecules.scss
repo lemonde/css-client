@@ -1105,28 +1105,34 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     }
 
     &-entete {
-        @include icon;
-        @extend .icon-Chevron-gauche;
         display: flex;
         min-width: 150px;
         justify-content: center;
         align-items: center;
         cursor: pointer;
 
-        &:before {
-            order: 2;
-            margin-left: pas(m);
-            transform: rotate(-90deg);
-        }
 
         .deroulant._from-large & {
             @include screen(not-large) {
                 display: block;
                 cursor: default;
+            }
+        }
+    }
 
-                &:before {
-                    display: none;
-                }
+    &-icone {
+        @include icon;
+        @extend .icon-Chevron-gauche;
+        margin-left: pas(m);
+
+        &:before {
+            display: inline-block;
+            transform: rotate(-90deg);
+        }
+
+        .deroulant._from-large & {
+            @include screen(not-large) {
+                display: none;
             }
         }
     }
@@ -1566,6 +1572,7 @@ Formules
     }
     // dans le cas d'une offre à l'unité
     &-item._monoligne {
+        display: block;
 
         .t5 {
             margin: 0;
