@@ -111,7 +111,9 @@
     $modifier: '_auto',
     $bps: 'all' 'medium' 'from-medium' 'from-large'
 ) {
-    flex: 1;
+    // since minifictaion remove units from 0 values
+    // and ie11 need units, the % is required
+    flex: 1 1 0%;
 }
 
 @include responsive-modifier(
@@ -119,7 +121,7 @@
     $modifier: '_initial',
     $bps: 'all' 'from-medium'
 ) {
-    flex: initial;
+    flex: 0 1 auto;
 }
 
 @include responsive-modifier(
