@@ -37,11 +37,11 @@
     }
 
     &-tailleenfant {
-        flex: initial;
+        flex: 0 1 auto;
     }
 
     &-auto {
-        flex: 1;
+        flex: 1 1 0%;
         text-align: center;
 
         @include screen(small) {
@@ -53,7 +53,7 @@
         @extend .reset-haut;
 
         @include screen(from-large) {
-            flex: 1;
+            flex: 1 1 0%;
             max-width: 820px;
             padding-right: pas(xxl);
         }
@@ -123,13 +123,13 @@
 
     &-item {
         &._initial {
-            flex: initial;
+            flex: 0 1 auto;
         }
         &._tailledispo {
-            flex: 1;
+            flex: 1 1 0%;
         }
         &._auto-fullnotlarge {
-            flex: initial;
+            flex: 0 1 auto;
 
             @include screen(not-large) {
                 flex: 0 0 100%;

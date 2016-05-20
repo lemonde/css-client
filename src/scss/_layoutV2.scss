@@ -60,7 +60,7 @@
     }
 
     &-cell {
-        flex: 0 0 100%;
+        flex: 1 1 100%;
 
         // permet de gérer des alignement verticaux
         &._aligne-haut {
@@ -111,7 +111,9 @@
     $modifier: '_auto',
     $bps: 'all' 'medium' 'from-medium' 'from-large'
 ) {
-    flex: 1;
+    // since minifictaion remove units from 0 values
+    // and ie11 need units, the % is required
+    flex: 1 1 0px;
 }
 
 @include responsive-modifier(
@@ -119,7 +121,7 @@
     $modifier: '_initial',
     $bps: 'all' 'from-medium'
 ) {
-    flex: initial;
+    flex: 0 1 auto;
 }
 
 @include responsive-modifier(
@@ -135,7 +137,7 @@
     $modifier: '_principale',
     $bps: 'from-large'
 ) {
-    flex: 1;
+    flex: 1 1 0%;
     margin-right: pas(xxl);
     max-width: 750px;
 }

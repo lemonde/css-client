@@ -360,14 +360,14 @@ a {
 .iconburger {
     border: solid $blanc;
     border-width: 2px 0;
-    display: flex;
-    align-items: center;
+    display: block;
     width: 23px;
     height: 18px;
 
     &::after {
         content: "";
-        flex: 0 0 100%;
+        display: block;
+        margin-top: 6px;
         border-top: 2px solid $blanc;
     }
 }

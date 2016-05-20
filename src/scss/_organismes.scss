@@ -52,7 +52,7 @@
     }
 
     &-logo {
-        flex: 1;
+        flex: 1 1 0%;
 
         a {
             line-height: 1em;
@@ -417,7 +417,7 @@ $label-width-large: 220px;
         &-mention { // texte aligné avec les champs de formulaires
             @include screen(from-medium) {
                 margin-left: $label-width;
-                flex: 1;
+                flex: 1 1 0%;
 
                 ._longlabel & {
                     margin-left: $label-width-large;
@@ -433,11 +433,11 @@ $label-width-large: 220px;
             display: flex;
             padding: pas(s) 0;
             align-items: center;
-            flex: 1;
+            flex: 1 1 0%;
             flex-flow: row wrap;
 
             > * {
-                flex: initial;
+                flex: 0 1 auto;
             }
 
             > div {
@@ -639,7 +639,7 @@ $label-width-large: 220px;
     padding: pas(m) 0;
 
     &-adresse {
-        flex: 1;
+        flex: 1 1 0%;
         padding: pas(m);
     }
 
