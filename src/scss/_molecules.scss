@@ -701,9 +701,11 @@ menus
         }
 
         ._icones & {
-            align-items:baseline;
+            align-items: baseline;
+
             &:before {
-                // centering hack
+                display: inline-block;
+                margin-top: pas(s);
                 transform: translateY(.2em);
                 min-width: 30px;
                 max-width: 30px;
