@@ -56,6 +56,7 @@
 
         a {
             line-height: 1em;
+            display: inline-block;
         }
 
         @include screen(medium) {
@@ -303,6 +304,9 @@ $label-width-large: 220px;
         flex-flow: row wrap;
         align-items: center;
         margin: pas(s) 0;
+        // ie11: prevent breaking when
+        // child of a flex container
+        width: 100%;
 
         &:first-child {
             margin-top: 0;
@@ -344,7 +348,7 @@ $label-width-large: 220px;
         }
 
         &-input {
-            flex: 2;
+            flex: 2 2 0%;
 
             @include screen(small) {
                 flex: 1 100%;

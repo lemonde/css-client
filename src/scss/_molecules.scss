@@ -409,6 +409,7 @@ portant d'autres selecteurs
         &:first-child a {
             @include icon;
             @extend .icon-Accueil;
+
             &::before {
                 @include fontsize(m);
                 margin-right: pas(s);
@@ -542,6 +543,7 @@ portant d'autres selecteurs
     }
 
     &._hide-not-large {
+
         @include screen(not-large) {
             display: none;
         }
@@ -555,7 +557,9 @@ portant d'autres selecteurs
 
     &-section,
     &-entete {
+
         ._margedroitelarge & {
+
             @include screen(from-medium) {
                 padding-right: pas(xl);
             }
@@ -608,8 +612,8 @@ portant d'autres selecteurs
         }
 
         &._bordhaut {
-            border-bottom: 0;
             @include border($cardinal: top);
+            border-bottom: 0;
         }
 
         &._paddinglarge {
@@ -662,6 +666,7 @@ menus
     }
 
     &._hide-not-large {
+
         @include screen(not-large) {
             display: none;
         }
@@ -701,9 +706,11 @@ menus
         }
 
         ._icones & {
-            align-items:baseline;
+            align-items: baseline;
+
             &:before {
-                // centering hack
+                display: inline-block;
+                margin-top: pas(s);
                 transform: translateY(.2em);
                 min-width: 30px;
                 max-width: 30px;
@@ -1098,6 +1105,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
         @include background(active_hover);
 
         &._from-large {
+
             @include screen(not-large) {
                 background: none;
             }
@@ -1113,6 +1121,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
 
 
         .deroulant._from-large & {
+
             @include screen(not-large) {
                 display: block;
                 cursor: default;
@@ -1131,6 +1140,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
         }
 
         .deroulant._from-large & {
+
             @include screen(not-large) {
                 display: none;
             }
@@ -1145,6 +1155,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
         right: 0;
 
         .deroulant._from-large & {
+
             @include screen(not-large) {
                 position: static;
                 display: block;
@@ -1300,6 +1311,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
             left: 8%;
             transform: rotate(180deg);
         }
+
         &._suivant {
             right: 8%;
         }
@@ -1310,8 +1322,8 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
     }
 
     &-navmobile {
-        display: none;
         @include color(clair);
+        display: none;
 
         @include screen(small) {
             display: inline-block;
@@ -1513,21 +1525,26 @@ Formules
     text-align: center;
 
     @include screen(medium) {
+
         &-corps {
             padding: 0 pas(l) pas(m);
             text-align: left;
         }
+
         &-desc {
             padding-right: pas(l);
         }
+
         &-droite {
             padding-top: pas(s);
         }
     }
 
     @include screen(from-large) {
+
         &-desc {
             min-height: 170px;
+
             &._grand {
                 min-height: 310px;
             }
@@ -1745,7 +1762,6 @@ page gamme entete
     &-encadre {
         @include border(std_sombre);
         padding: pas(m);
-        //margin-bottom: 0 0 pas(m);
     }
 
     &-texte {
@@ -1919,11 +1935,16 @@ bloc selector
     display: flex;
     cursor: pointer;
 
+    @include screen(small) {
+        margin-bottom: pas(m);
+    }
+
     &.est-selectionne {
         @include border(action_hover);
     }
 
     &-input {
+        align-self: flex-start;
         flex: 0 1 auto;
     }
 
@@ -1942,6 +1963,7 @@ ex: page offrir et international
 entete
 --------------------
 */
+
 .enteteinfo {
     display: flex;
     align-items: center;
@@ -2001,9 +2023,11 @@ entete
         &._offrir {
             background-image: url('../imgs/recrutement/fond-entete-offrir-abo.jpg');
         }
+
         &._international {
             background-image: url('../imgs/recrutement/fond-entete-international.jpg');
         }
+
         &._pro {
             background-image: url('../imgs/recrutement/fond-entete-pro.jpg');
         }
