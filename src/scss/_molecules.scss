@@ -621,7 +621,15 @@ portant d'autres selecteurs
             padding: pas(l);
         }
 
+        ._paddinglarge & {
+            padding: pas(l);
+        }
+
         &._paddingbaslarge {
+            padding-bottom: pas(l);
+        }
+
+        ._paddingbaslarge &:last-of-type {
             padding-bottom: pas(l);
         }
     }
