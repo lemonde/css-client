@@ -103,6 +103,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .textecentre {
     text-align: center;
+    &-small {
+        @include screen(small) {
+            text-align: center;
+        }
+    }
 }
 
 .textegauche {
