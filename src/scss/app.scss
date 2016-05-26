@@ -3,5 +3,9 @@
 @import '_layoutV2.scss';
 @import '_utilitaires.scss';
 @import '_atoms.scss';
+
+@import 'molecules/_modals.scss';
+@import 'molecules/_datePicker.scss';
+@import 'molecules/_forcepassword.scss';
 @import '_molecules.scss';
 @import '_organismes.scss';
