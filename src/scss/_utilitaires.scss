@@ -65,10 +65,20 @@
 
     &-bm {
         margin-bottom: pas(m);
+        &-small {
+            @include screen(small) {
+                margin-bottom: pas(m);
+            }
+        }
     }
 
     &-bl {
         margin-bottom: pas(l);
+        &-small {
+            @include screen(small) {
+                margin-bottom: pas(l);
+            }
+        }
     }
 
     &-bxl {

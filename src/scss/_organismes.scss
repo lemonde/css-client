@@ -881,28 +881,24 @@ $label-width-large: 220px;
 */
 
 .blocapplis {
-    &-titre {
-        margin: 0;
-    }
 
     @include screen(from-large) {
         margin-top: pas(l);
         margin-bottom: pas(xl);
     }
 
-    @include screen(small) {
-
-        &-entete {
-            text-align: center;
-            padding-bottom: pas(l);
-        }
-
-        .btn {
-            margin-top: pas(m);
-        }
+    &-titre {
+        margin: 0;
     }
 
-    [class|='icoappli'] {
+    &-desc {
+        display: block;
+        margin-top: pas(s);
+    }
+
+    &-appli {
+        @include color(std);
+        font-weight: bold;
         display: flex;
         align-items: center;
 
@@ -913,6 +909,17 @@ $label-width-large: 220px;
 
         @include screen(not-large) {
             padding-bottom: pas(m);
+        }
+    }
+
+    @include screen(small) {
+
+        &-entete {
+            padding-bottom: pas(l);
+        }
+
+        .btn {
+            margin-top: pas(m);
         }
     }
 }
