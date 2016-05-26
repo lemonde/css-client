@@ -443,6 +443,10 @@ portant d'autres selecteurs
         margin-top: pas(xl);
     }
 
+    &._petitcorps {
+        @include fontsize(xs);
+    }
+
     &:empty,
     &._bordurebas:empty,
     &._bordure:empty,
