@@ -35,12 +35,6 @@
     display: none;
 }
 
-.hide-print {
-    @media print {
-        display: none;
-    }
-}
-
 /*
 -------------------------
     clearfix
@@ -81,6 +75,10 @@
         }
     }
 
+    &-txxl {
+        margin-top: pas(xxl);
+    }
+
     &-bxl {
         margin-bottom: pas(xl);
     }
@@ -102,6 +100,10 @@
                 margin-bottom: pas(l);
             }
         }
+    }
+
+    &-bn {
+        margin-bottom: 0;
     }
 
 

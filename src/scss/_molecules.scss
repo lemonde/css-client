@@ -1952,6 +1952,10 @@ bloc selector
         @include border(action_hover);
     }
 
+    &._nonclicable {
+        cursor: default;
+    }
+
     &-input {
         align-self: flex-start;
         flex: 0 1 auto;
