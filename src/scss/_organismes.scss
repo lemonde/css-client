@@ -989,3 +989,57 @@ facture (checkout)
         font-weight: bold;
     }
 }
+
+
+/*
+--------------------
+pages de services en contruction
+landing page
+--------------------
+*/
+
+.bloclanding {
+
+    @include screen(small) {
+        padding-top: pas(l);
+        padding-bottom: pas(l);
+    }
+
+    @include screen(from-medium) {
+        padding-top: pas(xxl);
+        padding-bottom: pas(xxl);
+    }
+
+    &-conteneur {
+        max-width: 780px;
+
+        @include screen(from-medium) {
+            margin: 0 auto;
+            padding: pas(l) pas(xxl);
+        }
+
+        @include screen(small) {
+            margin: pas(m);
+            padding: pas(m);
+        }
+    }
+
+    &-icone {
+        @include screen(small) {
+            max-width: 60px;
+            height: auto;
+        }
+    }
+
+    &-titre {
+        margin: pas(l) 0;
+    }
+
+    &-texteentete {
+        margin: pas(l) 0;
+    }
+
+    &-signature {
+        margin: pas(l) 0 0;
+    }
+}
