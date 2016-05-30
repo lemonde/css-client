@@ -1,6 +1,3 @@
-@import 'molecules/_modals.scss';
-@import 'molecules/_datePicker.scss';
-
 /*
 ---------------------------
  blocs messages et infos
@@ -446,6 +443,10 @@ portant d'autres selecteurs
         margin-top: pas(xl);
     }
 
+    &._petitcorps {
+        @include fontsize(xs);
+    }
+
     &:empty,
     &._bordurebas:empty,
     &._bordure:empty,
@@ -620,7 +621,15 @@ portant d'autres selecteurs
             padding: pas(l);
         }
 
+        ._paddinglarge & {
+            padding: pas(l);
+        }
+
         &._paddingbaslarge {
+            padding-bottom: pas(l);
+        }
+
+        ._paddingbaslarge &:last-of-type {
             padding-bottom: pas(l);
         }
     }
@@ -1860,6 +1869,7 @@ page gamme selecteur
     &-promo {
         @include color(gris);
         @include fontsize(s);
+        min-width: 80px;
 
         @include screen(small) {
             margin-right: auto;
@@ -1941,6 +1951,10 @@ bloc selector
 
     &.est-selectionne {
         @include border(action_hover);
+    }
+
+    &._nonclicable {
+        cursor: default;
     }
 
     &-input {

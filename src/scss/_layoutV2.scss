@@ -162,6 +162,15 @@
 
 @include responsive-modifier(
     $context: 'grille-cell',
+    $modifier: '_2sur3',
+    $bps: 'from-medium'
+) {
+    flex: 0 0 66.666%;
+    max-width: 66.666%; // ie11
+}
+
+@include responsive-modifier(
+    $context: 'grille-cell',
     $modifier: '_1sur4',
     $bps:'from-medium'
 ) {
