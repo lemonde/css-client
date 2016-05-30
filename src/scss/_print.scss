@@ -1,0 +1,64 @@
+@media print
+{
+    * {
+        -webkit-print-color-adjust:exact;
+    }
+
+    .hide-print {
+        display: none;
+    }
+
+    .printcadeau {
+
+        font-size: 9pt !important;
+
+        .pettititre {
+            font-size: 11pt !important;
+        }
+
+        &-corps {
+            padding: pas(l) !important;
+        }
+
+        &-entete {
+            padding: pas(l) 0;
+        }
+
+        &-image {
+            max-width: 90%;
+            width: auto;
+            margin: 0 auto;
+            min-width: 70%;
+        }
+
+        &-logofooter {
+            margin-bottom: 0pt;
+        }
+
+        .t2 { font-size: 20pt !important; }
+        .t5 { font-size: 16pt !important; }
+
+        .grille._goutiere-large {
+            margin-left: 0pt!important;
+            margin-right: 0pt!important;
+        }
+
+        ._1sur2-from-medium {
+            float: left !important;
+            padding: 0 !important;
+            width: 45% !important;
+            flex: none;
+        }
+
+        hr {
+            display: block;
+            margin-top: pas(l) !important;
+            margin-bottom: pas(l) !important;
+        }
+
+        .mention {
+            margin-top: pas(l);
+            font-size: 8pt !important;
+        }
+    }
+}

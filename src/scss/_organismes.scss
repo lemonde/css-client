@@ -881,28 +881,24 @@ $label-width-large: 220px;
 */
 
 .blocapplis {
-    &-titre {
-        margin: 0;
-    }
 
     @include screen(from-large) {
         margin-top: pas(l);
         margin-bottom: pas(xl);
     }
 
-    @include screen(small) {
-
-        &-entete {
-            text-align: center;
-            padding-bottom: pas(l);
-        }
-
-        .btn {
-            margin-top: pas(m);
-        }
+    &-titre {
+        margin: 0;
     }
 
-    [class|='icoappli'] {
+    &-desc {
+        display: block;
+        margin-top: pas(s);
+    }
+
+    &-appli {
+        @include color(std);
+        font-weight: bold;
         display: flex;
         align-items: center;
 
@@ -913,6 +909,17 @@ $label-width-large: 220px;
 
         @include screen(not-large) {
             padding-bottom: pas(m);
+        }
+    }
+
+    @include screen(small) {
+
+        &-entete {
+            padding-bottom: pas(l);
+        }
+
+        .btn {
+            margin-top: pas(m);
         }
     }
 }
@@ -990,7 +997,6 @@ facture (checkout)
     }
 }
 
-
 /*
 --------------------
 pages de services en contruction
@@ -1041,5 +1047,73 @@ landing page
 
     &-signature {
         margin: pas(l) 0 0;
+    }
+/*
+--------------------
+bon cadeau
+--------------------
+*/
+
+.printcadeau {
+    @include background(clair);
+
+    &-entete {
+        @include color(negatif);
+        text-align: center;
+        padding: pas(xxl) 0;
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    &-imageentete {
+        position: absolute;
+        right:0;
+        top:0;
+        width: 120%;
+        z-index: 0;
+        height: auto;
+    }
+
+    &-texteentete {
+        position: relative;
+        z-index: 1;
+    }
+
+    &-corps {
+
+        @include screen(small) {
+            padding: pas(l);
+        }
+
+        @include screen(from-medium) {
+            padding: pas(xl) (pas(xxl) + pas(l)) 1px;
+        }
+    }
+
+    &-detailoffre {
+        @include screen(small) {
+            padding: pas(l) 0;
+        }
+    }
+
+    &-image {
+        max-width: 420px;
+    }
+
+    &-icone {
+        @include color(liens);
+    }
+
+    &-listeactions {
+        margin-bottom: pas(l);
+
+        @include screen(small) {
+            padding-top: pas(l);
+        }
+
+        li {
+            margin-bottom: pas(m);
+        }
     }
 }
