@@ -1922,6 +1922,15 @@ offre spéciale
         }
     }
 
+    &-icone:hover {
+        text-decoration: none;
+    }
+
+    &-image {
+        max-width: 30px;
+        height: auto;
+    }
+
     &-titre {
         font-weight: bold;
         text-transform: uppercase;
