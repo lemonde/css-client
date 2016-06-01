@@ -1456,16 +1456,16 @@ Popin (popup de en overlay)
     &-header {
         @include background(header);
         @include color(negatif);
-        padding: pas(m);
+        padding: pas(m) pas(l);
     }
 
     &-contenu {
         min-height: 70px;
         max-width: 90vw;
-        padding: pas(l);
+        padding: pas(xl) pas(l);
 
         @include screen(small) {
-            padding: pas(m);
+            padding: pas(l) pas(m);
         }
 
         @include screen(medium) {
