@@ -1876,7 +1876,6 @@ page gamme selecteur
 
     &-prix + &-prixduree {
         margin-left: pas(s);
-        margin-right: pas(m);
     }
 
     &-prixduree {
@@ -1887,6 +1886,7 @@ page gamme selecteur
     &-promo {
         @include color(gris);
         @include fontsize(s);
+        margin-left: pas(m);
         min-width: 80px;
 
         @include screen(small) {
