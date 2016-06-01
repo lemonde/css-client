@@ -50,6 +50,12 @@
         @include color(liens);
     }
 
+    &._amical {
+        @include background(active);
+        @include border($color: action);
+        @include color(negatif);
+    }
+
     &._margebasse {
         margin-bottom: pas(m);
     }
@@ -110,6 +116,18 @@
             &::before {
                 @include icontexte;
                 content: "?";
+            }
+        }
+
+        ._amical & {
+            @include icon;
+            @extend .icon-Happy;
+
+            &::before {
+                @include color(negatif);
+                @include fontsize(std);
+                font-weight: bold;
+                margin-top: pas(xs);
             }
         }
     }
