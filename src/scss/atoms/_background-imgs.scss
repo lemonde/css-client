@@ -36,11 +36,11 @@
 
 .icopanier {
     &-securise::before {
-        background-image: url('../imgs/recrutement/icon-securise.svg')
+        background-image: inline('../imgs/recrutement/icon-securise.svg')
     }
 
     &-telephone::before {
-        background-image: url('../imgs/recrutement/icon-telephone.svg');
+        background-image: inline('../imgs/recrutement/icon-telephone.svg');
     }
 }
 
@@ -50,6 +50,6 @@
     width: 31px;
     height: 32px;
     flex: 0 0 31px;
-    background: url('../imgs/recrutement/icone-pouce.svg') no-repeat top left/31px 32px;
+    background: inline('../imgs/recrutement/icone-pouce.svg') no-repeat top left/31px 32px;
 
 }

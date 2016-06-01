@@ -17,5 +17,8 @@
     "path": "^0.12.7",
     "run-sequence": "^1.1.4",
     "gulp-clean-css": "^2.0.6"
+  },
+  "devDependencies": {
+    "gulp-base64-inline": "^1.0.3"
   }
 }

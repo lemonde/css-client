@@ -50,6 +50,12 @@
         @include color(liens);
     }
 
+    &._amical {
+        @include background(active);
+        @include border($color: action);
+        @include color(negatif);
+    }
+
     &._margebasse {
         margin-bottom: pas(m);
     }
@@ -110,6 +116,18 @@
             &::before {
                 @include icontexte;
                 content: "?";
+            }
+        }
+
+        ._amical & {
+            @include icon;
+            @extend .icon-Happy;
+
+            &::before {
+                @include color(negatif);
+                @include fontsize(std);
+                font-weight: bold;
+                margin-top: pas(xs);
             }
         }
     }
@@ -938,6 +956,7 @@ menus
 
         @include screen(small) {
             flex-basis: 50px;
+            min-width: 50px; // prevent flex distorsion
             width: 50px;
             height: 50px;
         }
@@ -1307,7 +1326,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
 
     &-nav {
         display: block;
-        background: url('../imgs/fleche-fine-droite.svg') no-repeat;
+        background: inline('../imgs/fleche-fine-droite.svg') no-repeat;
         width: 20px;
         height: 38px;
         position: absolute;
@@ -1456,16 +1475,16 @@ Popin (popup de en overlay)
     &-header {
         @include background(header);
         @include color(negatif);
-        padding: pas(m);
+        padding: pas(m) pas(l);
     }
 
     &-contenu {
         min-height: 70px;
         max-width: 90vw;
-        padding: pas(l);
+        padding: pas(xl) pas(l);
 
         @include screen(small) {
-            padding: pas(m);
+            padding: pas(l) pas(m);
         }
 
         @include screen(medium) {
@@ -1689,27 +1708,27 @@ Formules
         background: center center / auto no-repeat;
 
         &._etudiant {
-            background-image: url('../imgs/recrutement/icone-etudiant.svg');
+            background-image: inline('../imgs/recrutement/icone-etudiant.svg');
         }
 
         &._professionnel {
-            background-image: url('../imgs/recrutement/icone-professionels.svg');
+            background-image: inline('../imgs/recrutement/icone-professionels.svg');
         }
 
         &._etranger {
-            background-image: url('../imgs/recrutement/icone-etranger.svg');
+            background-image: inline('../imgs/recrutement/icone-etranger.svg');
         }
 
         &._config {
-            background-image: url('../imgs/recrutement/icon-config.svg');
+            background-image: inline('../imgs/recrutement/icon-config.svg');
         }
 
         &._devices {
-            background-image: url('../imgs/recrutement/icone-abo-num.svg');
+            background-image: inline('../imgs/recrutement/icone-abo-num.svg');
         }
 
         &._boutique {
-            background-image: url('../imgs/recrutement/icone-boutique.svg');
+            background-image: inline('../imgs/recrutement/icone-boutique.svg');
         }
     }
 
@@ -1858,7 +1877,6 @@ page gamme selecteur
 
     &-prix + &-prixduree {
         margin-left: pas(s);
-        margin-right: pas(m);
     }
 
     &-prixduree {
@@ -1869,6 +1887,7 @@ page gamme selecteur
     &-promo {
         @include color(gris);
         @include fontsize(s);
+        margin-left: pas(m);
         min-width: 80px;
 
         @include screen(small) {
@@ -1920,6 +1939,15 @@ offre spéciale
         &.offrespeciale {
             margin-top: pas(m);
         }
+    }
+
+    &-icone:hover {
+        text-decoration: none;
+    }
+
+    &-image {
+        max-width: 30px;
+        height: auto;
     }
 
     &-titre {
@@ -2002,7 +2030,7 @@ entete
         margin-right: pas(m);
         margin-left: pas(s);
         display: inline-block;
-        background: url('../imgs/recrutement/large-thin-arrow-right.svg') top center / contain no-repeat;
+        background: inline('../imgs/recrutement/large-thin-arrow-right.svg') top center / contain no-repeat;
         width: 40px;
         height: 50px;
     }
@@ -2018,16 +2046,16 @@ entete
         }
 
         &._imprimer {
-            background-image: url('../imgs/recrutement/icon-print.svg');
+            background-image: inline('../imgs/recrutement/icon-print.svg');
         }
 
         &._journal {
             width: 39px;
-            background-image: url('../imgs/recrutement/icon-journal.svg');
+            background-image: inline('../imgs/recrutement/icon-journal.svg');
         }
 
         &._calendrier {
-            background-image: url('../imgs/recrutement/icon-calendar.svg');
+            background-image: inline('../imgs/recrutement/icon-calendar.svg');
         }
     }
 
