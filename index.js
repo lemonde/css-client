@@ -9,6 +9,7 @@ var changed             = require('gulp-changed');
 var gcmq                = require('gulp-group-css-media-queries');
 var clean               = require('gulp-clean');
 var sourcemaps          = require('gulp-sourcemaps');
+var base64              = require('gulp-base64-inline');
 
 ///////////////////////////////////////////////////////
 // PATHS
@@ -55,6 +56,7 @@ module.exports = function(gulp) {
         .pipe(sass({outputStyle: 'expanded'}).on('error', onError))
         .pipe(gulp.dest(destPaths.css))
         .pipe(notify("style compiled : <%= file.relative %>!"))
+        .pipe(base64())
         .pipe(autoprefixer({browsers: ['> 1%','last 2 versions','ie > 8'],cascade:false}).on('error', onError))
         .pipe(gcmq().on('error', onError))
         .pipe(uglifycss().on('error', onError))

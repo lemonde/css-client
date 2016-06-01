@@ -1325,7 +1325,7 @@ address.formater > br:not(:first-child):not(:last-child) { display: none; }
 
     &-nav {
         display: block;
-        background: url('../imgs/fleche-fine-droite.svg') no-repeat;
+        background: inline('../imgs/fleche-fine-droite.svg') no-repeat;
         width: 20px;
         height: 38px;
         position: absolute;
@@ -1707,27 +1707,27 @@ Formules
         background: center center / auto no-repeat;
 
         &._etudiant {
-            background-image: url('../imgs/recrutement/icone-etudiant.svg');
+            background-image: inline('../imgs/recrutement/icone-etudiant.svg');
         }
 
         &._professionnel {
-            background-image: url('../imgs/recrutement/icone-professionels.svg');
+            background-image: inline('../imgs/recrutement/icone-professionels.svg');
         }
 
         &._etranger {
-            background-image: url('../imgs/recrutement/icone-etranger.svg');
+            background-image: inline('../imgs/recrutement/icone-etranger.svg');
         }
 
         &._config {
-            background-image: url('../imgs/recrutement/icon-config.svg');
+            background-image: inline('../imgs/recrutement/icon-config.svg');
         }
 
         &._devices {
-            background-image: url('../imgs/recrutement/icone-abo-num.svg');
+            background-image: inline('../imgs/recrutement/icone-abo-num.svg');
         }
 
         &._boutique {
-            background-image: url('../imgs/recrutement/icone-boutique.svg');
+            background-image: inline('../imgs/recrutement/icone-boutique.svg');
         }
     }
 
@@ -2029,7 +2029,7 @@ entete
         margin-right: pas(m);
         margin-left: pas(s);
         display: inline-block;
-        background: url('../imgs/recrutement/large-thin-arrow-right.svg') top center / contain no-repeat;
+        background: inline('../imgs/recrutement/large-thin-arrow-right.svg') top center / contain no-repeat;
         width: 40px;
         height: 50px;
     }
@@ -2045,16 +2045,16 @@ entete
         }
 
         &._imprimer {
-            background-image: url('../imgs/recrutement/icon-print.svg');
+            background-image: inline('../imgs/recrutement/icon-print.svg');
         }
 
         &._journal {
             width: 39px;
-            background-image: url('../imgs/recrutement/icon-journal.svg');
+            background-image: inline('../imgs/recrutement/icon-journal.svg');
         }
 
         &._calendrier {
-            background-image: url('../imgs/recrutement/icon-calendar.svg');
+            background-image: inline('../imgs/recrutement/icon-calendar.svg');
         }
     }
 
