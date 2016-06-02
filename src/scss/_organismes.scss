@@ -1033,7 +1033,19 @@ landing page
     &-icone {
         @include screen(small) {
             max-width: 60px;
-            height: auto;
+            height: 60px;
+        }
+
+        &._construction {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            background: inline('../imgs/icone-en-construction.svg') center center no-repeat;
+
+            @include screen(small) {
+                background-size: contain;
+            }
+
         }
     }
 
