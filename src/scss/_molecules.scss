@@ -951,6 +951,7 @@ menus
             align-self: center;
             flex-basis: 30px;
             width: 30px;
+            min-width: 30px; // prevent flex distorsion
             height: 30px;
         }
 
@@ -1592,6 +1593,12 @@ Formules
     &-prixconteneur {
         @include color(prix);
         margin: pas(m) 0 0;
+
+        ._monoligne & {
+            @include screen(small) {
+                margin-top: pas(s);
+            }
+        }
     }
 
     &-prix {
