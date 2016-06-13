@@ -941,7 +941,22 @@ menus
         height: 70px;
         background: #CCC url('../imgs/avatar_empty.jpg') top no-repeat;
         background-size: 100% 100%;
+        position: relative;
         overflow: hidden;
+
+        img {
+            // centered, and a little bigger
+            // than the container
+            // to fix artefact border bug when image is empty
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 106%;
+            min-height: 106%;
+            height: auto;
+            width: auto;
+            transform: translate(-50%, -50%);
+        }
 
         &:not(:only-child) {
             margin: 0 pas(m) 0 0;

@@ -16,9 +16,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "path": "^0.12.7",
     "run-sequence": "^1.1.4",
-    "gulp-clean-css": "^2.0.6"
-  },
-  "devDependencies": {
+    "gulp-clean-css": "^2.0.6",
     "gulp-base64-inline": "^1.0.3"
   }
 }
