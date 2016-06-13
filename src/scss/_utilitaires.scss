@@ -55,6 +55,25 @@
 
     &-bs {
         margin-bottom: pas(s);
+        &-small {
+            @include screen(small) {
+                margin-bottom: pas(s);
+            }
+        }
+    }
+
+    &-ts {
+        margin-top: pas(s);
+        &-small {
+            @include screen(small) {
+                margin-top: pas(s);
+            }
+        }
+    }
+
+    &-vn {
+        margin-bottom: 0;
+        margin-top: 0;
     }
 
     &-bm {
@@ -98,6 +117,18 @@
             @include screen(from-large) {
                 margin-top: pas(l);
                 margin-bottom: pas(l);
+            }
+        }
+    }
+
+    &-vs {
+        margin-top: pas(s);
+        margin-bottom: pas(s);
+
+        &-small {
+            @include screen(small) {
+                margin-top: pas(s);
+                margin-bottom: pas(s);
             }
         }
     }

@@ -1592,6 +1592,12 @@ Formules
     &-prixconteneur {
         @include color(prix);
         margin: pas(m) 0 0;
+
+        ._monoligne & {
+            @include screen(small) {
+                margin-top: pas(s);
+            }
+        }
     }
 
     &-prix {
