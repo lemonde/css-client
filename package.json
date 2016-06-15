@@ -1,6 +1,6 @@
 {
   "name": "css-client",
-  "version": "1.9.0",
+  "version": "1.9.2",
   "main": "index.js",
   "description": "CSS to use for all projet client",
   "dependencies": {
