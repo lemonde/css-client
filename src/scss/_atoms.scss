@@ -396,6 +396,32 @@ a {
     background: inline('../imgs/recrutement/icon-print-grey.svg') no-repeat;
 }
 
+
+.avatar {
+    @include border();
+    display: block;
+    width: 80px;
+    height: 80px;
+    background: map-get($backgrounds, gris) inline('../imgs/avatar-nu.svg') center bottom no-repeat;
+    background-size: 80% auto;
+    position: relative;
+    overflow: hidden;
+
+    img {
+        // centered, and a little bigger
+        // than the container
+        // to fix artefact border when image has no src
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 104%;
+        min-height: 104%;
+        height: auto;
+        width: auto;
+        transform: translate(-50%, -50%);
+    }
+}
+
 /*
 ---------------------------
  spinner attente
