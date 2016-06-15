@@ -526,6 +526,11 @@ select {
     margin-bottom:  pas(xs);
 }
 
+[type="checkbox"],
+[type="radio"] {
+    margin-top: 0; // firefox
+}
+
 button,
 input,
 select,
@@ -584,6 +589,11 @@ button {
     margin-bottom: 0;
 }
 
+input::-moz-focus-inner /*Remove button padding in FF*/
+{
+    border: 0;
+    padding: 0;
+}
 /*
 ---------------------------
  adresses
