@@ -49,7 +49,7 @@ module.exports = function(gulp) {
         this.emit('end');
     }
 
-    gulp.task('css-client:compile-style', function() {
+    gulp.task('css-client:compile-style', ['css-client:compile-images'], function() {
         return gulp.src(sourcePaths.scss)
         .pipe(sourcemaps.init().on('error', onError))
         .pipe(changed(destPaths.css).on('error', onError))
