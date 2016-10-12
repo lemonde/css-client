@@ -1645,6 +1645,7 @@ Formules
     &-item {
         display: flex;
         flex-flow: column;
+        width: 100%;
     }
     // dans le cas d'une offre à l'unité
     &-item._monoligne {

@@ -22,6 +22,7 @@
  /!\ REQUIS PAR ARVATO (JAVASCRIPT)
 ---------------------------
 */
+
 .hide,
 .hidden {
     display: none !important;
@@ -150,4 +151,13 @@
     &-tl {
         margin-top: pas(l);
     }
+}
+
+/*
+-------------------------
+    sizes
+-------------------------
+*/
+.w-full {
+    width: 100%;
 }
