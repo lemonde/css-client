@@ -1,0 +1,63 @@
+.hackfaq #stcfaq {
+    @extend .blockliste-section;
+    border: 0;
+
+    &-intro {
+        display: none;
+    }
+
+    ul {
+        border-top: 0;
+
+        a, a:visited {
+            @extend .blockliste-item-link;
+            @extend .itemfleche;
+            @include color(liens);
+            padding: pas(s) 0;
+            border-left: 0;
+
+            &:before {
+                @extend .blockliste-item-icone;
+                margin-top: 0;
+                line-height: 1.8em;
+            }
+
+            &:hover {
+                @include color(liens_hover);
+                border: 0;
+            }
+        }
+    }
+
+    li {
+        @extend .blockliste-item;
+    }
+}
+
+.hackfaq._standelone #stcfaq {
+    @extend .blockliste;
+    @extend ._fleches;
+    @include border($cardinal:bottom);
+    padding-top: 0;
+    padding-bottom: 0;
+
+    #stcfaq-intro {
+        @extend .t7;
+        @extend .blockliste-header;
+        @extend .blockliste-section;
+        @include color(std);
+        display: block;
+        text-transform: none;
+        text-align: left;
+    }
+
+    ul {
+        @extend .blockliste-section;
+
+        a:before {
+            @extend .blockliste-item-icone;
+            margin-top: 0;
+            line-height: 1.8em;
+        }
+    }
+}
