@@ -1,5 +1,6 @@
 .hackfaq #stcfaq {
     @extend .blockliste-section;
+    background: transparent;
     border: 0;
 
     &-intro {
@@ -8,11 +9,13 @@
 
     ul {
         border-top: 0;
+        background: transparent;
 
         a, a:visited {
             @extend .blockliste-item-link;
             @extend .itemfleche;
             @include color(liens);
+            background: transparent!important;
             padding: pas(s) 0;
             border-left: 0;
 
@@ -36,8 +39,10 @@
 
 .hackfaq._standelone #stcfaq {
     @extend .blockliste;
+    @extend .blockliste._bordabord;
     @extend ._fleches;
     @include border($cardinal:bottom);
+    width: auto;
     padding-top: 0;
     padding-bottom: 0;
 
@@ -46,6 +51,7 @@
         @extend .blockliste-header;
         @extend .blockliste-section;
         @include color(std);
+        background: transparent;
         display: block;
         text-transform: none;
         text-align: left;
