@@ -1,3 +1,10 @@
+/* conteneur de page sous une bannière message haute refermable
+/* sert au positionnement
+*/
+.conteneur-principal {
+    position: relative;
+}
+
 .conteneur {
     @include conteneur-site-std;
 

@@ -201,12 +201,35 @@
         formuleSelector(selectorContainer);
     }
 
+    const triggersElems = document.getElementsByClassName('js-trigger');
+
+    function toggle(item) {
+        item.addEventListener('click', () => {
+            const toggleClass = item.getAttribute('data-toggleClass');
+            const target = document.querySelector(item.getAttribute('data-target'));
+            target.classList.toggle(toggleClass);
+        });
+    }
+
+    const handlers = {
+        toggle,
+    };
+
+    const trigger = () => {
+        if (triggersElems.length > 0) {
+            Array.prototype.forEach.call(triggersElems, (item) => {
+                handlers[item.getAttribute('data-trigger')](item);
+            });
+        }
+    };
+
     document.addEventListener("DOMContentLoaded", function() {
         burgerMenu();
         instantiatePopins();
         instantiateCarrousel();
         instantiateScrollPanier();
         instantiateFormuleSelector();
+        trigger();
     });
 
 }());

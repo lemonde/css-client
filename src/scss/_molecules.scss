@@ -19,16 +19,70 @@
         display: none;
     }
 
-    &._fermable {
+    &._fermable,
+    .lien-fermer {
         @include icon;
         @extend .icon-Fermer;
         position: relative;
+        text-align: right;
+    }
 
+    &._fermable {
         &::before {
             position: absolute;
             font-size: 20px;
             right: 5px;
             top: 5px;
+        }
+    }
+
+   .lien-fermer {
+        min-width: 70px;
+        text-align: right;
+        cursor: pointer;
+
+        &::before {
+            position: static;
+        }
+    }
+
+    &._banniere-message {
+        justify-content: space-between;
+        align-items: flex-start;
+        max-height: 0;
+        margin: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border: 0;
+        font-size: 12px;
+        transition: all .2s ease;
+        opacity: 0;
+
+        .texte {
+            flex: 1 0 0%;
+
+            a {
+                @include color(liens);
+            }
+        }
+
+        a {
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &.est-ouvert {
+            opacity: 1;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            max-height: 50vh;
+        }
+
+        @include screen(from-large) {
+            padding-left: pas(xxl);
+            padding-right: pas(xxl);
         }
     }
 
