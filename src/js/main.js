@@ -204,7 +204,7 @@
     const triggersElems = document.getElementsByClassName('js-trigger');
 
     function toggle(item) {
-        item.addEventListener('click', () => {
+        item.addEventListener('click', function () {
             const toggleClass = item.getAttribute('data-toggleClass');
             const target = document.querySelector(item.getAttribute('data-target'));
             target.classList.toggle(toggleClass);
@@ -215,9 +215,9 @@
         toggle,
     };
 
-    const trigger = () => {
+    const trigger = function () {
         if (triggersElems.length > 0) {
-            Array.prototype.forEach.call(triggersElems, (item) => {
+            Array.prototype.forEach.call(triggersElems, function (item) {
                 handlers[item.getAttribute('data-trigger')](item);
             });
         }
