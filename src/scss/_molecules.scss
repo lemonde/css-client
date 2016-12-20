@@ -32,6 +32,37 @@
         }
     }
 
+    &._banniere {
+        max-height: 50vh;
+        border: 0;
+        font-size: 12px;
+        opacity: 1;
+        margin-bottom: 0;
+        transition: all .2s ease;
+
+        &.est-ferme {
+            opacity: 0;
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        @include screen(small) {
+            padding-left: $conteneur-padding-small;
+            padding-right: $conteneur-padding-small;
+        }
+
+        @include screen(medium) {
+            padding-left: $conteneur-padding-medium;
+            padding-right: $conteneur-padding-medium;
+        }
+
+        @include screen(from-large) {
+            padding-left: $conteneur-padding-from-large;
+            padding-right: $conteneur-padding-from-large;
+        }
+    }
+
     &._erreur {
         @include background(erreur);
         @include border($color: erreur);
@@ -130,6 +161,20 @@
                 margin-top: pas(xs);
             }
         }
+
+        ._banniere & {
+            flex: 1;
+            padding-left: 0;
+        }
+    }
+
+    // bouton fermer avec texte
+    &-fermer {
+        @include icon;
+        @extend .icon-Fermer;
+        cursor: pointer;
+        margin-left: pas(s);
+        padding-top: pas(s);
     }
 
     &-icon {
